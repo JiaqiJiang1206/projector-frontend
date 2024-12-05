@@ -1,16 +1,28 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
+import useWebSocket from './WebSocket';
+import useSpeechRecognition from './SpeechRecognition'; // 引入自定义 Hook
+
 const Chat = ({ messages, setMessages }) => {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const [isListening, setIsListening] = useState(false);
 
-  const recognitionRef = useRef(null); // 保存语音识别实例
-  const wsRef = useRef(null); // 保存 WebSocket 实例
   const messagesEndRef = useRef(null); // 聊天窗口底部滚动引用
-  const arduinoMessage = useRef(null); // 保存 Auduino 信息
-  let finalScript = ''; // 保存最终的文本
+  const [finalScript, setFinalScript] = useState('');
+  const [arduinoMessage, setArduinoMessage] = useState('');
+
+  // 使用自定义 WebSocket Hook
+  const { sendMessage } = useWebSocket('ws://localhost:8081', (data) => {
+    setArduinoMessage(data);
+    if (data === 'PRESSED') {
+      startListening();
+    } else if (data === 'RELEASED') {
+      stopListening();
+      handleSend(finalScript);
+      setFinalScript('');
+    }
+  });
 
   // 滚动到聊天底部
   useEffect(() => {
@@ -19,75 +31,26 @@ const Chat = ({ messages, setMessages }) => {
     }
   }, [messages]);
 
-  // 初始化 WebSocket 和 SpeechRecognition
-  useEffect(() => {
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-      console.error('SpeechRecognition API is not supported in this browser.');
-      return;
+  // 初始化 SpeechRecognition
+  const handleSpeechResult = (transcript) => {
+    setInput(transcript);
+    if (arduinoMessage === 'RELEASED') {
+      handleSend(transcript);
+      setFinalScript(''); // 清空文本
+    } else {
+      setFinalScript((prev) => prev + transcript); // 拼接语音结果
     }
+  };
 
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'zh-CN';
-    recognition.interimResults = true;
-    recognition.maxAlternatives = 1;
+  // 处理语音监听状态变化
+  const handleListeningChange = (isListening) => {
+    console.log(`Listening: ${isListening}`);
+  };
 
-    recognition.onstart = () => setIsListening(true);
-    recognition.onend = () => {
-      if (arduinoMessage.current === 'PRESSED') {
-        startListening();
-      } else {
-        setIsListening(false);
-      }
-    };
-    recognition.onerror = (error) => {
-      console.error('Speech recognition error:', error);
-      setIsListening(false);
-    };
-    recognition.onresult = (event) => {
-      let interimTranscript = '';
-
-      for (let i = 0; i < event.results.length; i++) {
-        const transcript = event.results[i][0].transcript;
-        if (event.results[i].isFinal) {
-          finalScript += transcript;
-        } else {
-          interimTranscript += transcript;
-        }
-      }
-
-      setInput(finalScript || interimTranscript);
-
-      if (finalScript) {
-        setInput(finalScript);
-      }
-    };
-
-    recognitionRef.current = recognition;
-
-    const ws = new WebSocket('ws://localhost:8081');
-    ws.onopen = () => console.log('WebSocket connected');
-    ws.onmessage = (event) => {
-      arduinoMessage.current = event.data;
-      if (arduinoMessage.current === 'PRESSED') {
-        startListening();
-      } else if (arduinoMessage.current === 'RELEASED') {
-        stopListening();
-        handleSend(finalScript);
-        finalScript = '';
-      }
-    };
-    ws.onerror = (error) => console.error('WebSocket error:', error);
-    ws.onclose = () => console.log('WebSocket disconnected');
-
-    wsRef.current = ws;
-
-    return () => {
-      recognition.stop();
-      ws.close();
-    };
-  }, []);
+  const { startListening, stopListening, isListening } = useSpeechRecognition(
+    handleSpeechResult,
+    handleListeningChange
+  );
 
   const handleSend = async (messageText = input) => {
     if (!messageText.trim()) return;
@@ -120,16 +83,6 @@ const Chat = ({ messages, setMessages }) => {
     }
   };
 
-  const startListening = () => {
-    if (recognitionRef.current) recognitionRef.current.start();
-  };
-
-  const stopListening = () => {
-    if (recognitionRef.current && isListening) {
-      recognitionRef.current.stop();
-    }
-  };
-
   const startAudioProcessing = async (text) => {
     try {
       const response = await axios.post(
@@ -144,10 +97,11 @@ const Chat = ({ messages, setMessages }) => {
   };
 
   const fetchAndPlayAudio = async () => {
+    const audioQueue = [];
     let fileIndex = 0;
 
-    while (true) {
-      try {
+    try {
+      while (true) {
         const response = await axios.post(
           `http://10.12.170.113:8080/api/chat/sendaudio?file=${fileIndex}`,
           { content: fileIndex },
@@ -156,16 +110,19 @@ const Chat = ({ messages, setMessages }) => {
 
         const audioBlob = response.data;
         const audioUrl = URL.createObjectURL(audioBlob);
-        await playAudio(audioUrl);
+        audioQueue.push(audioUrl);
         fileIndex++;
-      } catch (error) {
-        if (error.response?.status === 404) {
-          console.log('No more audio files.');
-          break;
-        }
-        console.error('Error fetching audio:', error);
-        break;
       }
+    } catch (error) {
+      if (error.response?.status === 404) {
+        console.log('No more audio files.');
+      } else {
+        console.error('Error fetching audio:', error);
+      }
+    }
+
+    for (const audioUrl of audioQueue) {
+      await playAudio(audioUrl);
     }
   };
 
