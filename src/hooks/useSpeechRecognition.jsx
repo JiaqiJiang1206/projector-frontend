@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 
-const useSpeechRecognition = (onResult, onListeningChange) => {
+const useSpeechRecognition = (onResult) => {
   const recognitionRef = useRef(null);
   const [isListening, setIsListening] = useState(false);
 
@@ -20,18 +20,17 @@ const useSpeechRecognition = (onResult, onListeningChange) => {
 
     recognition.onstart = () => {
       setIsListening(true);
-      onListeningChange(true);
+      console.log('Listening...');
     };
 
     recognition.onend = () => {
       setIsListening(false);
-      onListeningChange(false);
+      console.log('Speech recognition service disconnected');
     };
 
     recognition.onerror = (error) => {
       console.error('Speech recognition error:', error);
       setIsListening(false);
-      onListeningChange(false);
     };
 
     recognition.onresult = (event) => {
@@ -46,7 +45,6 @@ const useSpeechRecognition = (onResult, onListeningChange) => {
           interimTranscript += transcript;
         }
       }
-      console.log('Final:', finalTranscript);
 
       onResult(finalTranscript || interimTranscript);
     };
@@ -58,15 +56,23 @@ const useSpeechRecognition = (onResult, onListeningChange) => {
         recognitionRef.current.abort();
       }
     };
-  }, [onResult, onListeningChange]);
+  }, []);
 
   const startListening = () => {
-    if (recognitionRef.current) recognitionRef.current.start();
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.start();
+      } catch (error) {
+        console.error('Speech recognition error:', error);
+      }
+    }
   };
 
   const stopListening = () => {
-    if (recognitionRef.current && isListening) {
+    try {
       recognitionRef.current.stop();
+    } catch {
+      console.error('Speech recognition error');
     }
   };
 
