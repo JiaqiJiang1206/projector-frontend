@@ -34,11 +34,12 @@ const Chat = ({ messages, setMessages }) => {
 
     recognition.onstart = () => setIsListening(true);
     recognition.onend = () => {
-      if (arduinoMessage.current === 'PRESSED') {
-        startListening();
-      } else {
-        setIsListening(false);
-      }
+      // if (arduinoMessage.current === 'PRESSED') {
+      //   startListening();
+      // } else {
+      //   setIsListening(false);
+      // }
+      console.log('Speech recognition ended.');
     };
     recognition.onerror = (error) => {
       console.error('Speech recognition error:', error);
@@ -120,7 +121,7 @@ const Chat = ({ messages, setMessages }) => {
   };
 
   const startListening = () => {
-    if (recognitionRef.current) recognitionRef.current.start();
+    if (recognitionRef.current && !isListening) recognitionRef.current.start();
   };
 
   const stopListening = () => {
@@ -157,6 +158,7 @@ const Chat = ({ messages, setMessages }) => {
         const audioUrl = URL.createObjectURL(audioBlob);
         await playAudio(audioUrl);
         fileIndex++;
+        setIsListening(false);
       } catch (error) {
         if (error.response?.status === 404) {
           console.log('No more audio files.');
