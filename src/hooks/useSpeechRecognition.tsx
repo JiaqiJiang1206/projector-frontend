@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 
-const useSpeechRecognition = (onResult) => {
-  const recognitionRef = useRef(null);
+const useSpeechRecognition = (onResult: (transcript: string) => void) => {
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
   const [isListening, setIsListening] = useState(false);
 
   useEffect(() => {
@@ -13,6 +13,7 @@ const useSpeechRecognition = (onResult) => {
       return;
     }
 
+    // Create the recognition instance
     const recognition = new SpeechRecognition();
     recognition.lang = 'zh-CN';
     recognition.interimResults = true;
@@ -46,33 +47,38 @@ const useSpeechRecognition = (onResult) => {
         }
       }
 
+      // Call the callback with the result (final or interim)
       onResult(finalTranscript || interimTranscript);
     };
 
     recognitionRef.current = recognition;
 
+    // Cleanup function
     return () => {
       if (recognitionRef.current) {
         recognitionRef.current.abort();
+        recognitionRef.current = null;
       }
     };
-  }, []);
+  }, [onResult]); // Add onResult to dependency array to ensure callback stays fresh
 
   const startListening = () => {
     if (recognitionRef.current) {
       try {
         recognitionRef.current.start();
       } catch (error) {
-        console.error('Speech recognition error:', error);
+        console.error('Speech recognition start error:', error);
       }
     }
   };
 
   const stopListening = () => {
-    try {
-      recognitionRef.current.stop();
-    } catch {
-      console.error('Speech recognition error');
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.stop();
+      } catch (error) {
+        console.error('Speech recognition stop error:', error);
+      }
     }
   };
 

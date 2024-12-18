@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import axiosInstance from '../hooks/axiosConfig';
 
 import useWebSocket from '../hooks/useWebSocket';
 import useSpeechRecognition from '../hooks/useSpeechRecognition';
 import useFetchAndPlayAudio from '../hooks/useFetchAndPlayAudio';
 
 const Chat = ({ messages, setMessages }) => {
-  const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [input, setInput] = useState<any>('');
+  const [loading, setLoading] = useState<any>(false);
 
-  const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef<any>(null);
 
   let recognizedInput = '';
 
@@ -46,7 +46,7 @@ const Chat = ({ messages, setMessages }) => {
   }, [messages]);
 
   useEffect(() => {
-    handleSend('你好，我们从头开始聊这个学术项目吧，你先给我大概介绍一下。');
+    // handleSend('你好，我们从头开始聊这个学术项目吧，你先给我大概介绍一下。');
   }, []);
 
   const handleSend = async (messageText = input) => {
@@ -59,10 +59,9 @@ const Chat = ({ messages, setMessages }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        'http://10.12.170.113:8080/api/chat/poster',
-        { content: messageText }
-      );
+      const response = await axiosInstance.post('/poster', {
+        content: messageText,
+      });
 
       const botText = response.data.reply;
       const botMessage = {
@@ -72,11 +71,7 @@ const Chat = ({ messages, setMessages }) => {
       };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
 
-      await fetchAndPlayAudio(
-        'http://10.12.170.113:8080/api/chat/startaudio',
-        botText,
-        'http://10.12.170.113:8080/api/chat/sendaudio'
-      );
+      await fetchAndPlayAudio('/startaudio', botText, '/sendaudio');
     } catch (error) {
       console.error('Error sending message:', error);
     } finally {

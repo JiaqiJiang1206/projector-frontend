@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const HiddenPage = ({ part }) => {
-  const [rectangles, setRectangles] = useState([]); // 存储所有矩形框
-  const [previewRectangle, setPreviewRectangle] = useState(null);
-  const [editMode, setEditMode] = useState(false);
-  const drawingRef = useRef(false);
-  const startPointRef = useRef(null);
-  const containerRef = useRef(null);
-  const containerRect = useRef(null);
+const Projector = ({ part }) => {
+  const [rectangles, setRectangles] = useState<any>([]); // 存储所有矩形框
+  const [previewRectangle, setPreviewRectangle] = useState<any>(null);
+  const [editMode, setEditMode] = useState<any>(false);
+  const drawingRef = useRef<any>(false);
+  const startPointRef = useRef<any>(null);
+  const containerRef = useRef<any>(null);
+  const containerRect = useRef<any>(null);
 
   // 从 localStorage 加载数据
   useEffect(() => {
@@ -163,4 +163,4 @@ const HiddenPage = ({ part }) => {
   );
 };
 
-export default HiddenPage;
+export default Projector;

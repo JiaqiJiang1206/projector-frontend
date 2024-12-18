@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 const useWebSocket = (url, onMessage) => {
-  const wsRef = useRef(null); // 保存 WebSocket 实例
+  const wsRef = useRef<any>(null); // 保存 WebSocket 实例
 
   useEffect(() => {
     const ws = new WebSocket(url);

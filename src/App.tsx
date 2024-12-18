@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Chat from './components/Chat'; // 第一个页面
-import HiddenPage from './components/Projector'; // 第二个页面
+import Projector from './components/Projector'; // 第二个页面
 
 const App = () => {
   const [messages, setMessages] = useState([
@@ -56,7 +56,7 @@ const App = () => {
       <div
         className={'flex-1 ml-0 z-10'} // 根据侧边栏的宽度动态调整内容区域的左边距
       >
-        <HiddenPage part={botPart} />
+        <Projector part={botPart} />
       </div>
     </div>
   );
