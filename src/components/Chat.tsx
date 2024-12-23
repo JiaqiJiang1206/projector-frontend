@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axiosInstance from '../hooks/axiosConfig';
+import { axiosInstance } from '../hooks/axiosConfig';
 
 import useWebSocket from '../hooks/useWebSocket';
-import useSpeechRecognition from '../hooks/useSpeechRecognition';
 import useFetchAndPlayAudio from '../hooks/useFetchAndPlayAudio';
+import useWhisper from '../hooks/useWhisper';
 
 const Chat = ({ messages, setMessages }) => {
   const [input, setInput] = useState<any>('');
@@ -11,30 +11,31 @@ const Chat = ({ messages, setMessages }) => {
 
   const messagesEndRef = useRef<any>(null);
 
-  let recognizedInput = '';
+  const {
+    transcription,
+    isRecording,
+    audioUrl,
+    startRecording,
+    stopRecording,
+  } = useWhisper();
+
+  useEffect(() => {
+    if (transcription) {
+      handleSend(transcription);
+    }
+  }, [transcription]);
 
   const handleSocketMessage = (data) => {
     if (data === 'PRESSED') {
-      startListening();
+      startRecording();
     } else if (data === 'RELEASED') {
-      stopListening();
-      console.log(recognizedInput);
-      handleSend(recognizedInput);
+      stopRecording();
     }
   };
 
   const { sendMessage } = useWebSocket(
     'ws://localhost:8081',
     handleSocketMessage
-  );
-
-  const handleReceiveRecognition = (transcript) => {
-    recognizedInput = transcript;
-    setInput(transcript);
-  };
-
-  const { startListening, stopListening, isListening } = useSpeechRecognition(
-    handleReceiveRecognition
   );
 
   const { isPlaying, fetchAndPlayAudio } = useFetchAndPlayAudio();
@@ -63,19 +64,28 @@ const Chat = ({ messages, setMessages }) => {
         content: messageText,
       });
 
-      const botText = response.data.reply;
-      const botMessage = {
+      const botReply = response.data.reply;
+      const botReplys = {
         id: Date.now(),
-        text: JSON.parse(botText),
+        text: botReply[0],
         sender: 'bot',
+        positions: botReply[1],
       };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-
-      await fetchAndPlayAudio('/startaudio', botText, '/sendaudio');
+      setMessages((prevMessages) => [...prevMessages, botReplys]);
+      console.log('Bot reply:', botReplys);
+      await fetchAndPlayAudio('/startaudio', botReplys.text, '/sendaudio');
     } catch (error) {
       console.error('Error sending message:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const changeRecordingState = () => {
+    if (isRecording) {
+      stopRecording();
+    } else {
+      startRecording();
     }
   };
 
@@ -94,7 +104,7 @@ const Chat = ({ messages, setMessages }) => {
                   : 'bg-blue-500 text-white'
               } p-3 rounded-lg max-w-md`}
             >
-              {message.sender === 'user' ? message.text : message.text.text}
+              {message.sender === 'user' ? message.text : message.text}
             </div>
           </div>
         ))}
@@ -135,15 +145,16 @@ const Chat = ({ messages, setMessages }) => {
       <div className="p-4 bg-white border-t">
         <button
           className={`px-4 py-2 rounded-lg ${
-            isListening ? 'bg-red-500' : 'bg-blue-500'
+            isRecording ? 'bg-red-500' : 'bg-blue-500'
           } text-white`}
-          onMouseDown={startListening}
-          onMouseUp={stopListening}
+          onClick={changeRecordingState}
         >
-          {isListening ? 'Listening...' : 'Hold to Speak'}
+          {isRecording ? 'Recording...' : 'Record'}
         </button>
-        {isPlaying && (
-          <div className="mt-2 text-gray-500">Playing audio...</div>
+        {audioUrl && (
+          <audio controls src={audioUrl} className="mt-2">
+            Your browser does not support the audio element.
+          </audio>
         )}
       </div>
     </div>

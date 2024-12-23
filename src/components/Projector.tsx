@@ -1,164 +1,199 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-const Projector = ({ part }) => {
-  const [rectangles, setRectangles] = useState<any>([]); // 存储所有矩形框
-  const [previewRectangle, setPreviewRectangle] = useState<any>(null);
-  const [editMode, setEditMode] = useState<any>(false);
-  const drawingRef = useRef<any>(false);
-  const startPointRef = useRef<any>(null);
-  const containerRef = useRef<any>(null);
-  const containerRect = useRef<any>(null);
+interface cuePosition {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
 
-  // 从 localStorage 加载数据
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRect.current = containerRef.current.getBoundingClientRect();
-    }
-    const savedRectangles = localStorage.getItem('rectangles');
-    if (savedRectangles) setRectangles(JSON.parse(savedRectangles));
-  }, []);
+interface CueProps {
+  cuePosition: cuePosition[];
+  imgRef: React.RefObject<HTMLImageElement>;
+}
 
-  const handleMouseDown = (e) => {
-    if (!editMode) return;
-    drawingRef.current = true;
-    // 每次按下时重新计算容器边界
-    containerRect.current = containerRef.current.getBoundingClientRect();
+const Cue: React.FC<CueProps> = ({ cuePosition, imgRef }) => {
+  const [isShowPoster, setIsShowPoster] = useState(true);
 
-    const startPoint = {
-      x: e.clientX - containerRect.current.left,
-      y: e.clientY - containerRect.current.top,
-    };
-    startPointRef.current = startPoint;
-  };
-
-  const handleMouseMove = (e) => {
-    if (!editMode) return;
-    if (!drawingRef.current || !startPointRef.current) return;
-    const currentPoint = {
-      x: e.clientX,
-      y: e.clientY,
-    };
-
-    const preview = {
-      left: Math.min(startPointRef.current.x, currentPoint.x),
-      top: Math.min(startPointRef.current.y, currentPoint.y),
-      width: Math.abs(currentPoint.x - startPointRef.current.x),
-      height: Math.abs(currentPoint.y - startPointRef.current.y),
-    };
-
-    setPreviewRectangle(preview);
-  };
-
-  const handleMouseUp = (e) => {
-    if (!editMode) return;
-    if (!drawingRef.current || !startPointRef.current) return;
-    // 获取用户输入的 part
-    const inputPart = prompt('Enter part number for this rectangle:');
-    previewRectangle &&
-      setRectangles((prev) => {
-        const updated = [
-          ...prev,
-          { ...previewRectangle, part: Number(inputPart) },
-        ];
-        localStorage.setItem('rectangles', JSON.stringify(updated));
-        return updated;
-      });
-
-    setPreviewRectangle(null);
-    drawingRef.current = false;
-    startPointRef.current = null;
-  };
-
-  const clearRectangles = () => {
-    setRectangles(() => {
-      const cleared = []; // 新的状态
-      localStorage.setItem('rectangles', JSON.stringify(cleared)); // 更新 localStorage
-      return cleared; // 更新状态
-    });
+  const changeVisibility = () => {
+    setIsShowPoster(!isShowPoster); // Toggle visibility
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="flex flex-col h-screen bg-black text-white relative overflow-hidden"
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-    >
-      <div className="flex justify-between p-4">
-        <button
-          onClick={() => setEditMode((prev) => !prev)} // 切换状态
-          className={`px-4 py-2 rounded-lg ${
-            editMode ? 'bg-red-500' : 'bg-green-500'
-          } text-white`}
-        >
-          {editMode ? 'Stop Editing' : 'Edit Boxes'}
-        </button>
-        {!editMode &&
-          rectangles.map((rect, index) => (
-            <div
-              key={index}
-              style={{
-                position: 'absolute',
-                left: `${rect.left}px`,
-                top: `${rect.top}px`,
-                width: `${rect.width}px`,
-                height: `${rect.height}px`,
-                borderRadius: '50%',
-                background:
-                  'radial-gradient(circle, rgba(255,255,0,0.6) 50%, rgba(255,255,0,0) 100%)',
-                opacity: rect.part === part ? 1 : 0, // 控制透明度
-                transform: rect.part === part ? 'scale(1)' : 'scale(0.8)', // 渐变大小
-                transition: 'opacity 0.5s ease, transform 0.5s ease', // 添加渐变动画
-                animation:
-                  rect.part === part
-                    ? 'breathing 5s ease-in-out infinite'
-                    : 'none',
-                pointerEvents: 'none', // 确保不影响交互
-              }}
-            ></div>
-          ))}
-        {editMode && (
-          <button
-            onClick={clearRectangles}
-            className="bg-red-500 text-white px-4 py-2 rounded-lg"
-          >
-            Clear Rectangles
-          </button>
-        )}
-      </div>
-      {editMode && (
-        <div>
-          {/* 预览中的矩形 */}
-          {previewRectangle && (
-            <div
-              style={{
-                position: 'absolute',
-                left: `${previewRectangle.left}px`,
-                top: `${previewRectangle.top}px`,
-                width: `${previewRectangle.width}px`,
-                height: `${previewRectangle.height}px`,
-                border: '2px dashed white',
-              }}
-            ></div>
-          )}
-          {/* 绘制的矩形 */}
-          {rectangles &&
-            rectangles.map((rect, index) => (
-              <div
-                key={index}
-                style={{
-                  position: 'absolute',
-                  left: `${rect.left}px`,
-                  top: `${rect.top}px`,
-                  width: `${rect.width}px`,
-                  height: `${rect.height}px`,
-                  border: '2px solid white',
-                }}
-              ></div>
-            ))}
-        </div>
+    <div className="relative flex-1">
+      {isShowPoster && (
+        <img
+          ref={imgRef} // Assigning ref to the image
+          src="/img/poster.png"
+          alt="Poster"
+          className="absolute w-auto h-screen max-w-none object-contain opacity-30"
+        />
       )}
+      {cuePosition.map((pos, index) => (
+        <div
+          key={index}
+          className="absolute bg-yellow-200 rounded-full opacity-20"
+          style={{
+            top: `${pos.y + 3}px`,
+            left: `${pos.x + 3}px`,
+            width: `${pos.width}px`,
+            height: `${pos.height}px`,
+            animation: 'breathing 4.2s infinite',
+          }}
+        ></div>
+      ))}
+      <div
+        className="absolute left-0 bottom-0 w-8 h-8 bg-black rounded-full cursor-pointer"
+        onClick={changeVisibility}
+      ></div>
+    </div>
+  );
+};
+
+const Material = ({ text }) => {
+  return (
+    <div className="flex-1">
+      <div className="text-6xl">{text}</div>
+    </div>
+  );
+};
+
+const Projector = ({ messages }) => {
+  const [cuePositions, setCuePositions] = useState<cuePosition[]>([]);
+  const [posterSize, setPosterSize] = useState({ width: 4824, height: 6800 });
+  const [positionData, setPositionData] = useState([
+    [
+      [208, 240],
+      [2155, 545],
+    ],
+  ]);
+
+  const imgRef = useRef<HTMLImageElement | null>(null);
+  // 使用 useRef 获取每个 input 的引用
+  const x1Ref = useRef<HTMLInputElement>(null);
+  const x2Ref = useRef<HTMLInputElement>(null);
+  const y1Ref = useRef<HTMLInputElement>(null);
+  const y2Ref = useRef<HTMLInputElement>(null);
+
+  // Function to calculate relative position based on the image size
+  function calPos(
+    twoPoints: number[][],
+    widthRatio: number,
+    heightRatio: number
+  ) {
+    const x1 = twoPoints[0][0];
+    const y1 = twoPoints[0][1];
+    const x2 = twoPoints[1][0];
+    const y2 = twoPoints[1][1];
+
+    // Ensure the widthRatio and heightRatio are not zero to avoid Infinity
+    if (widthRatio === 0 || heightRatio === 0) {
+      console.error('Invalid width or height ratio');
+      return { x: 0, y: 0, width: 0, height: 0 };
+    }
+
+    const x = widthRatio * x1;
+    const y = heightRatio * y1;
+    const width = widthRatio * (x2 - x1);
+    const height = heightRatio * (y2 - y1);
+
+    return { x, y, width, height };
+  }
+
+  // Update cue positions using calculated ratios
+  const updateCuePos = () => {
+    if (
+      imgRef.current &&
+      posterSize.width > 0 &&
+      posterSize.height > 0 &&
+      positionData.length > 0
+    ) {
+      const widthRatio = imgRef.current.width / posterSize.width;
+      const heightRatio = imgRef.current.height / posterSize.height;
+
+      const newPositions = positionData.map((points) => {
+        return calPos(points, widthRatio, heightRatio);
+      });
+      setCuePositions(newPositions);
+      console.log('Updated cue positions:', newPositions);
+    } else {
+      console.log('not update cue pos');
+    }
+  };
+
+  useEffect(() => {
+    updateCuePos(); // Recalculate cue position after image load
+  }, [imgRef.current, positionData]);
+
+  useEffect(() => {
+    if (messages.length > 0 && messages[messages.length - 1].positions) {
+      setPositionData(messages[messages.length - 1].positions);
+    }
+  }, [messages]);
+
+  useEffect(() => {
+    window.addEventListener('resize', updateCuePos);
+
+    return () => {
+      window.removeEventListener('resize', updateCuePos);
+    };
+  }, []);
+
+  const submitPosition = () => {
+    const x1 = Number(x1Ref.current?.value);
+    const x2 = Number(x2Ref.current?.value);
+    const y1 = Number(y1Ref.current?.value);
+    const y2 = Number(y2Ref.current?.value);
+
+    if (x1 && x2 && y1 && y2) {
+      setPositionData([
+        [
+          [x1, y1],
+          [x2, y2],
+        ],
+      ]);
+    }
+
+    updateCuePos();
+  };
+
+  return (
+    <div className="flex h-screen bg-black text-white">
+      <Cue cuePosition={cuePositions} imgRef={imgRef} />
+      <Material text="Material" />
+      {/* Four input elements in the bottom right */}
+      <div className="absolute right-1 bottom-1 flex space-x-2">
+        <input
+          type="text"
+          className="w-24 bg-transparent border-b-2 border-white text-white placeholder-gray-400"
+          placeholder="x1"
+          ref={x1Ref}
+        />
+        <input
+          type="text"
+          className="w-24 bg-transparent border-b-2 border-white text-white placeholder-gray-400"
+          placeholder="x2"
+          ref={x2Ref}
+        />
+        <input
+          type="text"
+          className="w-24 bg-transparent border-b-2 border-white text-white placeholder-gray-400"
+          placeholder="y1"
+          ref={y1Ref}
+        />
+        <input
+          type="text"
+          className="w-24 bg-transparent border-b-2 border-white text-white placeholder-gray-400"
+          placeholder="y2"
+          ref={y2Ref}
+        />
+        <button
+          className="text-white rounded bg-blue-500 hover:bg-blue-700 transition duration-300 px-1"
+          onClick={submitPosition}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

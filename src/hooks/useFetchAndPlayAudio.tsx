@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import axiosInstance from './axiosConfig';
+import { axiosTTS } from './axiosConfig';
 
 const useFetchAndPlayAudio = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -13,8 +13,8 @@ const useFetchAndPlayAudio = () => {
 
       try {
         // Start audio processing
-        const response = await axiosInstance.post(startAudioUrl, {
-          content: JSON.parse(botText).text,
+        const response = await axiosTTS.post(startAudioUrl, {
+          content: botText,
         });
         const audioCount = response.data.reply;
 
@@ -27,7 +27,7 @@ const useFetchAndPlayAudio = () => {
         // Fetch audio files
         while (fileIndex < audioCount) {
           try {
-            const response = await axiosInstance.post(
+            const response = await axiosTTS.post(
               `${fetchAudioUrl}?file=${fileIndex}`,
               { content: fileIndex },
               { responseType: 'blob' }
