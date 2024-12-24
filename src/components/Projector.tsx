@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import CanvasBoard from './CanvasBoard'; // 引入 CanvasBoard 组件
+import mockData from './mockData.json'; // 引入 mockData
 
 interface cuePosition {
   x: number;
@@ -50,14 +52,6 @@ const Cue: React.FC<CueProps> = ({ cuePosition, imgRef }) => {
   );
 };
 
-const Material = ({ text }) => {
-  return (
-    <div className="flex-1">
-      <div className="text-6xl">{text}</div>
-    </div>
-  );
-};
-
 const Projector = ({ messages }) => {
   const [cuePositions, setCuePositions] = useState<cuePosition[]>([]);
   const [posterSize, setPosterSize] = useState({ width: 4824, height: 6800 });
@@ -67,6 +61,20 @@ const Projector = ({ messages }) => {
       [2155, 545],
     ],
   ]);
+  const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+
+  const calculateCanvasSize = () => {
+    if (imgRef.current) {
+      const imgWidth = imgRef.current.width;
+      const screenHeight = window.innerHeight;
+      const screenWidth = window.innerWidth;
+
+      const canvasHeight = screenHeight;
+      const canvasWidth = screenWidth - imgWidth;
+
+      setCanvasSize({ width: canvasWidth, height: canvasHeight });
+    }
+  };
 
   const imgRef = useRef<HTMLImageElement | null>(null);
   // 使用 useRef 获取每个 input 的引用
@@ -123,6 +131,7 @@ const Projector = ({ messages }) => {
 
   useEffect(() => {
     updateCuePos(); // Recalculate cue position after image load
+    calculateCanvasSize();
   }, [imgRef.current, positionData]);
 
   useEffect(() => {
@@ -133,6 +142,7 @@ const Projector = ({ messages }) => {
 
   useEffect(() => {
     window.addEventListener('resize', updateCuePos);
+    calculateCanvasSize();
 
     return () => {
       window.removeEventListener('resize', updateCuePos);
@@ -160,7 +170,12 @@ const Projector = ({ messages }) => {
   return (
     <div className="flex h-screen bg-black text-white">
       <Cue cuePosition={cuePositions} imgRef={imgRef} />
-      <Material text="Material" />
+      <CanvasBoard
+        graphData={mockData}
+        canvasWidth={800}
+        canvasHeight={canvasSize.height}
+      />{' '}
+      {/* 将 mockData 作为 CanvasBoard 的输入，并传入屏幕宽度和高度 */}
       {/* Four input elements in the bottom right */}
       <div className="absolute right-1 bottom-1 flex space-x-2">
         <input

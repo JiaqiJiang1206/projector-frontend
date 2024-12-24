@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { axiosWhisper } from './axiosConfig';
+import { useState, useRef } from 'react';
+import { axiosInstance } from './axiosConfig';
 
 function useWhisper() {
   const [transcription, setTranscription] = useState('');
@@ -43,7 +43,7 @@ function useWhisper() {
     const formData = new FormData();
     formData.append('file', audioBlob);
 
-    axiosWhisper
+    axiosInstance
       .post('/transcribe', formData)
       .then((response) => response.data)
       .then((data) => {

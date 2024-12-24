@@ -4,24 +4,28 @@ const useWebSocket = (url, onMessage) => {
   const wsRef = useRef<any>(null); // 保存 WebSocket 实例
 
   useEffect(() => {
-    const ws = new WebSocket(url);
-    wsRef.current = ws;
+    if (!wsRef.current) {
+      const ws = new WebSocket(url);
+      wsRef.current = ws;
 
-    ws.onopen = () => {
-      console.log('WebSocket connected');
-    };
+      ws.onopen = () => {
+        console.log('WebSocket connected');
+      };
 
-    ws.onmessage = (event) => {
-      if (onMessage) onMessage(event.data);
-    };
+      ws.onmessage = (event) => {
+        if (onMessage) onMessage(event.data);
+      };
 
-    ws.onclose = () => {
-      console.log('WebSocket disconnected');
-    };
+      ws.onclose = () => {
+        console.log('WebSocket disconnected');
+      };
 
-    ws.onerror = (error) => {
-      console.error('WebSocket error:', error);
-    };
+      ws.onerror = (error) => {
+        console.error('WebSocket error:', error);
+      };
+    } else {
+      console.warn('WebSocket already initialized');
+    }
 
     // 清理函数
     return () => {
