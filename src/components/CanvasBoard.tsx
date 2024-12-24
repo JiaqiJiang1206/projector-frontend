@@ -50,28 +50,24 @@ const CanvasBoard: React.FC<CanvasBoardProps> = ({
     };
   }, [graphData]);
 
-  if (!graphData) {
-    return (
-      <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <div className="welcome-text" style={welcomeTextStyle}>
-          W E L C O M E
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div
-      id="cy"
-      ref={containerRef}
-      style={{
-        width: canvasWidth,
-        height: canvasHeight,
-        position: 'absolute',
-        top: 0,
-        right: 0,
-      }}
-    />
+    <div style={{ width: 800, height: '100%', position: 'relative' }}>
+      {graphData ? (
+        <div
+          id="cy"
+          ref={containerRef}
+          style={{
+            width: 800,
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            right: 0,
+          }}
+        />
+      ) : (
+        <div style={welcomeTextStyle}>W E L C O M E</div>
+      )}
+    </div>
   );
 };
 
@@ -98,7 +94,7 @@ const fcoseLayout = {
   uniformNodeDimensions: false,
   packComponents: true,
   step: 'all',
-  nodeRepulsion: 4500, // 增加节点排斥力，默认4500
+  nodeRepulsion: 5000, // 增加节点排斥力，默认4500
   idealEdgeLength: 150, // 增加边的理想长度，默认50
   edgeElasticity: 0.45, // 调整边的弹性
   nestingFactor: 0.1, // 控制父子节点的间距
