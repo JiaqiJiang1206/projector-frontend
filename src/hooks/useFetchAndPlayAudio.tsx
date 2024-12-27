@@ -1,15 +1,16 @@
 import { useState, useCallback } from 'react';
 import { axiosInstance } from './axiosConfig';
+import { useDispatch } from 'react-redux';
+import { setSpeaking } from '../store/statusSlice';
 
 const useFetchAndPlayAudio = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const dispatch = useDispatch();
 
-  const fetchAndPlayAudio = useCallback(
+  const fetchAudio = useCallback(
     async (startAudioUrl, botText, fetchAudioUrl) => {
       const audioQueue: string[] = [];
       let fileIndex = 0;
-
-      setIsPlaying(true);
 
       try {
         // Start audio processing
@@ -20,8 +21,7 @@ const useFetchAndPlayAudio = () => {
 
         if (audioCount === 0) {
           console.log('No audio to play.');
-          setIsPlaying(false);
-          return;
+          return audioQueue;
         }
 
         // Fetch audio files
@@ -45,19 +45,27 @@ const useFetchAndPlayAudio = () => {
             }
           }
         }
-
-        // Play audio queue
-        for (const audioUrl of audioQueue) {
-          await playAudio(audioUrl);
-        }
       } catch (error) {
         console.error('Error in audio processing:', error);
-      } finally {
-        setIsPlaying(false);
       }
+
+      return audioQueue;
     },
     []
   );
+
+  const playAudioQueue = async (audioQueue: string[]) => {
+    setIsPlaying(true);
+    dispatch(setSpeaking());
+    for (const audioUrl of audioQueue) {
+      try {
+        await playAudio(audioUrl);
+      } catch (error) {
+        console.error('Error playing audio:', error);
+      }
+    }
+    setIsPlaying(false);
+  };
 
   const playAudio = (audioUrl) => {
     return new Promise((resolve, reject) => {
@@ -68,7 +76,7 @@ const useFetchAndPlayAudio = () => {
     });
   };
 
-  return { isPlaying, fetchAndPlayAudio };
+  return { isPlaying, fetchAudio, playAudioQueue };
 };
 
 export default useFetchAndPlayAudio;

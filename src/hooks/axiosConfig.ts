@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // 创建一个 axios 实例
 const axiosInstance = axios.create({
-  baseURL: 'http://10.13.127.195:8002/api', // 基础 URL
+  baseURL: 'http://10.12.170.113:8080/api', // 基础 URL
 });
 
 // 添加请求拦截器（可选）

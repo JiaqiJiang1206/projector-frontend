@@ -21,18 +21,20 @@ interface CanvasBoardProps {
   } | null;
   canvasWidth: number;
   canvasHeight: number;
+  setCanvasData: (data: any) => void;
 }
 
 const CanvasBoard: React.FC<CanvasBoardProps> = ({
   graphData,
   canvasWidth,
   canvasHeight,
+  setCanvasData,
 }) => {
   const cyRef = useRef<Core | null>(null); // Cytoscape 实例的引用
   const containerRef = useRef<HTMLDivElement | null>(null); // 容器 DOM 引用
 
   useEffect(() => {
-    if (!graphData) return;
+    if (!graphData || !containerRef.current) return;
     if (cyRef.current) cyRef.current.destroy(); // 销毁旧实例
 
     cyRef.current = cytoscape({

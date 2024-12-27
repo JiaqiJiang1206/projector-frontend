@@ -1,7 +1,7 @@
 const { SerialPort } = require('serialport');
 const WebSocket = require('ws');
 
-const portName = '/dev/cu.usbmodem11101'; // 替换为你的串口名称
+const portName = '/dev/cu.usbmodem11101'; // 替换为串口名称
 
 // 初始化串口
 const port = new SerialPort({
@@ -38,6 +38,38 @@ wss.on('connection', (ws) => {
 
   // 添加串口监听器
   port.on('data', handleData);
+
+  port.on('open', () => {
+    console.log('Serial port opened');
+  });
+
+  port.on('error', (err) => {
+    console.error('Serial port error:', err.message);
+  });
+
+  port.on('close', () => {
+    console.log('Serial port closed');
+  });
+
+  // 定期发送心跳保持设备活跃
+  setInterval(() => {
+    console.log('Sending ping to Arduino');
+    port.write('ping\n', (err) => {
+      if (err) {
+        console.error('Failed to write to serial port:', err.message);
+      }
+    });
+  }, 300000);
+
+  // 处理 WebSocket 客户端发送的消息
+  ws.on('message', (message) => {
+    console.log('Received from WebSocket client:', message);
+
+    // 如果收到 "ping" 消息，回应 "pong"
+    if (message === 'ping') {
+      ws.send('pong');
+    }
+  });
 
   ws.on('close', () => {
     console.log('WebSocket client disconnected');

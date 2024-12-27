@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CanvasBoard from './CanvasBoard'; // 引入 CanvasBoard 组件
+import { useSelector } from 'react-redux';
 // import mockData from './mockData.json'; // 引入 mockData
 
 interface cuePosition {
@@ -52,9 +53,8 @@ const Cue: React.FC<CueProps> = ({ cuePosition, imgRef }) => {
   );
 };
 
-const Projector = ({ messages }) => {
+const Projector = ({ messages, canvasData, setCanvasData }) => {
   const [cuePositions, setCuePositions] = useState<cuePosition[]>([]);
-  const [posterSize, setPosterSize] = useState({ width: 4824, height: 6800 });
   const [positionData, setPositionData] = useState([
     [
       [208, 240],
@@ -62,7 +62,17 @@ const Projector = ({ messages }) => {
     ],
   ]);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
-  const [mockData, setMockData] = useState(null);
+
+  const imgRef = useRef<HTMLImageElement | null>(null);
+  // 使用 useRef 获取每个 input 的引用
+  const x1Ref = useRef<HTMLInputElement>(null);
+  const x2Ref = useRef<HTMLInputElement>(null);
+  const y1Ref = useRef<HTMLInputElement>(null);
+  const y2Ref = useRef<HTMLInputElement>(null);
+
+  const projectorView = useSelector((state: any) => state.projector.view);
+
+  const posterSize = { width: 4824, height: 6800 };
 
   const calculateCanvasSize = () => {
     if (imgRef.current) {
@@ -76,13 +86,6 @@ const Projector = ({ messages }) => {
       setCanvasSize({ width: canvasWidth, height: canvasHeight });
     }
   };
-
-  const imgRef = useRef<HTMLImageElement | null>(null);
-  // 使用 useRef 获取每个 input 的引用
-  const x1Ref = useRef<HTMLInputElement>(null);
-  const x2Ref = useRef<HTMLInputElement>(null);
-  const y1Ref = useRef<HTMLInputElement>(null);
-  const y2Ref = useRef<HTMLInputElement>(null);
 
   // Function to calculate relative position based on the image size
   function calPos(
@@ -144,81 +147,6 @@ const Projector = ({ messages }) => {
   useEffect(() => {
     window.addEventListener('resize', updateCuePos);
     calculateCanvasSize();
-    // 三秒后模拟获取数据
-    setTimeout(() => {
-      setMockData({
-        keyinfo: [
-          {
-            id: 1,
-            keyword: '后现代主义',
-            image: '19002.png',
-            description:
-              '设计中的后现代主义强调玩味美学和文化多元化，由孟菲斯设计小组引领。',
-            otherinfo: '20世纪80年代',
-          },
-          {
-            id: 2,
-            keyword: '孟菲斯设计小组',
-            image: '19003.png',
-            description:
-              '孟菲斯设计小组引入了大胆的色彩和几何图案，对后现代设计产生了深远影响。',
-            otherinfo: '成立于1981年',
-          },
-          {
-            id: 3,
-            keyword: '创意废旧运动',
-            image: '19004.png',
-            description: '该运动提倡回收利用和粗犷美学，挑战主流设计规范。',
-            otherinfo: '1981年在伦敦兴起',
-          },
-          {
-            id: 4,
-            keyword: '数字革命',
-            image: '19019.png',
-            description:
-              '苹果Macintosh通过CAD/CAM和桌面出版技术的创新，彻底改变了设计和图形艺术。',
-            otherinfo: '20世纪80年代后期',
-          },
-          {
-            id: 5,
-            keyword: '作为文化符号的品牌',
-            image: '',
-            description:
-              '在20世纪80年代，品牌成为身份和生活方式的重要组成部分，反映了全球消费主义。',
-            otherinfo: '',
-          },
-          {
-            id: 6,
-            keyword: '以形象为导向的消费主义',
-            image: '',
-            description: '这一时期的消费主义从功能转向关注形象和设计。',
-            otherinfo: '',
-          },
-        ],
-        connections: [
-          {
-            from: 1,
-            to: 2,
-            relationship: '影响',
-          },
-          {
-            from: 1,
-            to: 3,
-            relationship: '影响',
-          },
-          {
-            from: 4,
-            to: 5,
-            relationship: '文化转变',
-          },
-          {
-            from: 5,
-            to: 6,
-            relationship: '概念关联',
-          },
-        ],
-      });
-    }, 3000);
 
     return () => {
       window.removeEventListener('resize', updateCuePos);
@@ -246,11 +174,32 @@ const Projector = ({ messages }) => {
   return (
     <div className="flex h-screen bg-black text-white">
       <Cue cuePosition={cuePositions} imgRef={imgRef} />
-      <CanvasBoard
-        graphData={mockData ? mockData : null}
-        canvasWidth={800}
-        canvasHeight={canvasSize.height}
-      />{' '}
+      {projectorView !== 'BOOK' ? (
+        <CanvasBoard
+          graphData={canvasData}
+          canvasWidth={800}
+          canvasHeight={canvasSize.height}
+          setCanvasData={setCanvasData}
+        />
+      ) : (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100%',
+            width: 800,
+            right: 0,
+          }}
+        >
+          <img
+            src="/img/book.png"
+            alt="Processing"
+            style={{ width: 120, height: 120, objectFit: 'contain' }}
+          />
+          <p>让我找找有没有更多的材料！</p>
+        </div>
+      )}
       <div className="absolute right-1 bottom-1 flex space-x-2">
         <input
           type="text"

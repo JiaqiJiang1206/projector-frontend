@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { axiosInstance } from '../hooks/axiosConfig';
+import { useDispatch } from 'react-redux';
+import { setIdle, setRecording, setProcessing } from '../store/statusSlice';
+import { setBook, setGraph } from '../store/projectorSlice';
 
 import useWebSocket from '../hooks/useWebSocket';
 import useFetchAndPlayAudio from '../hooks/useFetchAndPlayAudio';
 import useWhisper from '../hooks/useWhisper';
 
-const Chat = ({ messages, setMessages }) => {
+const Chat = ({ messages, setMessages, setCanvasData }) => {
   const [input, setInput] = useState<any>('');
   const [loading, setLoading] = useState<any>(false);
 
@@ -19,6 +22,8 @@ const Chat = ({ messages, setMessages }) => {
     stopRecording,
   } = useWhisper();
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (transcription) {
       handleSend(transcription);
@@ -27,18 +32,20 @@ const Chat = ({ messages, setMessages }) => {
 
   const handleSocketMessage = (data) => {
     if (data === 'PRESSED') {
+      console.log('Recording started');
       startRecording();
+      dispatch(setRecording());
     } else if (data === 'RELEASED') {
+      console.log('Recording stopped');
       stopRecording();
+      dispatch(setProcessing());
+      dispatch(setBook());
     }
   };
 
-  const { sendMessage } = useWebSocket(
-    'ws://localhost:8081',
-    handleSocketMessage
-  );
+  useWebSocket('ws://localhost:8081', handleSocketMessage);
 
-  const { isPlaying, fetchAndPlayAudio } = useFetchAndPlayAudio();
+  const { isPlaying, fetchAudio, playAudioQueue } = useFetchAndPlayAudio();
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -46,11 +53,12 @@ const Chat = ({ messages, setMessages }) => {
     }
   }, [messages]);
 
-  useEffect(() => {
-    // handleSend('你好，我们从头开始聊这个学术项目吧，你先给我大概介绍一下。');
-  }, []);
+  // useEffect(() => {
+  //   handleSend('你好，我们从头开始聊这个学术项目吧，你先给我大概介绍一下。');
+  // }, []);
 
   const handleSend = async (messageText = input) => {
+    dispatch(setProcessing());
     console.log('Message:', messageText);
     if (!messageText.trim()) return;
 
@@ -60,20 +68,65 @@ const Chat = ({ messages, setMessages }) => {
     setLoading(true);
 
     try {
-      const response = await axiosInstance.post('/poster', {
-        content: messageText,
+      // 发送消息给 /picker 接口
+      const pickerMessage = messageText + '注意：务必以要求的 json 格式输出';
+      const pickerResponse = await axiosInstance.post('/picker', {
+        content: pickerMessage,
       });
 
-      const botReply = response.data.reply;
-      const botReplys = {
+      const botReply = pickerResponse.data;
+
+      // 构造消息对象
+      const botReplyMessage = {
         id: Date.now(),
-        text: botReply[0],
+        text: botReply.picker_chatmessage,
         sender: 'bot',
-        positions: botReply[1],
+        positions: botReply.highlight_point,
       };
-      setMessages((prevMessages) => [...prevMessages, botReplys]);
-      console.log('Bot reply:', botReplys);
-      await fetchAndPlayAudio('/startaudio', botReplys.text, '/sendaudio');
+
+      // 添加到消息队列
+      setMessages((prevMessages) => [...prevMessages, botReplyMessage]);
+
+      // 请求生成语音
+      const audioQueue = await fetchAudio(
+        '/startaudio',
+        botReply.picker_chatmessage,
+        '/sendaudio'
+      );
+
+      // 请求 pickertogenerator（并行执行）
+      const toRelationshipMessage =
+        botReply.picker_chatmessage + '注意：务必以 json 格式输出';
+      const relationshipResponsePromise = axiosInstance.post(
+        '/pickertogenerator',
+        {
+          content: toRelationshipMessage,
+        }
+      );
+
+      // 播放第一条语音并立即请求 relationshipResponse
+      playAudioQueue(audioQueue).then(async () => {
+        try {
+          // 请求第二条语音
+          const generatorAudioQueue = await fetchAudio(
+            '/startaudio',
+            relationshipResponse.data.generator_chat,
+            '/sendaudio'
+          );
+          // 播放第二条语音
+          playAudioQueue(generatorAudioQueue).then(() => {
+            dispatch(setIdle());
+          });
+        } catch (error) {
+          console.error('Error processing relationship response:', error);
+        }
+      });
+
+      // 等待 relationshipResponse 完成
+      const relationshipResponse = await relationshipResponsePromise;
+      // 立即更新画布数据
+      setCanvasData(relationshipResponse.data.generator_draw);
+      dispatch(setGraph());
     } catch (error) {
       console.error('Error sending message:', error);
     } finally {
@@ -84,8 +137,10 @@ const Chat = ({ messages, setMessages }) => {
   const changeRecordingState = () => {
     if (isRecording) {
       stopRecording();
+      dispatch(setIdle());
     } else {
       startRecording();
+      dispatch(setRecording());
     }
   };
 
