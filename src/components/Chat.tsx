@@ -57,6 +57,56 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
   //   handleSend('你好，我们从头开始聊这个学术项目吧，你先给我大概介绍一下。');
   // }, []);
 
+  // 将原先用于随机选取表情的逻辑抽到 Chat 中
+  function getRandomEmojiPaths(emotions: string[]) {
+    // 此处可改成自动检索文件夹
+    const allEmojis = [
+      '052.gif',
+      '053.gif',
+      '092.gif',
+      '101.svg',
+      '023.gif',
+      '022.gif',
+      '011.svg',
+      '025.gif',
+      '024.gif',
+      '026.gif',
+      '016.svg',
+      '002.svg',
+      '027.gif',
+      '003.gif',
+      '029.gif',
+      '001.gif',
+      '015.gif',
+      '014.gif',
+      '028.gif',
+      '004.gif',
+      '021.svg',
+      '005.gif',
+      '013.gif',
+      '012.gif',
+      '061.gif',
+      '051.svg',
+      '062.gif',
+      '091.svg',
+      '063.gif',
+      '113.gif',
+      '073.gif',
+      '081.svg',
+      '072.gif',
+      '112.gif',
+      '041.svg',
+      '065.gif',
+      '071.gif',
+      '111.gif',
+    ];
+    return emotions.map((em) => {
+      const matches = allEmojis.filter((item) => item.startsWith(em));
+      if (!matches.length) return allEmojis[0];
+      return matches[Math.floor(Math.random() * matches.length)];
+    });
+  }
+
   const handleSend = async (messageText = input) => {
     dispatch(setProcessing());
     console.log('Message:', messageText);
@@ -69,12 +119,19 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
 
     try {
       // 发送消息给 /picker 接口
-      const pickerMessage = messageText + '注意：务必以要求的 json 格式输出';
+      const pickerMessage = `${messageText}\n
+      - 仅以所要求的 JSON 输出进行回复，不包含任何无关信息。\n
+      - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。`;
       const pickerResponse = await axiosInstance.post('/picker', {
         content: pickerMessage,
       });
 
       const botReply = pickerResponse.data;
+
+      // 在生成最终消息对象前，将随机表情路径数组存入 emojiPaths
+      const emojiPaths = botReply.emotion_number
+        ? getRandomEmojiPaths(botReply.emotion_number)
+        : [];
 
       // 构造消息对象
       const botReplyMessage = {
@@ -82,6 +139,8 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
         text: botReply.picker_chatmessage,
         sender: 'bot',
         positions: botReply.highlight_point,
+        emotions: botReply.emotion_number,
+        emojiPaths, // 新增一个字段以存储最终选取的表情文件
       };
 
       // 添加到消息队列
@@ -95,8 +154,9 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       );
 
       // 请求 pickertogenerator（并行执行）
-      const toRelationshipMessage =
-        botReply.picker_chatmessage + '注意：务必以 json 格式输出';
+      const toRelationshipMessage = `${botReply.picker_chatmessage} + \n
+      - 仅以所要求的 JSON 输出进行回复，不包含任何无关信息。\n
+      - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。`;
       const relationshipResponsePromise = axiosInstance.post(
         '/pickertogenerator',
         {
@@ -107,16 +167,17 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       // 播放第一条语音并立即请求 relationshipResponse
       playAudioQueue(audioQueue).then(async () => {
         try {
-          // 请求第二条语音
-          const generatorAudioQueue = await fetchAudio(
-            '/startaudio',
-            relationshipResponse.data.generator_chat,
-            '/sendaudio'
-          );
-          // 播放第二条语音
-          playAudioQueue(generatorAudioQueue).then(() => {
-            dispatch(setIdle());
-          });
+          // // 请求第二条语音
+          // const generatorAudioQueue = await fetchAudio(
+          //   '/startaudio',
+          //   relationshipResponse.data.generator_chat,
+          //   '/sendaudio'
+          // );
+          // // 播放第二条语音
+          // playAudioQueue(generatorAudioQueue).then(() => {
+
+          // });
+          dispatch(setIdle());
         } catch (error) {
           console.error('Error processing relationship response:', error);
         }

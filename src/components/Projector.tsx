@@ -15,12 +15,33 @@ interface CueProps {
   imgRef: React.RefObject<HTMLImageElement>;
 }
 
+function groupCues(cues: cuePosition[], threshold = 5) {
+  const grouped: cuePosition[] = [];
+  cues.forEach((cue) => {
+    // 在 grouped 中寻找 y 值接近的分组
+    const existing = grouped.find((g) => Math.abs(g.y - cue.y) < threshold);
+    if (existing) {
+      // 更新分组的 x、width，height 仅取最大值或保持
+      const minX = Math.min(existing.x, cue.x);
+      const maxX = Math.max(existing.x + existing.width, cue.x + cue.width);
+      existing.x = minX;
+      existing.width = maxX - minX;
+      existing.height = Math.max(existing.height, cue.height);
+    } else {
+      grouped.push({ ...cue });
+    }
+  });
+  return grouped;
+}
+
 const Cue: React.FC<CueProps> = ({ cuePosition, imgRef }) => {
   const [isShowPoster, setIsShowPoster] = useState(true);
 
   const changeVisibility = () => {
     setIsShowPoster(!isShowPoster); // Toggle visibility
   };
+
+  const groupedCues = groupCues(cuePosition);
 
   return (
     <div className="relative flex-1">
@@ -32,16 +53,16 @@ const Cue: React.FC<CueProps> = ({ cuePosition, imgRef }) => {
           className="absolute w-auto h-screen max-w-none object-contain opacity-30"
         />
       )}
-      {cuePosition.map((pos, index) => (
+      {groupedCues.map((pos, index) => (
         <div
           key={index}
-          className="absolute bg-yellow-200 rounded-full opacity-20"
+          className="absolute bg-yellow-200 rounded-full opacity-50"
           style={{
-            top: `${pos.y + 3}px`,
-            left: `${pos.x + 3}px`,
+            top: `${pos.y + 1}px`,
+            left: `${pos.x + 0}px`,
             width: `${pos.width}px`,
             height: `${pos.height}px`,
-            animation: 'breathing 4.2s infinite',
+            // animation: 'breathing 4.2s infinite',
           }}
         ></div>
       ))}
@@ -171,9 +192,58 @@ const Projector = ({ messages, canvasData, setCanvasData }) => {
     updateCuePos();
   };
 
+  const lastMessage = messages[messages.length - 1] || {};
+  const hasEmojiPaths = Array.isArray(lastMessage.emojiPaths);
+  console.log('hasEmojiPaths:', lastMessage.emojiPaths);
+
   return (
     <div className="flex h-screen bg-black text-white">
       <Cue cuePosition={cuePositions} imgRef={imgRef} />
+      {hasEmojiPaths && (
+        <div className="absolute flex flex-wrap">
+          {lastMessage.emojiPaths.map((path: string, idx: number) => {
+            const cue = cuePositions[idx];
+            if (!cue) return null;
+
+            const imgWidth = 100;
+            const imgHeight = 100;
+            const offsetX = 90;
+            const offsetY = 90;
+
+            let top = cue.y - offsetY;
+            let left = cue.x - offsetX;
+
+            // Adjust position to avoid going out of bounds
+            if (left < 0) {
+              left = cue.x + offsetX;
+            } else if (left + imgWidth > window.innerWidth) {
+              left = cue.x - imgWidth - offsetX;
+            }
+
+            if (top < 0) {
+              top = cue.y + offsetY;
+            } else if (top + imgHeight > window.innerHeight) {
+              top = cue.y - imgHeight - offsetY;
+            }
+
+            return (
+              <img
+                key={idx}
+                src={`/img/emoji/${path}`}
+                alt="emoji"
+                style={{
+                  position: 'absolute',
+                  top: `${top}px`,
+                  left: `${left}px`,
+                  width: imgWidth,
+                  height: imgHeight,
+                  animation: 'swing 2s ease-in-out infinite',
+                }}
+              />
+            );
+          })}
+        </div>
+      )}
       {projectorView !== 'BOOK' ? (
         <CanvasBoard graphData={canvasData} />
       ) : (

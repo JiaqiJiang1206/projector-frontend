@@ -30,3 +30,27 @@ code {
     opacity: 0.8;
   }
 }
+
+/* 取消 img 的 max-width */
+img {
+  max-width: none;
+}
+
+/* 定义左右摇摆的动画 */
+@keyframes swing {
+  0% {
+    transform: translateX(0) rotate(0deg); /* 初始位置 */
+  }
+  20% {
+    transform: translateX(-10px) rotate(-10deg); /* 向左摆动 */
+  }
+  50% {
+    transform: translateX(10px) rotate(10deg); /* 向右摆动 */
+  }
+  80% {
+    transform: translateX(-10px) rotate(-10deg); /* 再次向左摆动 */
+  }
+  100% {
+    transform: translateX(0) rotate(0deg); /* 回到中间 */
+  }
+}
