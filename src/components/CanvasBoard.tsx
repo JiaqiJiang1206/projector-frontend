@@ -19,17 +19,9 @@ interface CanvasBoardProps {
       relationship: string;
     }[];
   } | null;
-  canvasWidth: number;
-  canvasHeight: number;
-  setCanvasData: (data: any) => void;
 }
 
-const CanvasBoard: React.FC<CanvasBoardProps> = ({
-  graphData,
-  canvasWidth,
-  canvasHeight,
-  setCanvasData,
-}) => {
+const CanvasBoard: React.FC<CanvasBoardProps> = ({ graphData }) => {
   const cyRef = useRef<Core | null>(null); // Cytoscape 实例的引用
   const containerRef = useRef<HTMLDivElement | null>(null); // 容器 DOM 引用
 
@@ -139,7 +131,7 @@ const cytoscapeStyles: Stylesheet[] = [
       'text-valign': 'bottom',
       'text-halign': 'center',
       label: 'data(details)',
-      'font-size': '12px',
+      'font-size': '16px',
       'text-margin-y': '15px',
       grabbable: true,
     },
@@ -150,7 +142,7 @@ const cytoscapeStyles: Stylesheet[] = [
       label: 'data(label)',
       'text-rotation': 'autorotate',
       'font-weight': 'bold',
-      'font-size': '15px',
+      'font-size': '20px',
       'text-margin-x': '0px',
       'text-margin-y': '-10px',
       width: 2,

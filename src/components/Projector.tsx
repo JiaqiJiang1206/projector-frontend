@@ -175,12 +175,7 @@ const Projector = ({ messages, canvasData, setCanvasData }) => {
     <div className="flex h-screen bg-black text-white">
       <Cue cuePosition={cuePositions} imgRef={imgRef} />
       {projectorView !== 'BOOK' ? (
-        <CanvasBoard
-          graphData={canvasData}
-          canvasWidth={800}
-          canvasHeight={canvasSize.height}
-          setCanvasData={setCanvasData}
-        />
+        <CanvasBoard graphData={canvasData} />
       ) : (
         <div
           style={{
