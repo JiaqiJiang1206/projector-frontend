@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import cytoscape, { Core, ElementDefinition, Stylesheet } from 'cytoscape';
+import cytoscape, { Core, ElementDefinition, Stylesheet, NodeSingular } from 'cytoscape';
 import fcose from 'cytoscape-fcose'; // fCoSE图布局算法
 
 cytoscape.use(fcose);
@@ -11,7 +11,6 @@ interface CanvasBoardProps {
       keyword: string;
       image?: string;
       description?: string;
-      otherinfo?: string;
     }[];
     connections: {
       from: number;
@@ -21,13 +20,32 @@ interface CanvasBoardProps {
   } | null;
 }
 
+interface FloatParams {
+  originX: number;
+  originY: number;
+  angleX: number;
+  angleY: number;
+  speedX: number;
+  speedY: number;
+  amplitudeX: number;
+  amplitudeY: number;
+}
+
 const CanvasBoard: React.FC<CanvasBoardProps> = ({ graphData }) => {
   const cyRef = useRef<Core | null>(null); // Cytoscape 实例的引用
   const containerRef = useRef<HTMLDivElement | null>(null); // 容器 DOM 引用
 
+  // 用来存放所有定时器或动画帧的 ID
+  const animationIntervals = useRef<NodeJS.Timeout[]>([]);
+
   useEffect(() => {
     if (!graphData || !containerRef.current) return;
-    if (cyRef.current) cyRef.current.destroy(); // 销毁旧实例
+    // 如果已有实例，先销毁
+    if (cyRef.current) {
+      clearAllIntervals();
+      cyRef.current.destroy();
+      cyRef.current = null;
+    }
 
     cyRef.current = cytoscape({
       container: containerRef.current!,
@@ -39,10 +57,144 @@ const CanvasBoard: React.FC<CanvasBoardProps> = ({ graphData }) => {
     cyRef.current.userZoomingEnabled(true); // 启用缩放
     cyRef.current.userPanningEnabled(true); // 启用平移
 
+    // 把所有节点、所有边都设为 .hidden
+    cyRef.current.nodes().addClass('hidden');
+    cyRef.current.edges().addClass('hidden');
+
+    // 布局结束后，逐个显现节点
+    cyRef.current.on('layoutstop', () => {
+      revealNodesOneByOne(() => {
+        // 当节点全部显示完，再显示所有边
+        showAllEdges();
+        // 最后再启动随机飘动
+        startRandomFloating();
+      });
+    });
+
+    // 组件卸载时，清理
     return () => {
-      cyRef.current?.destroy(); // 组件卸载时清理 Cytoscape 实例
+      clearAllIntervals();
+      if (cyRef.current) {
+        cyRef.current.destroy();
+        cyRef.current = null;
+      }
     };
   }, [graphData]);
+
+  /**
+   * 依次显现节点
+   */
+  const revealNodesOneByOne = (onComplete?: () => void) => {
+    const cy = cyRef.current;
+    if (!cy) return;
+
+    const allNodes = cy.nodes();
+    // 如果没有节点
+    if (allNodes.length === 0) {
+      onComplete?.();
+      return;
+    }
+
+    let index = 0;
+
+    // 第一个节点先立刻显现
+    const firstNode = allNodes[index];
+    firstNode.removeClass('hidden');
+
+    // 如果是 keyword-node，则把它对应的子节点也显现
+    if (firstNode.hasClass('keyword-node')) {
+      const childNode = cy.$(`#${firstNode.id()}-child`);
+      childNode.removeClass('hidden');
+    }
+
+    index++;
+
+    // 如果只有一个节点，则直接结束
+    if (index >= allNodes.length) {
+      onComplete?.();
+      return;
+    }
+
+    // 每隔 800ms 显示一个节点
+    const revealInterval = setInterval(() => {
+      if (index >= allNodes.length) {
+        clearInterval(revealInterval);
+        onComplete?.();
+        return;
+      }
+
+      const node = allNodes[index];
+      node.removeClass('hidden');
+
+      if (node.hasClass('keyword-node')) {
+        const childNode = cy.$(`#${node.id()}-child`);
+        childNode.removeClass('hidden');
+      }
+
+      index++;
+    }, 800);
+
+    // 存下定时器 ID，组件卸载时清理
+    animationIntervals.current.push(revealInterval);
+  };
+
+  /**
+   * 一次性让所有边出现
+   */
+  const showAllEdges = () => {
+    const cy = cyRef.current;
+    if (!cy) return;
+    cy.edges().removeClass('hidden');
+  };
+
+  /**
+   * 随机飘动
+   */
+  const startRandomFloating = () => {
+    const cy = cyRef.current;
+    if (!cy) return;
+
+    // 给每个节点设置随机运动参数
+    cy.nodes().forEach((node: NodeSingular) => {
+      const initPos = { ...node.position() };
+      // 将随机飘动数据存到自定义属性 _floatParams 中
+      (node as any)._floatParams = {
+        originX: initPos.x,
+        originY: initPos.y,
+        angleX: Math.random() * 2 * Math.PI,
+        angleY: Math.random() * 2 * Math.PI,
+        speedX: 0.03 + Math.random() * 0.02,
+        speedY: 0.03 + Math.random() * 0.02,
+        amplitudeX: 5 + Math.random() * 10,
+        amplitudeY: 5 + Math.random() * 10,
+      } as FloatParams;
+    });
+
+    // setInterval 周期性更新
+    const intervalId = setInterval(() => {
+      cy.nodes().forEach((node: NodeSingular) => {
+        const p: FloatParams | undefined = (node as any)._floatParams;
+        if (!p) return;
+        p.angleX += p.speedX;
+        p.angleY += p.speedY;
+        const newX = p.originX + p.amplitudeX * Math.sin(p.angleX);
+        const newY = p.originY + p.amplitudeY * Math.cos(p.angleY);
+        node.position({ x: newX, y: newY });
+      });
+    }, 60);
+
+    animationIntervals.current.push(intervalId);
+  };
+
+  /**
+   * 清理所有定时器
+   */
+  const clearAllIntervals = () => {
+    animationIntervals.current.forEach((id) => {
+      clearInterval(id);
+    });
+    animationIntervals.current = [];
+  };
 
   return (
     <div style={{ width: 800, height: '100%', position: 'relative' }}>
@@ -77,7 +229,7 @@ const welcomeTextStyle: React.CSSProperties = {
 };
 
 const fcoseLayout = {
-  name: 'grid',
+  name: 'grid', //或用 fcose？
   quality: 'proof',
   randomize: true,
   animate: true,
@@ -156,6 +308,14 @@ const cytoscapeStyles: Stylesheet[] = [
       'arrow-scale': 1.2,
     },
   },
+  // 隐藏节点和边的类
+  {
+    selector: '.hidden',
+    style: {
+      visibility: 'hidden',
+      opacity: 0,
+    },
+  },
 ];
 
 function transformDataToElements(
@@ -209,7 +369,7 @@ function transformDataToElements(
         image: `/images/${node.image || ''}`,
         degree: degree,
         size: size,
-        details: `${node.description || ''}\n${node.otherinfo || ''}`,
+        details: node.description || '',
       },
       classes: 'detail-node',
     });
