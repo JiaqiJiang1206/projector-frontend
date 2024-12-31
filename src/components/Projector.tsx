@@ -265,7 +265,7 @@ const Projector = ({ messages, canvasData, setCanvasData }) => {
           <p>让我找找有没有更多的材料！</p>
         </div>
       )}
-      <div className="absolute right-1 bottom-1 flex space-x-2">
+      {/* <div className="absolute right-1 bottom-1 flex space-x-2">
         <input
           type="text"
           className="w-24 bg-transparent border-b-2 border-white text-white placeholder-gray-400"
@@ -296,7 +296,7 @@ const Projector = ({ messages, canvasData, setCanvasData }) => {
         >
           Submit
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

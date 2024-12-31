@@ -1,6 +1,12 @@
 import React, { useEffect, useRef } from 'react';
-import cytoscape, { Core, ElementDefinition, Stylesheet, NodeSingular } from 'cytoscape';
+import cytoscape, {
+  Core,
+  ElementDefinition,
+  Stylesheet,
+  NodeSingular,
+} from 'cytoscape';
 import fcose from 'cytoscape-fcose'; // fCoSE图布局算法
+import { text } from 'stream/consumers';
 
 cytoscape.use(fcose);
 
@@ -238,14 +244,16 @@ const fcoseLayout = {
   padding: 30,
   nodeDimensionsIncludeLabels: true,
   uniformNodeDimensions: false,
-  packComponents: true,
-  step: 'all',
-  nodeRepulsion: 5000, // 增加节点排斥力，默认4500
-  idealEdgeLength: 150, // 增加边的理想长度，默认50
+  // packComponents: true,
+  // step: 'all',
+  nodeSeparation: 600, // 增加节点分隔距离
+  idealEdgeLength: 200, // 增加边的理想长度
+  nodeRepulsion: 8000, // 增加节点排斥力
+  // idealEdgeLength: 150, // 增加边的理想长度，默认50
   edgeElasticity: 0.45, // 调整边的弹性
   nestingFactor: 0.1, // 控制父子节点的间距
-  gravity: 0.1, // 减少全局引力，增加分散性
-  nodeSeparation: 400, // 强制增加节点分隔距离
+  gravity: 0.05, // 减少全局引力，增加分散性
+  // nodeSeparation: 400, // 强制增加节点分隔距离
   // orientation: 'vertical', // 设置垂直排列
 };
 
@@ -256,6 +264,9 @@ const cytoscapeStyles: Stylesheet[] = [
       'background-color': 'transparent', // 明确设置为透明
       'background-opacity': 0, // 移除背景
       color: '#fff',
+      'font-size': '9px',
+      'text-wrap': 'wrap',
+      'text-max-width': '150px',
     },
   },
   {
@@ -263,7 +274,7 @@ const cytoscapeStyles: Stylesheet[] = [
     style: {
       label: 'data(keyword)',
       'text-wrap': 'wrap',
-      'text-max-width': '150px',
+      'text-max-width': '150px', // 提高换行宽度
       'text-valign': 'top',
       'text-halign': 'center',
       'font-weight': 'bold',
@@ -273,18 +284,17 @@ const cytoscapeStyles: Stylesheet[] = [
   {
     selector: 'node.detail-node',
     style: {
+      label: 'data(details)',
+      'text-wrap': 'wrap',
+      'text-max-width': '150px',
+      'text-valign': 'bottom',
+      'text-halign': 'center',
+      'text-margin-y': '10px',
+      width: 'data(size)',
+      height: 'data(size)',
       'background-image': 'data(image)',
       'background-fit': 'contain',
       'background-clip': 'none',
-      width: 'data(size)',
-      height: 'data(size)',
-      'text-wrap': 'wrap',
-      'text-max-width': '120px',
-      'text-valign': 'bottom',
-      'text-halign': 'center',
-      label: 'data(details)',
-      'font-size': '16px',
-      'text-margin-y': '15px',
       grabbable: true,
     },
   },
@@ -294,8 +304,7 @@ const cytoscapeStyles: Stylesheet[] = [
       label: 'data(label)',
       'text-rotation': 'autorotate',
       'font-weight': 'bold',
-      'font-size': '20px',
-      'text-margin-x': '0px',
+      'text-margin-x': '-10px',
       'text-margin-y': '-10px',
       width: 2,
       // 'line-color': '#fff',
