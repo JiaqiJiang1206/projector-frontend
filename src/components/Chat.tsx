@@ -45,7 +45,7 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
 
   useWebSocket('ws://localhost:8081', handleSocketMessage);
 
-  const { isPlaying, fetchAudio, playAudioQueue } = useFetchAndPlayAudio();
+  const { fetchAudio, playAudioQueue } = useFetchAndPlayAudio();
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -61,44 +61,41 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
   function getRandomEmojiPaths(emotions: string[]) {
     // 此处可改成自动检索文件夹
     const allEmojis = [
-      '052.gif',
-      '053.gif',
-      '092.gif',
-      '101.svg',
-      '023.gif',
-      '022.gif',
+      '065.svg',
+      '064.svg',
+      '063.svg',
+      '062.svg',
+      '061.svg',
+      '012.svg',
+      '013.svg',
       '011.svg',
-      '025.gif',
-      '024.gif',
-      '026.gif',
-      '016.svg',
+      '005.svg',
+      '004.svg',
+      '014.svg',
+      '001.svg',
+      '015.svg',
+      '003.svg',
       '002.svg',
-      '027.gif',
-      '003.gif',
-      '029.gif',
-      '001.gif',
-      '015.gif',
-      '014.gif',
-      '028.gif',
-      '004.gif',
+      '033.svg',
+      '032.svg',
+      '024.svg',
+      '025.svg',
+      '031.svg',
+      '035.svg',
       '021.svg',
-      '005.gif',
-      '013.gif',
-      '012.gif',
-      '061.gif',
+      '034.svg',
+      '022.svg',
+      '023.svg',
+      '044.svg',
       '051.svg',
-      '062.gif',
-      '091.svg',
-      '063.gif',
-      '113.gif',
-      '073.gif',
-      '081.svg',
-      '072.gif',
-      '112.gif',
+      '045.svg',
+      '053.svg',
+      '052.svg',
+      '042.svg',
+      '043.svg',
       '041.svg',
-      '065.gif',
-      '071.gif',
-      '111.gif',
+      '055.svg',
+      '054.svg',
     ];
     return emotions.map((em) => {
       const matches = allEmojis.filter((item) => item.startsWith(em));
@@ -121,7 +118,9 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       // 发送消息给 /picker 接口
       const pickerMessage = `${messageText}\n
       - 仅以所要求的 JSON 输出进行回复，不包含任何无关信息。\n
-      - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。`;
+      - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。
+      - 所说的内容要具体，如果有例子尽量提供相应的例子。
+      `;
       const pickerResponse = await axiosInstance.post('/picker', {
         content: pickerMessage,
       });
@@ -156,7 +155,8 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       // 请求 pickertogenerator（并行执行）
       const toRelationshipMessage = `${botReply.picker_chatmessage} + \n
       - 仅以所要求的 JSON 输出进行回复，不包含任何无关信息。\n
-      - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。`;
+      - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。
+      - 每个节点生成的字数不超过二十个字。`;
       const relationshipResponsePromise = axiosInstance.post(
         '/pickertogenerator',
         {
@@ -185,6 +185,7 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
 
       // 等待 relationshipResponse 完成
       const relationshipResponse = await relationshipResponsePromise;
+      console.log('Relationship response:', relationshipResponse.data);
       // 立即更新画布数据
       setCanvasData(relationshipResponse.data.generator_draw);
       dispatch(setGraph());
@@ -199,6 +200,8 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
     if (isRecording) {
       stopRecording();
       dispatch(setIdle());
+      dispatch(setProcessing());
+      dispatch(setBook());
     } else {
       startRecording();
       dispatch(setRecording());

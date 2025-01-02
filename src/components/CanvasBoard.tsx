@@ -6,7 +6,6 @@ import cytoscape, {
   NodeSingular,
 } from 'cytoscape';
 import fcose from 'cytoscape-fcose'; // fCoSE图布局算法
-import { text } from 'stream/consumers';
 
 cytoscape.use(fcose);
 
@@ -24,6 +23,10 @@ interface CanvasBoardProps {
       relationship: string;
     }[];
   } | null;
+  canvasSize: {
+    width: number;
+    height: number;
+  };
 }
 
 interface FloatParams {
@@ -37,7 +40,7 @@ interface FloatParams {
   amplitudeY: number;
 }
 
-const CanvasBoard: React.FC<CanvasBoardProps> = ({ graphData }) => {
+const CanvasBoard: React.FC<CanvasBoardProps> = ({ graphData, canvasSize }) => {
   const cyRef = useRef<Core | null>(null); // Cytoscape 实例的引用
   const containerRef = useRef<HTMLDivElement | null>(null); // 容器 DOM 引用
 
@@ -203,32 +206,40 @@ const CanvasBoard: React.FC<CanvasBoardProps> = ({ graphData }) => {
   };
 
   return (
-    <div style={{ width: 800, height: '100%', position: 'relative' }}>
+    <div
+      style={{
+        width: canvasSize.width,
+        height: canvasSize.height,
+        position: 'relative',
+      }}
+    >
       {graphData ? (
         <div
           id="cy"
           ref={containerRef}
           style={{
-            width: 800,
-            height: '100%',
             position: 'absolute',
             top: 0,
             right: 0,
+            width: '100%',
+            height: '100%',
           }}
         />
       ) : (
-        <div style={welcomeTextStyle}>W E L C O M E</div>
+        <div className="absolute" style={welcomeTextStyle}>
+          W E L C O M E
+        </div>
       )}
     </div>
   );
 };
 
 const welcomeTextStyle: React.CSSProperties = {
-  position: 'absolute',
+  // position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  fontSize: '48px',
+  fontSize: '36px',
   color: '#ffffff',
   fontWeight: 'bold',
   textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
@@ -244,8 +255,8 @@ const fcoseLayout = {
   padding: 30,
   nodeDimensionsIncludeLabels: true,
   uniformNodeDimensions: false,
-  // packComponents: true,
-  // step: 'all',
+  packComponents: true,
+  step: 'all',
   nodeSeparation: 600, // 增加节点分隔距离
   idealEdgeLength: 200, // 增加边的理想长度
   nodeRepulsion: 8000, // 增加节点排斥力
@@ -264,9 +275,8 @@ const cytoscapeStyles: Stylesheet[] = [
       'background-color': 'transparent', // 明确设置为透明
       'background-opacity': 0, // 移除背景
       color: '#fff',
-      'font-size': '9px',
+      'font-size': '30px',
       'text-wrap': 'wrap',
-      'text-max-width': '150px',
     },
   },
   {
@@ -274,7 +284,6 @@ const cytoscapeStyles: Stylesheet[] = [
     style: {
       label: 'data(keyword)',
       'text-wrap': 'wrap',
-      'text-max-width': '150px', // 提高换行宽度
       'text-valign': 'top',
       'text-halign': 'center',
       'font-weight': 'bold',
@@ -286,10 +295,9 @@ const cytoscapeStyles: Stylesheet[] = [
     style: {
       label: 'data(details)',
       'text-wrap': 'wrap',
-      'text-max-width': '150px',
       'text-valign': 'bottom',
       'text-halign': 'center',
-      'text-margin-y': '10px',
+      // 'text-margin-y': '10px',
       width: 'data(size)',
       height: 'data(size)',
       'background-image': 'data(image)',
@@ -304,6 +312,7 @@ const cytoscapeStyles: Stylesheet[] = [
       label: 'data(label)',
       'text-rotation': 'autorotate',
       'font-weight': 'bold',
+      'font-size': '25px',
       'text-margin-x': '-10px',
       'text-margin-y': '-10px',
       width: 2,
@@ -360,8 +369,13 @@ function transformDataToElements(
     const degree = degreeMap[node.id];
     const hasImage = node.image && node.image.trim() !== '';
     const size = hasImage
-      ? 100 + ((degree - minDegree) / (maxDegree - minDegree || 1)) * 100
+      ? 250 + ((degree - minDegree) / (maxDegree - minDegree || 1)) * 250
       : 1;
+
+    const processedDescription = (node.description ?? '').replace(
+      /([\u4e00-\u9fa5]{12})/g,
+      '$1\n'
+    ); // 每12个汉字换行
 
     elements.push({
       data: {
@@ -375,10 +389,10 @@ function transformDataToElements(
       data: {
         id: `${node.id}-child`,
         parent: node.id,
-        image: `/images/${node.image || ''}`,
+        image: `/img/materials/${node.image || ''}`,
         degree: degree,
         size: size,
-        details: node.description || '',
+        details: processedDescription,
       },
       classes: 'detail-node',
     });

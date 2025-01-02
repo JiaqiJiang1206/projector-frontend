@@ -1,0 +1,37 @@
+{
+  "keyinfo": [
+    {
+      "id": 1,
+      "keyword": "后现代主义",
+      "image": "19002.png",
+      "description": "设计中的后现代主义\n强调玩味美学和文化多元化，由孟菲斯设计小组引领。",
+      "otherinfo": "20世纪80年代"
+    },
+    {
+      "id": 2,
+      "keyword": "孟菲斯设计小组",
+      "image": "19003.png",
+      "description": "孟菲斯设计小组引入了大胆的色彩和几何图案，对后现代设计产生了深远影响。",
+      "otherinfo": "成立于1981年"
+    },
+    {
+      "id": 3,
+      "keyword": "创意废旧运动",
+      "image": "19004.png",
+      "description": "该运动提倡回收利用和粗犷美学，挑战主流设计规范。",
+      "otherinfo": "1981年在伦敦兴起"
+    }
+  ],
+  "connections": [
+    {
+      "from": 1,
+      "to": 2,
+      "relationship": "影响"
+    },
+    {
+      "from": 1,
+      "to": 3,
+      "relationship": "影响"
+    }
+  ]
+}
