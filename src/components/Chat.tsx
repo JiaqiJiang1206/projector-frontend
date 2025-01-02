@@ -58,7 +58,7 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
   // }, []);
 
   // 将原先用于随机选取表情的逻辑抽到 Chat 中
-  function getRandomEmojiPaths(emotions: string[]) {
+  function getRandomEmojiPaths(emotion: string) {
     // 此处可改成自动检索文件夹
     const allEmojis = [
       '065.svg',
@@ -97,11 +97,9 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       '055.svg',
       '054.svg',
     ];
-    return emotions.map((em) => {
-      const matches = allEmojis.filter((item) => item.startsWith(em));
-      if (!matches.length) return allEmojis[0];
-      return matches[Math.floor(Math.random() * matches.length)];
-    });
+    const matches = allEmojis.filter((item) => item.startsWith(emotion));
+    if (!matches.length) return allEmojis[0];
+    return matches[Math.floor(Math.random() * matches.length)];
   }
 
   const handleSend = async (messageText = input) => {
@@ -120,17 +118,18 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       - 仅以所要求的 JSON 输出进行回复，不包含任何无关信息。\n
       - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。
       - 所说的内容要具体，如果有例子尽量提供相应的例子。
-      `;
+      - 你的输出需要严格按照json格式输出，并考虑到可能的转义字符问题，不要在字符串中再包含英文引号，以防json解析失败。
+      - Dialogue 的值是一个只包含纯文本和中文标点符号的字符串（用英文双引号包裹），不要包含任何可能导致 json 解析失败的特殊字符。`;
       const pickerResponse = await axiosInstance.post('/picker', {
         content: pickerMessage,
       });
 
       const botReply = pickerResponse.data;
 
-      // 在生成最终消息对象前，将随机表情路径数组存入 emojiPaths
-      const emojiPaths = botReply.emotion_number
+      // 在生成最终消息对象前，将随机表情路径数组存入 emojiPath
+      const emojiPath = botReply.emotion_number
         ? getRandomEmojiPaths(botReply.emotion_number)
-        : [];
+        : '';
 
       // 构造消息对象
       const botReplyMessage = {
@@ -139,7 +138,7 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
         sender: 'bot',
         positions: botReply.highlight_point,
         emotions: botReply.emotion_number,
-        emojiPaths, // 新增一个字段以存储最终选取的表情文件
+        emojiPath, // 新增一个字段以存储最终选取的表情文件
       };
 
       // 添加到消息队列

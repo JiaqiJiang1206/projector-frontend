@@ -70,7 +70,7 @@ const Cue: React.FC<CueProps> = ({ cuePosition, imgRef }) => {
           key={index}
           className="absolute bg-white rounded-full opacity-90"
           style={{
-            top: `${pos.y + 5}px`,
+            top: `${pos.y + 1}px`,
             left: `${pos.x - 3}px`,
             width: `${pos.width}px`,
             height: `${pos.height}px`,
@@ -126,7 +126,7 @@ const Projector: React.FC<ProjectorProps> = ({
     const x2 = twoPoints[1][0];
     const y2 = twoPoints[1][1];
 
-    setCanvasData(mockData); // 画布测试数据
+    // setCanvasData(mockData); // 画布测试数据
 
     // Ensure the widthRatio and heightRatio are not zero to avoid Infinity
     if (widthRatio === 0 || heightRatio === 0) {
@@ -200,58 +200,27 @@ const Projector: React.FC<ProjectorProps> = ({
   // };
 
   const lastMessage = messages[messages.length - 1] || {};
-  const hasEmojiPaths = Array.isArray(lastMessage.emojiPaths);
-  console.log('hasEmojiPaths:', lastMessage.emojiPaths);
+  const hasEmojiPath = lastMessage.emojiPath;
+  console.log('hasEmojiPath:', lastMessage.emojiPath);
 
   return (
     <div className="flex h-screen bg-black text-white">
       <Cue cuePosition={cuePositions} imgRef={imgRef} />
 
-      {hasEmojiPaths && (
+      {hasEmojiPath && (
         <div className="relative flex flex-wrap">
-          {lastMessage.emojiPaths?.map((path: string, idx: number) => {
-            const cue = cuePositions[idx];
-            if (!cue) return null;
-
-            const imgWidth = 100;
-            const imgHeight = 100;
-            const offsetX = 90;
-            const offsetY = 90;
-
-            let top = cue.y - offsetY;
-            let left = cue.x - offsetX;
-
-            // Adjust position to avoid going out of bounds
-            if (left < 0) {
-              left = cue.x + offsetX;
-            } else if (left + imgWidth > window.innerWidth) {
-              left = cue.x - imgWidth - offsetX;
-            }
-
-            if (top < 0) {
-              top = cue.y + offsetY;
-            } else if (top + imgHeight > window.innerHeight) {
-              top = cue.y - imgHeight - offsetY;
-            }
-
-            console.log('emoji position:', { top, left });
-
-            return (
-              <img
-                key={idx}
-                src={`/img/emoji/${path}`}
-                alt="emoji"
-                style={{
-                  position: 'absolute',
-                  top: '0',
-                  right: imgRef.current?.width * 0.2,
-                  width: 100,
-                  height: 100,
-                  animation: 'swing 2s ease-in-out infinite',
-                }}
-              />
-            );
-          })}
+          <img
+            src={`/img/emoji/${lastMessage.emojiPath}`}
+            alt="emoji"
+            style={{
+              position: 'absolute',
+              top: '0',
+              right: imgRef.current?.width * 0.2,
+              width: 100,
+              height: 100,
+              animation: 'swing 2s ease-in-out infinite',
+            }}
+          />
         </div>
       )}
       <div

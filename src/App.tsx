@@ -15,7 +15,7 @@ const App = () => {
           [2155, 545],
         ],
       ],
-      emojiPaths: ['002.svg'],
+      emojiPath: ['002.svg'],
     },
   ]); // 共享的对话数据
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // 控制侧边栏展开或折叠
