@@ -119,7 +119,7 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。
       - 所说的内容要具体，如果有例子尽量提供相应的例子。
       - 你的输出需要严格按照json格式输出，并考虑到可能的转义字符问题，不要在字符串中再包含英文引号，以防json解析失败。
-      - Dialogue 的值是一个只包含纯文本和中文标点符号的字符串（用英文双引号包裹），不要包含任何可能导致 json 解析失败的特殊字符。`;
+      - Dialogue 的值是一个只包含纯文本和中文标点符号的字符串，不要包含任何可能导致 json 解析失败的特殊字符。`;
       const pickerResponse = await axiosInstance.post('/picker', {
         content: pickerMessage,
       });
