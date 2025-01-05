@@ -227,7 +227,7 @@ const CanvasBoard: React.FC<CanvasBoardProps> = ({ graphData, canvasSize }) => {
         />
       ) : (
         <div className="absolute" style={welcomeTextStyle}>
-          W E L C O M E
+          {/* W E L C O M E */}
         </div>
       )}
     </div>
