@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CanvasBoard from './CanvasBoard'; // 引入 CanvasBoard 组件
-import { useSelector } from 'react-redux';
+
 import mockData from './mockData_short.json'; // 引入 mockData
+import { useSelector } from 'react-redux';
+import { ExperimentConditions, PosterTypes } from '../store/conditionSlice';
 
 interface cuePosition {
   x: number;
@@ -43,41 +45,82 @@ const Cue: React.FC<CueProps> = ({ cuePosition, imgRef }) => {
 
   const groupedCues = groupCues(cuePosition);
 
+  const posterType = useSelector((state: any) => state.condition.posterType);
+  const experimentCondition = useSelector(
+    (state: any) => state.condition.expetimentCondition
+  );
+
+  const posterTypes = [
+    {
+      id: PosterTypes.PosterOne,
+      img: '/img/posters/posterOne.png',
+      text: 'Poster One',
+    },
+    {
+      id: PosterTypes.PosterTwo,
+      img: '/img/posters/posterTwo.png',
+      text: 'Poster Two',
+    },
+    {
+      id: PosterTypes.PosterThree,
+      img: '/img/posters/posterThree.png',
+      text: 'Poster Three',
+    },
+  ];
+
   return (
-    <div
-      className="border-0 border-white"
-      style={{ width: imgRef.current?.width }}
-    >
+    <div>
       <div
-        className="flex fixed"
-        style={{ visibility: isShowPoster ? 'visible' : 'hidden' }}
+        className="border-0 border-white"
+        style={{
+          width: imgRef.current?.width,
+          visibility:
+            experimentCondition !== ExperimentConditions.Baseline
+              ? 'visible'
+              : 'hidden',
+        }}
       >
-        <img
-          ref={imgRef} // Assigning ref to the image
-          src="/img/poster.png"
-          alt="Poster"
-          className=" w-auto h-screen opacity-30"
-        />
-        <img
-          ref={imgRef} // Assigning ref to the image
-          src="/img/poster.png"
-          alt="Poster"
-          className=" w-auto h-screen opacity-30"
-        />
-      </div>
-      {groupedCues.map((pos, index) => (
         <div
-          key={index}
-          className="absolute bg-white rounded-full opacity-90"
-          style={{
-            top: `${pos.y + 1}px`,
-            left: `${pos.x - 3}px`,
-            width: `${pos.width}px`,
-            height: `${pos.height}px`,
-            // animation: 'breathing 4.2s infinite',
-          }}
-        ></div>
-      ))}
+          className="flex fixed"
+          style={{ visibility: isShowPoster ? 'visible' : 'hidden' }}
+        >
+          {posterTypes
+            .filter((poster) => poster.id === posterType)
+            .map((poster) => (
+              <img
+                key={poster.id}
+                ref={imgRef} // Assigning ref to the image
+                src={poster.img}
+                alt={poster.text}
+                className="w-auto h-screen opacity-30"
+              />
+            ))}
+          {posterTypes
+            .filter((poster) => poster.id === posterType)
+            .map((poster) => (
+              <img
+                key={poster.id}
+                ref={imgRef} // Assigning ref to the image
+                src={poster.img}
+                alt={poster.text}
+                className="w-auto h-screen opacity-30"
+              />
+            ))}
+        </div>
+        {groupedCues.map((pos, index) => (
+          <div
+            key={index}
+            className="absolute bg-white rounded-full opacity-90"
+            style={{
+              top: `${pos.y + 6}px`,
+              left: `${pos.x - 0}px`,
+              width: `${pos.width}px`,
+              height: `${pos.height}px`,
+              // animation: 'breathing 4.2s infinite',
+            }}
+          ></div>
+        ))}
+      </div>
       <div
         className="absolute left-0 bottom-0 w-6 h-6 bg-black rounded-full cursor-pointer"
         onClick={changeVisibility}
@@ -114,6 +157,10 @@ const Projector: React.FC<ProjectorProps> = ({
   // const y2Ref = useRef<HTMLInputElement>(null);
 
   const projectorView = useSelector((state: any) => state.projector.view);
+
+  const experimentCondition = useSelector(
+    (state: any) => state.condition.expetimentCondition
+  );
 
   // Function to calculate relative position based on the image size
   const calPos = (
@@ -199,30 +246,9 @@ const Projector: React.FC<ProjectorProps> = ({
   //   updateCuePos();
   // };
 
-  const lastMessage = messages[messages.length - 1] || {};
-  const hasEmojiPath = lastMessage.emojiPath;
-  console.log('hasEmojiPath:', lastMessage.emojiPath);
-
   return (
     <div className="flex h-screen bg-black text-white">
       <Cue cuePosition={cuePositions} imgRef={imgRef} />
-
-      {hasEmojiPath && (
-        <div className="relative flex flex-wrap">
-          <img
-            src={`/img/emoji/${lastMessage.emojiPath}`}
-            alt="emoji"
-            style={{
-              position: 'absolute',
-              top: '0',
-              right: imgRef.current?.width * 0.2,
-              width: 100,
-              height: 100,
-              animation: 'swing 2s ease-in-out infinite',
-            }}
-          />
-        </div>
-      )}
       <div
         className=" border-0 border-red-500 relative"
         style={{ width: imgRef.current?.width }}
@@ -235,33 +261,43 @@ const Projector: React.FC<ProjectorProps> = ({
           />
           <p>{systemStatus.text}</p>
         </div>
-        {projectorView !== 'BOOK' ? (
-          <CanvasBoard
-            graphData={canvasData}
-            canvasSize={{
-              width: imgRef.current?.width,
-              height: imgRef.current?.height,
-            }}
-          />
-        ) : (
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '100%',
-              width: 'auto',
-              right: 0,
-            }}
-          >
-            <img
-              src="/img/book.png"
-              alt="Processing"
-              style={{ width: 120, height: 120, objectFit: 'contain' }}
+
+        <div
+          style={{
+            visibility:
+              experimentCondition === ExperimentConditions.CueAndMaterial
+                ? 'visible'
+                : 'hidden',
+          }}
+        >
+          {projectorView !== 'BOOK' ? (
+            <CanvasBoard
+              graphData={canvasData}
+              canvasSize={{
+                width: imgRef.current?.width,
+                height: imgRef.current?.height,
+              }}
             />
-            <p>让我找找有没有更多的材料！</p>
-          </div>
-        )}
+          ) : (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100%',
+                width: 'auto',
+                right: 0,
+              }}
+            >
+              <img
+                src="/img/book.png"
+                alt="Processing"
+                style={{ width: 120, height: 120, objectFit: 'contain' }}
+              />
+              <p>让我找找有没有更多的材料！</p>
+            </div>
+          )}
+        </div>
       </div>
       {/* <div className="absolute right-1 bottom-1 flex space-x-2">
         <input

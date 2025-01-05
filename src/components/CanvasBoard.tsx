@@ -246,7 +246,7 @@ const welcomeTextStyle: React.CSSProperties = {
 };
 
 const fcoseLayout = {
-  name: 'grid', //或用 fcose？
+  name: 'fcose', //或用 fcose？
   quality: 'proof',
   randomize: true,
   animate: true,
@@ -265,7 +265,7 @@ const fcoseLayout = {
   nestingFactor: 0.1, // 控制父子节点的间距
   gravity: 0.05, // 减少全局引力，增加分散性
   // nodeSeparation: 400, // 强制增加节点分隔距离
-  // orientation: 'vertical', // 设置垂直排列
+  orientation: 'vertical', // 设置垂直排列
 };
 
 const cytoscapeStyles: Stylesheet[] = [
@@ -323,7 +323,7 @@ const cytoscapeStyles: Stylesheet[] = [
       color: '#fff',
       'source-endpoint': 'outside-to-node',
       'target-endpoint': 'outside-to-node',
-      'arrow-scale': 1.2,
+      'arrow-scale': 1.5,
     },
   },
   // 隐藏节点和边的类

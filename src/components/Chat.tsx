@@ -7,6 +7,8 @@ import { setBook, setGraph } from '../store/projectorSlice';
 import useWebSocket from '../hooks/useWebSocket';
 import useFetchAndPlayAudio from '../hooks/useFetchAndPlayAudio';
 import useWhisper from '../hooks/useWhisper';
+import { ExperimentConditions, PosterTypes } from '../store/conditionSlice';
+import { useSelector } from 'react-redux';
 
 const Chat = ({ messages, setMessages, setCanvasData }) => {
   const [input, setInput] = useState<any>('');
@@ -102,6 +104,11 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
     return matches[Math.floor(Math.random() * matches.length)];
   }
 
+  const posterType = useSelector((state: any) => state.condition.posterType);
+  const experimentCondition = useSelector(
+    (state: any) => state.condition.expetimentCondition
+  );
+
   const handleSend = async (messageText = input) => {
     dispatch(setProcessing());
     console.log('Message:', messageText);
@@ -119,9 +126,24 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。
       - 所说的内容要具体，如果有例子尽量提供相应的例子。
       - 你的输出需要严格按照json格式输出，并考虑到可能的转义字符问题，不要在字符串中再包含英文引号，以防json解析失败。
-      - Dialogue 的值是一个只包含纯文本和中文标点符号的字符串，不要包含任何可能导致 json 解析失败的特殊字符。`;
+      - Dialogue 的值是一个只包含纯文本和中文标点符号的字符串，不要包含任何可能导致 json 解析失败的特殊字符。
+      ${
+        experimentCondition === ExperimentConditions.CueAndMaterial
+          ? '- 请不要说海报右侧有内容。'
+          : ''
+      }
+      `;
+
+      const poster =
+        posterType === PosterTypes.PosterOne
+          ? '1'
+          : posterType === PosterTypes.PosterTwo
+          ? '2'
+          : '3';
+
       const pickerResponse = await axiosInstance.post('/picker', {
         content: pickerMessage,
+        poster,
       });
 
       const botReply = pickerResponse.data;
