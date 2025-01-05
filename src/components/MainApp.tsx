@@ -16,8 +16,8 @@ const MainApp = () => {
       sender: 'bot',
       positions: [
         [
-          [208, 240],
-          [2155, 545],
+          [0, 0],
+          [0, 0],
         ],
       ],
       emojiPath: ['002.svg'],
