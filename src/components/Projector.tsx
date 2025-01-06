@@ -14,29 +14,64 @@ interface cuePosition {
 
 interface CueProps {
   cuePosition: cuePosition[];
+  titleCuePosition: cuePosition[];
+  captionCuePosition: cuePosition[];
   imgRef: React.RefObject<HTMLImageElement>;
 }
 
-function groupCues(cues: cuePosition[], threshold = 3) {
+function groupCues(cues: cuePosition[], yThreshold = 3, xThreshold = 3) {
   const grouped: cuePosition[] = [];
+
+  // 按 y 值排序，确保从上到下处理
+  cues.sort((a, b) => (a.y === b.y ? a.x - b.x : a.y - b.y));
+
+  const rows: cuePosition[][] = [];
+
+  // Step 1: 按行分组
   cues.forEach((cue) => {
-    // 在 grouped 中寻找 y 值接近的分组
-    const existing = grouped.find((g) => Math.abs(g.y - cue.y) < threshold);
-    if (existing) {
-      // 更新分组的 x、width，height 仅取最大值或保持
-      const minX = Math.min(existing.x, cue.x);
-      const maxX = Math.max(existing.x + existing.width, cue.x + cue.width);
-      existing.x = minX;
-      existing.width = maxX - minX;
-      existing.height = Math.max(existing.height, cue.height);
+    const existingRow = rows.find(
+      (row) => Math.abs(row[0].y - cue.y) < yThreshold // 判断是否属于同一行
+    );
+    if (existingRow) {
+      existingRow.push(cue);
     } else {
-      grouped.push({ ...cue });
+      rows.push([cue]);
     }
   });
+
+  // Step 2: 合并同一行的 cues
+  rows.forEach((row) => {
+    row.sort((a, b) => a.x - b.x); // 按 x 排序，确保从左到右
+    let currentGroup = { ...row[0] };
+
+    for (let i = 1; i < row.length; i++) {
+      const cue = row[i];
+      if (cue.x <= currentGroup.x + currentGroup.width + xThreshold) {
+        // 合并到当前分组
+        const maxX = Math.max(
+          currentGroup.x + currentGroup.width,
+          cue.x + cue.width
+        );
+        currentGroup.width = maxX - currentGroup.x;
+        currentGroup.height = Math.max(currentGroup.height, cue.height);
+      } else {
+        // 新建一个分组
+        grouped.push(currentGroup);
+        currentGroup = { ...cue };
+      }
+    }
+    grouped.push(currentGroup); // 最后一组
+  });
+
   return grouped;
 }
 
-const Cue: React.FC<CueProps> = ({ cuePosition, imgRef }) => {
+const Cue: React.FC<CueProps> = ({
+  cuePosition,
+  titleCuePosition,
+  captionCuePosition,
+  imgRef,
+}) => {
   const [isShowPoster, setIsShowPoster] = useState(true);
 
   const changeVisibility = () => {
@@ -120,6 +155,31 @@ const Cue: React.FC<CueProps> = ({ cuePosition, imgRef }) => {
             }}
           ></div>
         ))}
+        {titleCuePosition.map((pos, index) => (
+          <div
+            key={index}
+            className="absolute"
+            style={{
+              top: `${pos.y}px`,
+              left: `${pos.x}px`,
+              width: `${pos.width}px`,
+              height: `${pos.height}px`,
+            }}
+          >
+            <img
+              src="/img/icons/titleleft.gif"
+              alt="Left Top GIF"
+              className="absolute top-0 -left-10 w-8 h-8"
+              style={{ animation: 'infinite-loop 1s linear infinite' }}
+            />
+            <img
+              src="/img/icons/titleright.gif"
+              alt="Right Top GIF"
+              className="absolute top-0 -right-10 w-8 h-8"
+              style={{ animation: 'infinite-loop 1s linear infinite' }}
+            />
+          </div>
+        ))}
       </div>
       <div
         className="absolute left-0 bottom-0 w-6 h-6 bg-black rounded-full cursor-pointer"
@@ -145,9 +205,25 @@ const Projector: React.FC<ProjectorProps> = ({
   setCanvasData,
   systemStatus,
 }) => {
-  const [cuePositions, setCuePositions] = useState<cuePosition[]>([]);
-  const [positionData, setPositionData] = useState<[number, number][][]>();
+  const [cuePositions, setCuePositions] = useState<cuePosition[]>([]); // 处理后的位置数据
+  const [positionData, setPositionData] = useState<[number, number][][]>(); // 收到的原始数据
   const [posterSize, setPosterSize] = useState({ width: 4824, height: 6800 });
+  const [titlePosition, setTitlePosition] = useState<[number, number][][]>([
+    [
+      [0, 0],
+      [0, 0],
+    ],
+  ]);
+  const [captionPosition, setCaptionPosition] = useState<[number, number][][]>([
+    [
+      [0, 0],
+      [0, 0],
+    ],
+  ]);
+  const [titleCuePostion, setTitleCuePosition] = useState<cuePosition[]>([]);
+  const [captionCuePosition, setCaptionCuePosition] = useState<cuePosition[]>(
+    []
+  );
 
   const imgRef = useRef<HTMLImageElement | null>(null);
   // // 使用 useRef 获取每个 input 的引用
@@ -200,22 +276,34 @@ const Projector: React.FC<ProjectorProps> = ({
   // Update cue positions using calculated ratios
   const updateCuePos = () => {
     if (
-      imgRef.current &&
-      posterSize.width > 0 &&
-      posterSize.height > 0 &&
-      positionData
+      !imgRef.current ||
+      posterSize.width <= 0 ||
+      posterSize.height <= 0 ||
+      !Array.isArray(positionData)
     ) {
-      const widthRatio = imgRef.current.width / posterSize.width;
-      const heightRatio = imgRef.current.height / posterSize.height;
-
-      const newPositions = positionData.map((points) => {
-        return calPos(points, widthRatio, heightRatio);
-      });
-      setCuePositions(newPositions);
-      console.log('Updated cue positions:', newPositions);
-    } else {
-      console.log('not update cue pos', posterSize, positionData);
+      console.log('Skipping updateCuePos due to invalid data');
+      return;
     }
+    const widthRatio = imgRef.current.width / posterSize.width;
+    const heightRatio = imgRef.current.height / posterSize.height;
+
+    const newPositions = positionData.map((points) => {
+      return calPos(points, widthRatio, heightRatio);
+    });
+    const titleCues = titlePosition.map((points) => {
+      return calPos(points, widthRatio, heightRatio);
+    });
+
+    setTitleCuePosition(titleCues);
+    const captionCues = captionPosition.map((points) => {
+      return calPos(points, widthRatio, heightRatio);
+    });
+    setCaptionCuePosition(captionCues);
+    // newPositions.push(...titleCues);
+    // newPositions.push(...captionCues);
+
+    setCuePositions(newPositions);
+    console.log('Updated cue positions:', newPositions);
   };
 
   useEffect(() => {
@@ -225,6 +313,8 @@ const Projector: React.FC<ProjectorProps> = ({
   useEffect(() => {
     if (messages.length > 0 && messages[messages.length - 1].positions) {
       setPositionData(messages[messages.length - 1].positions);
+      setTitlePosition(messages[messages.length - 1].titlePosition);
+      setCaptionPosition(messages[messages.length - 1].captionPosition);
     }
   }, [messages]);
 
@@ -248,7 +338,12 @@ const Projector: React.FC<ProjectorProps> = ({
 
   return (
     <div className="flex h-screen bg-black text-white">
-      <Cue cuePosition={cuePositions} imgRef={imgRef} />
+      <Cue
+        cuePosition={cuePositions}
+        titleCuePosition={titleCuePostion}
+        captionCuePosition={captionCuePosition}
+        imgRef={imgRef}
+      />
       <div
         className=" border-0 border-red-500 relative"
         style={{ width: imgRef.current?.width }}

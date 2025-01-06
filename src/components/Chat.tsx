@@ -130,8 +130,8 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       - Dialogue 的值是一个只包含纯文本和中文标点符号的字符串，不要包含任何可能导致 json 解析失败的特殊字符。
       ${
         experimentCondition === ExperimentConditions.CueAndMaterial
-          ? '- 请不要说海报右侧有内容。'
-          : ''
+          ? ''
+          : '- 请不要说海报右侧有内容。'
       }
       `;
 
@@ -159,9 +159,11 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
         id: Date.now(),
         text: botReply.picker_chatmessage,
         sender: 'bot',
-        positions: botReply.highlight_point,
+        positions: botReply.highlight_point.flat(), // 打平数组
         emotions: botReply.emotion_number,
         emojiPath, // 新增一个字段以存储最终选取的表情文件
+        titlePosition: botReply.title,
+        captionPosition: botReply.caption,
       };
 
       // 添加到消息队列

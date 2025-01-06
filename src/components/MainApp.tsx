@@ -7,6 +7,7 @@ import useFetchAndPlayAudio from '../hooks/useFetchAndPlayAudio';
 import { useDispatch } from 'react-redux';
 import { setIdle } from '../store/statusSlice';
 import { ExperimentConditions, PosterTypes } from '../store/conditionSlice';
+import { title } from 'process';
 
 const MainApp = () => {
   const [messages, setMessages] = useState([
@@ -20,6 +21,8 @@ const MainApp = () => {
           [0, 0],
         ],
       ],
+      titlePosition: [],
+      captionPosition: [],
       emojiPath: ['002.svg'],
     },
   ]); // 共享的对话数据
@@ -136,11 +139,13 @@ const MainApp = () => {
       emotions: botReply.emotion_number,
       positions: [
         [
-          [208, 240],
-          [2155, 545],
+          [0, 0],
+          [0, 0],
         ],
       ],
       emojiPath: ['002.svg'],
+      titlePosition: botReply.title,
+      captionPosition: botReply.caption,
     };
 
     // 添加到消息队列
