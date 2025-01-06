@@ -33,6 +33,7 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
   }, [transcription]);
 
   const handleSocketMessage = (data) => {
+    console.log('Socket message:', data);
     if (data === 'PRESSED') {
       console.log('Recording started');
       startRecording();

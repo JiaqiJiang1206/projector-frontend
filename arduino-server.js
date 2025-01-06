@@ -42,7 +42,7 @@ wss.on('connection', (ws) => {
       const currentState =
         distance < hysteresis.pressed
           ? 'PRESSED'
-          : distance > hysteresis.released
+          : distance > hysteresis.released && lastState === 'PRESSED'
           ? 'RELEASED'
           : lastState; // 如果在滞后区间内，保持上次状态
 

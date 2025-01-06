@@ -253,7 +253,15 @@ const Projector: React.FC<ProjectorProps> = ({
         className=" border-0 border-red-500 relative"
         style={{ width: imgRef.current?.width }}
       >
-        <div className="absolute w-48 top-2 left-2">
+        <div
+          className="absolute w-48 top-2 left-2"
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
           <img
             src={systemStatus.image}
             alt="Status Icon"
@@ -284,7 +292,7 @@ const Projector: React.FC<ProjectorProps> = ({
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: '100%',
+                height: '100vh',
                 width: 'auto',
                 right: 0,
               }}

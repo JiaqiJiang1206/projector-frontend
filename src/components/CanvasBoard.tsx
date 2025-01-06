@@ -252,7 +252,7 @@ const fcoseLayout = {
   animate: true,
   animationDuration: 500,
   fit: true,
-  padding: 30,
+  padding: 10,
   nodeDimensionsIncludeLabels: true,
   uniformNodeDimensions: false,
   packComponents: true,

@@ -36,9 +36,9 @@ const useWebSocket = (url, onMessage) => {
         // 清除心跳定时器
         // clearInterval(wsRef.current.heartbeatInterval);
         // 重连
-        setTimeout(() => {
-          wsRef.current = new WebSocket(url);
-        }, 1000); // 1秒后重连
+        // setTimeout(() => {
+        //   wsRef.current = new WebSocket(url);
+        // }, 1000); // 1秒后重连
       };
 
       ws.onerror = (error) => {
@@ -54,6 +54,7 @@ const useWebSocket = (url, onMessage) => {
         // clearInterval(wsRef.current.heartbeatInterval); // 清除心跳定时器
         wsRef.current.close(); // 关闭 WebSocket
         wsRef.current = null; // 清空引用
+        console.log('WebSocket closed');
       }
     };
   }, []);
