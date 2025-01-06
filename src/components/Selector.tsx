@@ -60,6 +60,7 @@ const Selector = () => {
   const navigate = useNavigate();
 
   const goToApp = () => {
+    sessionStorage.clear();
     navigate('/app');
   };
 

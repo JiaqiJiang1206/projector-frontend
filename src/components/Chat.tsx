@@ -125,10 +125,33 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       // 发送消息给 /picker 接口
       const pickerMessage = `${messageText}\n
       - 仅以所要求的 JSON 输出进行回复，不包含任何无关信息。\n
-      - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。
-      - 所说的内容要具体，如果有例子尽量提供相应的例子。
-      - 你的输出需要严格按照json格式输出，并考虑到可能的转义字符问题，不要在字符串中再包含英文引号，以防json解析失败。
-      - Dialogue 的值是一个只包含纯文本和中文标点符号的字符串，不要包含任何可能导致 json 解析失败的特殊字符。
+      - 重要！！！请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。 \n
+      - 所说的内容要具体，如果有例子尽量提供相应的例子。 \n
+      - 你的输出需要严格按照json格式输出，并考虑到可能的转义字符问题，不要在字符串中再包含英文引号，以防json解析失败。 \n
+      - Dialogue 的值是一个只包含纯文本和中文标点符号的字符串(最外层使用英文引号包裹)，不要包含任何可能导致 json 解析失败的特殊字符。\n
+      - 严格按照以下数据结构输出：\n
+      {
+        "highlighted": [
+          {
+            "id":int, 
+            "text": str,
+            "type": str
+          },
+          {
+            "id":int,
+            "text": str,
+            "type": str,
+            "keywords": [str]
+          },
+          {
+            "id": int,
+            "text": str,
+            "type": str
+          }
+        ],
+        "Dialogue": str,
+        "Emotion": str
+      }
       ${
         experimentCondition === ExperimentConditions.CueAndMaterial
           ? ''
@@ -182,7 +205,6 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       - 仅以所要求的 JSON 输出进行回复，不包含任何无关信息。\n
       - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。
       - 每个节点生成的字数不超过二十个字。
-      - 生成image时必须首先找到image对应的description，仔细思考image的description是否与该节点的keyword和description相关。生成节点和图片后，确保image与节点的description是一致的，不要出现史不符合事实的信息。否则不要生成image。
       - 如果在image.txt 和 content.txt 中找不到任何相关信息，请不要编造描述，直接留空。不要生成不符合事实的信息。
       - 确保每张图片只在一个节点中出现，不要在多个节点中出现同一张图片。`;
       const relationshipResponsePromise = axiosInstance.post(
