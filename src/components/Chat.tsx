@@ -112,6 +112,7 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
 
   const handleSend = async (messageText = input) => {
     dispatch(setProcessing());
+    dispatch(setBook());
     console.log('Message:', messageText);
     if (!messageText.trim()) return;
 
@@ -180,7 +181,10 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       const toRelationshipMessage = `${botReply.picker_chatmessage} + \n
       - 仅以所要求的 JSON 输出进行回复，不包含任何无关信息。\n
       - 请仅以纯文本形式回复，确保答案中不包含任何代码格式或块，例如 \`\`\`json。
-      - 每个节点生成的字数不超过二十个字。`;
+      - 每个节点生成的字数不超过二十个字。
+      - 生成image时必须首先找到image对应的description，仔细思考image的description是否与该节点的keyword和description相关。生成节点和图片后，确保image与节点的description是一致的，不要出现史不符合事实的信息。否则不要生成image。
+      - 如果在image.txt 和 content.txt 中找不到任何相关信息，请不要编造描述，直接留空。不要生成不符合事实的信息。
+      - 确保每张图片只在一个节点中出现，不要在多个节点中出现同一张图片。`;
       const relationshipResponsePromise = axiosInstance.post(
         '/pickertogenerator',
         {

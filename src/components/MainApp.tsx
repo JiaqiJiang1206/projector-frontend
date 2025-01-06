@@ -7,27 +7,35 @@ import useFetchAndPlayAudio from '../hooks/useFetchAndPlayAudio';
 import { useDispatch } from 'react-redux';
 import { setIdle } from '../store/statusSlice';
 import { ExperimentConditions, PosterTypes } from '../store/conditionSlice';
-import { title } from 'process';
 
 const MainApp = () => {
-  const [messages, setMessages] = useState([
-    {
-      id: 0,
-      text: 'Hello! How can I help you today?',
-      sender: 'bot',
-      positions: [
-        [
-          [0, 0],
-          [0, 0],
-        ],
-      ],
-      titlePosition: [],
-      captionPosition: [],
-      emojiPath: ['002.svg'],
-    },
-  ]); // 共享的对话数据
+  const savedMessages = sessionStorage.getItem('messages');
+  const savedCanvasData = sessionStorage.getItem('canvasData');
+  const initialMessages = savedMessages
+    ? JSON.parse(savedMessages)
+    : [
+        {
+          id: 0,
+          text: 'Hello! How can I help you today?',
+          sender: 'bot',
+          positions: [
+            [
+              [0, 0],
+              [0, 0],
+            ],
+          ],
+          titlePosition: [],
+          captionPosition: [],
+          emojiPath: ['002.svg'],
+        },
+      ];
+  const initialCanvasData = savedCanvasData
+    ? JSON.parse(savedCanvasData)
+    : null;
+
+  const [messages, setMessages] = useState(initialMessages); // 共享的对话数据
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // 控制侧边栏展开或折叠
-  const [canvasData, setCanvasData] = useState(null); // 画布数据
+  const [canvasData, setCanvasData] = useState(initialCanvasData); // 画布数据
 
   const status = useSelector((state: any) => state.status.status);
   const [systemStatus, setSystemStatus] = useState({
@@ -81,6 +89,10 @@ const MainApp = () => {
     // 当 messages 改变时同步更新 canvasData
     // sayHello();
   }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem('messages', JSON.stringify(messages));
+  }, [messages]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev); // 切换侧边栏展开/折叠

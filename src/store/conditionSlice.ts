@@ -12,18 +12,28 @@ export enum PosterTypes {
   PosterThree = 'posterThree',
 }
 
+// 从 localStorage 读取
+const savedExpCondition = localStorage.getItem(
+  'experimentCondition'
+) as ExperimentConditions | null;
+const savedPosterType = localStorage.getItem(
+  'posterType'
+) as PosterTypes | null;
+
 export const conditionSlice = createSlice({
   name: 'condition',
   initialState: {
-    expetimentCondition: ExperimentConditions.Baseline,
-    posterType: PosterTypes.PosterOne,
+    expetimentCondition: savedExpCondition ?? ExperimentConditions.Baseline,
+    posterType: savedPosterType ?? PosterTypes.PosterOne,
   },
   reducers: {
     setExperimentCondition: (state, action) => {
       state.expetimentCondition = action.payload;
+      localStorage.setItem('experimentCondition', action.payload);
     },
     setPosterType: (state, action) => {
       state.posterType = action.payload;
+      localStorage.setItem('posterType', action.payload);
     },
   },
 });

@@ -167,16 +167,52 @@ const Cue: React.FC<CueProps> = ({
             }}
           >
             <img
-              src="/img/icons/titleleft.gif"
+              src="/img/icons/titleright.gif"
               alt="Left Top GIF"
-              className="absolute top-0 -left-10 w-8 h-8"
-              style={{ animation: 'infinite-loop 1s linear infinite' }}
+              className="absolute -top-3 -left-6 w-8 h-8"
+              style={{
+                animation: 'infinite-loop 1s linear infinite',
+                transform: 'scaleX(-1) rotate(-45deg)',
+              }}
             />
             <img
               src="/img/icons/titleright.gif"
               alt="Right Top GIF"
-              className="absolute top-0 -right-10 w-8 h-8"
-              style={{ animation: 'infinite-loop 1s linear infinite' }}
+              className="absolute -top-3 w-8 h-8 -right-8"
+              style={{
+                animation: 'infinite-loop 1s linear infinite',
+                transform: 'rotate(-45deg)',
+              }}
+            />
+          </div>
+        ))}
+        {captionCuePosition.map((pos, index) => (
+          <div
+            key={index}
+            className="absolute"
+            style={{
+              top: `${pos.y}px`,
+              left: `${pos.x}px`,
+              width: `${pos.width}px`,
+              height: `${pos.height}px`,
+            }}
+          >
+            <img
+              src="/img/icons/picleft.gif"
+              alt="Left Top GIF"
+              className="absolute top-0 -left-10 w-16 h-auto"
+              style={{
+                animation: 'infinite-loop 1s linear infinite',
+              }}
+            />
+            <img
+              src="/img/icons/picright.gif"
+              alt="Right Top GIF"
+              className="absolute w-auto h-16 bottom-0 -right-20"
+              style={{
+                animation: 'infinite-loop 1s linear infinite',
+                transform: 'rotate(270deg) scaleX(-1)',
+              }}
             />
           </div>
         ))}
