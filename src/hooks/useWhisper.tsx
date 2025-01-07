@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { axiosInstance } from './axiosConfig';
+import { axiosInstance } from '../services/axiosConfig';
 
 function useWhisper() {
   const [transcription, setTranscription] = useState('');

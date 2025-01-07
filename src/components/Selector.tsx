@@ -4,8 +4,10 @@ import {
   ExperimentConditions,
   PosterTypes,
   conditionSlice,
-} from '../store/conditionSlice';
+} from '../store/slices/conditionSlice';
+
 import { useNavigate } from 'react-router-dom';
+import { clearMessages } from '../store/slices/messagesSlice';
 
 const Selector = () => {
   const dispatch = useDispatch();
@@ -60,6 +62,7 @@ const Selector = () => {
   const navigate = useNavigate();
 
   const goToApp = () => {
+    dispatch(clearMessages()); // 清空聊天记录
     sessionStorage.clear();
     navigate('/app');
   };

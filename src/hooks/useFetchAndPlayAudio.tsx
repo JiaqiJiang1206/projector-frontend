@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
-import { axiosInstance } from './axiosConfig';
+import { axiosInstance } from '../services/axiosConfig';
 import { useDispatch } from 'react-redux';
-import { setSpeaking } from '../store/statusSlice';
+import { setSpeaking } from '../store/slices/statusSlice';
 
 const useFetchAndPlayAudio = () => {
   const [isPlaying, setIsPlaying] = useState(false);

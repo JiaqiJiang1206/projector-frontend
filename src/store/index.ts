@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import statusReducer from './statusSlice';
-import projectorReducer from './projectorSlice';
-import { conditionSlice } from './conditionSlice';
-import messageReducer from './messagesSlice';
+import statusReducer from './slices/statusSlice';
+import projectorReducer from './slices/projectorSlice';
+import { conditionSlice } from './slices/conditionSlice';
+import messageReducer from './slices/messagesSlice';
+import canvasDataReducer from './slices/canvasDataSlice';
 
 // 创建 Redux store
 const store = configureStore({
@@ -11,6 +12,7 @@ const store = configureStore({
     projector: projectorReducer,
     condition: conditionSlice.reducer,
     messages: messageReducer,
+    canvasData: canvasDataReducer,
   },
 });
 

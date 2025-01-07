@@ -1,30 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
-import CanvasBoard from './CanvasBoard'; // 引入 CanvasBoard 组件
 
-import mockData from './mockData_short.json'; // 引入 mockData
-import { useSelector } from 'react-redux';
-import { ExperimentConditions, PosterTypes } from '../store/conditionSlice';
-
+import CanvasBoard from './CanvasBoard';
+import StatusIndicator from '../StatusIndicator';
 import { Cue, cuePosition } from './Cue';
+
+import mockData from '../../assets/mockData_short.json'; // 引入 mockData
+
+import { useSelector } from 'react-redux';
+import { ExperimentConditions } from '../../store/slices/conditionSlice';
+
+import { calPos } from './projectorHelper';
+
 interface ProjectorProps {
   messages: any[];
   canvasData: any;
-  setCanvasData: any;
-  systemStatus: {
-    image: string;
-    text: string;
-  };
 }
 
-const Projector: React.FC<ProjectorProps> = ({
-  messages,
-  canvasData,
-  setCanvasData,
-  systemStatus,
-}) => {
+const Projector: React.FC<ProjectorProps> = ({ messages, canvasData }) => {
   const [cuePositions, setCuePositions] = useState<cuePosition[]>([]); // 处理后的位置数据
   const [positionData, setPositionData] = useState<[number, number][][]>(); // 收到的原始数据
-  const [posterSize, setPosterSize] = useState({ width: 4824, height: 6800 });
   const [titlePosition, setTitlePosition] = useState<[number, number][][]>([
     [
       [0, 0],
@@ -43,44 +37,14 @@ const Projector: React.FC<ProjectorProps> = ({
   );
 
   const imgRef = useRef<HTMLImageElement | null>(null);
-  // // 使用 useRef 获取每个 input 的引用
-  // const x1Ref = useRef<HTMLInputElement>(null);
-  // const x2Ref = useRef<HTMLInputElement>(null);
-  // const y1Ref = useRef<HTMLInputElement>(null);
-  // const y2Ref = useRef<HTMLInputElement>(null);
 
   const projectorView = useSelector((state: any) => state.projector.view);
+  const status = useSelector((state: any) => state.status.status);
 
   const experimentCondition = useSelector(
     (state: any) => state.condition.expetimentCondition
   );
-
-  // Function to calculate relative position based on the image size
-  const calPos = (
-    twoPoints: number[][],
-    widthRatio: number,
-    heightRatio: number
-  ) => {
-    const x1 = twoPoints[0][0];
-    const y1 = twoPoints[0][1];
-    const x2 = twoPoints[1][0];
-    const y2 = twoPoints[1][1];
-
-    // setCanvasData(mockData); // 画布测试数据
-
-    // Ensure the widthRatio and heightRatio are not zero to avoid Infinity
-    if (widthRatio === 0 || heightRatio === 0) {
-      console.error('Invalid width or height ratio');
-      return { x: 0, y: 0, width: 0, height: 0 };
-    }
-
-    const x = widthRatio * x1;
-    const y = heightRatio * y1;
-    const width = widthRatio * (x2 - x1);
-    const height = heightRatio * (y2 - y1);
-
-    return { x, y, width, height };
-  };
+  const posterSize = { width: 4824, height: 6800 };
 
   useEffect(() => {
     window.addEventListener('resize', updateCuePos);
@@ -135,35 +99,31 @@ const Projector: React.FC<ProjectorProps> = ({
     }
   }, [messages]);
 
-  // const submitPosition = () => {
-  //   const x1 = Number(x1Ref.current?.value);
-  //   const x2 = Number(x2Ref.current?.value);
-  //   const y1 = Number(y1Ref.current?.value);
-  //   const y2 = Number(y2Ref.current?.value);
-
-  //   if (x1 && x2 && y1 && y2) {
-  //     setPositionData([
-  //       [
-  //         [x1, y1],
-  //         [x2, y2],
-  //       ],
-  //     ]);
-  //   }
-
-  //   updateCuePos();
-  // };
-
   return (
     <div className="flex h-screen bg-black text-white">
-      <Cue
-        cuePosition={cuePositions}
-        titleCuePosition={titleCuePostion}
-        captionCuePosition={captionCuePosition}
-        imgRef={imgRef}
-      />
+      <div
+        style={{
+          width:
+            imgRef.current && imgRef.current.width > 100
+              ? imgRef.current.width
+              : '580px',
+        }}
+      >
+        <Cue
+          cuePosition={cuePositions}
+          titleCuePosition={titleCuePostion}
+          captionCuePosition={captionCuePosition}
+          imgRef={imgRef}
+        />
+      </div>
       <div
         className=" border-0 border-red-500 relative"
-        style={{ width: imgRef.current?.width }}
+        style={{
+          width:
+            imgRef.current && imgRef.current.width > 100
+              ? imgRef.current.width
+              : '580px',
+        }}
       >
         <div
           className="absolute w-48 top-2 left-2"
@@ -174,12 +134,7 @@ const Projector: React.FC<ProjectorProps> = ({
             flexDirection: 'column',
           }}
         >
-          <img
-            src={systemStatus.image}
-            alt="Status Icon"
-            className="w-auto h-20"
-          />
-          <p>{systemStatus.text}</p>
+          <StatusIndicator status={status} />
         </div>
 
         <div
@@ -219,38 +174,6 @@ const Projector: React.FC<ProjectorProps> = ({
           )}
         </div>
       </div>
-      {/* <div className="absolute right-1 bottom-1 flex space-x-2">
-        <input
-          type="text"
-          className="w-24 bg-transparent border-b-2 border-white text-white placeholder-gray-400"
-          placeholder="x1"
-          ref={x1Ref}
-        />
-        <input
-          type="text"
-          className="w-24 bg-transparent border-b-2 border-white text-white placeholder-gray-400"
-          placeholder="x2"
-          ref={x2Ref}
-        />
-        <input
-          type="text"
-          className="w-24 bg-transparent border-b-2 border-white text-white placeholder-gray-400"
-          placeholder="y1"
-          ref={y1Ref}
-        />
-        <input
-          type="text"
-          className="w-24 bg-transparent border-b-2 border-white text-white placeholder-gray-400"
-          placeholder="y2"
-          ref={y2Ref}
-        />
-        <button
-          className="text-white rounded bg-blue-500 hover:bg-blue-700 transition duration-300 px-1"
-          onClick={submitPosition}
-        >
-          Submit
-        </button>
-      </div> */}
     </div>
   );
 };
