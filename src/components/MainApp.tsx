@@ -1,43 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import Chat from './Chat'; // 第一个页面
-import Projector from './Projector'; // 第二个页面
+import { useSelector, useDispatch } from 'react-redux';
 import { axiosInstance } from '../hooks/axiosConfig';
 import useFetchAndPlayAudio from '../hooks/useFetchAndPlayAudio';
-import { useDispatch } from 'react-redux';
 import { setIdle } from '../store/statusSlice';
 import { ExperimentConditions, PosterTypes } from '../store/conditionSlice';
 
+import Chat from './Chat'; // 第一个页面
+import Projector from './Projector'; // 第二个页面
+import { addMessage, setMessages } from '../store/messagesSlice';
+
 const MainApp = () => {
-  const savedMessages = sessionStorage.getItem('messages');
   const savedCanvasData = sessionStorage.getItem('canvasData');
-  const initialMessages = savedMessages
-    ? JSON.parse(savedMessages)
-    : [
-        {
-          id: 0,
-          text: 'Hello! How can I help you today?',
-          sender: 'bot',
-          positions: [
-            [
-              [0, 0],
-              [0, 0],
-            ],
-          ],
-          titlePosition: [],
-          captionPosition: [],
-          emojiPath: ['002.svg'],
-        },
-      ];
   const initialCanvasData = savedCanvasData
     ? JSON.parse(savedCanvasData)
     : null;
 
-  const [messages, setMessages] = useState(initialMessages); // 共享的对话数据
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // 控制侧边栏展开或折叠
   const [canvasData, setCanvasData] = useState(initialCanvasData); // 画布数据
 
+  const messages = useSelector((state: any) => state.messages);
   const status = useSelector((state: any) => state.status.status);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // 从 sessionStorage 恢复消息
+    const savedMessages = sessionStorage.getItem('messages');
+    if (savedMessages) {
+      dispatch(setMessages(JSON.parse(savedMessages)));
+    }
+  }, [dispatch]);
+
   const [systemStatus, setSystemStatus] = useState({
     image: '/img/open-hand.png',
     text: '请按下按钮开始对话哦！',
@@ -99,7 +92,6 @@ const MainApp = () => {
   };
 
   const { fetchAudio, playAudioQueue } = useFetchAndPlayAudio();
-  const dispatch = useDispatch();
 
   const sayHello = async () => {
     console.log('Saying hello...');
@@ -161,7 +153,7 @@ const MainApp = () => {
     };
 
     // 添加到消息队列
-    setMessages((prevMessages) => [...prevMessages, botReplyMessage]);
+    dispatch(addMessage(botReplyMessage));
 
     // 请求生成语音
     const audioQueue = await fetchAudio(
@@ -188,11 +180,7 @@ const MainApp = () => {
         } bg-gray-800 text-white p-4 z-10`}
         style={{ position: 'fixed', top: 0, bottom: 0, left: 0 }}
       >
-        <Chat
-          messages={messages}
-          setMessages={setMessages}
-          setCanvasData={setCanvasData}
-        />
+        <Chat setCanvasData={setCanvasData} />
       </div>
 
       {/* 内容区域 */}

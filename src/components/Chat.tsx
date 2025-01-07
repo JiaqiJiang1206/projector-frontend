@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { axiosInstance } from '../hooks/axiosConfig';
-import { useDispatch } from 'react-redux';
-import { setIdle, setRecording, setProcessing } from '../store/statusSlice';
-import { setBook, setGraph } from '../store/projectorSlice';
 
 import useWebSocket from '../hooks/useWebSocket';
 import useFetchAndPlayAudio from '../hooks/useFetchAndPlayAudio';
 import useWhisper from '../hooks/useWhisper';
-import { ExperimentConditions, PosterTypes } from '../store/conditionSlice';
-import { useSelector } from 'react-redux';
 
-const Chat = ({ messages, setMessages, setCanvasData }) => {
+import { useSelector, useDispatch } from 'react-redux';
+import { ExperimentConditions, PosterTypes } from '../store/conditionSlice';
+import { setIdle, setRecording, setProcessing } from '../store/statusSlice';
+import { setBook, setGraph } from '../store/projectorSlice';
+import { addMessage } from '../store/messagesSlice';
+
+const Chat = ({ setCanvasData }) => {
   const [input, setInput] = useState<any>('');
   const [loading, setLoading] = useState<any>(false);
 
@@ -25,6 +26,7 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
   } = useWhisper();
 
   const dispatch = useDispatch();
+  const messages = useSelector((state: any) => state.messages);
 
   useEffect(() => {
     if (transcription) {
@@ -117,7 +119,7 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
     if (!messageText.trim()) return;
 
     const userMessage = { id: Date.now(), text: messageText, sender: 'user' };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
+    dispatch(addMessage(userMessage));
     setInput('');
     setLoading(true);
 
@@ -191,7 +193,7 @@ const Chat = ({ messages, setMessages, setCanvasData }) => {
       };
 
       // 添加到消息队列
-      setMessages((prevMessages) => [...prevMessages, botReplyMessage]);
+      dispatch(addMessage(botReplyMessage));
 
       // 请求生成语音
       const audioQueue = await fetchAudio(
