@@ -4,6 +4,7 @@ import {
   ExperimentConditions,
   PosterTypes,
 } from '../store/slices/conditionSlice';
+import axios from 'axios';
 
 export const sayHelloService = (experimentCondition, posterType) => {
   const helloRequestNotMaterial = `
@@ -107,7 +108,9 @@ export const getRelationshipMessage = (message) => {
       - 每个节点生成的字数不超过二十个字。
       - 如果在image.txt 和 content.txt 中找不到任何相关信息，请不要编造描述，直接留空。不要生成不符合事实的信息。
       - 确保每张图片只在一个节点中出现，不要在多个节点中出现同一张图片。`;
-  return axiosInstance.post('/pickertogenerator', {
-    content: messageText,
+
+  // 返回一个 Promise
+  return axios.post('http://localhost:3001/ask', {
+    content: messageText, // Express 接口要求的字段
   });
 };

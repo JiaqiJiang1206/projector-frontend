@@ -9,7 +9,7 @@ const StatusIndicator = ({ status }) => {
       case 'Processing':
         return '/img/thinking.gif';
       case 'Speaking':
-        return '/img/bubble-chat.png';
+        return '/img/bubble-chat.gif';
       default:
         return '/img/open-hand.png';
     }
@@ -29,9 +29,9 @@ const StatusIndicator = ({ status }) => {
   };
 
   return (
-    <div>
-      <img src={getStatusImage()} alt="Status Icon" className="w-auto h-20" />
-      <p>{getStatusText()}</p>
+    <div className="flex flex-col items-center ">
+      <img src={getStatusImage()} alt="Status Icon" className="w-auto h-28" />
+      <p className="text-xl text-center">{getStatusText()}</p>
     </div>
   );
 };

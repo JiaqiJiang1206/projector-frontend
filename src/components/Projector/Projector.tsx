@@ -126,8 +126,9 @@ const Projector: React.FC<ProjectorProps> = ({ messages, canvasData }) => {
         }}
       >
         <div
-          className="absolute w-48 top-2 left-2"
+          className="top-3 left-2"
           style={{
+            position: 'relative',
             justifyContent: 'center',
             alignItems: 'center',
             display: 'flex',
@@ -150,7 +151,7 @@ const Projector: React.FC<ProjectorProps> = ({ messages, canvasData }) => {
               graphData={canvasData}
               canvasSize={{
                 width: imgRef.current?.width,
-                height: imgRef.current?.height,
+                height: 600,
               }}
             />
           ) : (
@@ -164,12 +165,12 @@ const Projector: React.FC<ProjectorProps> = ({ messages, canvasData }) => {
                 right: 0,
               }}
             >
-              <img
+              {/* <img
                 src="/img/book.png"
                 alt="Processing"
                 style={{ width: 120, height: 120, objectFit: 'contain' }}
               />
-              <p>让我找找有没有更多的材料！</p>
+              <p>让我找找有没有更多的材料！</p> */}
             </div>
           )}
         </div>

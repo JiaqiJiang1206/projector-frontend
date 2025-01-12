@@ -1,13 +1,19 @@
 import { useState, useRef } from 'react';
 import { axiosInstance } from '../services/axiosConfig';
+import { useSelector } from 'react-redux';
 
 function useWhisper() {
   const [transcription, setTranscription] = useState('');
   const [isRecording, setIsRecording] = useState(false);
   const [audioUrl, setAudioUrl] = useState(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const status = useSelector((state: any) => state.status);
 
   const startRecording = () => {
+    if (status.status !== 'Idle') {
+      console.log('Cannot start recording while status is not idle');
+      return;
+    }
     setIsRecording(true);
     navigator.mediaDevices
       .getUserMedia({ audio: true })

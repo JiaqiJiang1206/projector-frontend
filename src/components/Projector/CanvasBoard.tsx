@@ -315,7 +315,7 @@ const cytoscapeStyles: Stylesheet[] = [
       'font-size': '25px',
       'text-margin-x': '-10px',
       'text-margin-y': '-10px',
-      width: 2,
+      width: 8,
       // 'line-color': '#fff',
       'target-arrow-color': '#fff',
       'target-arrow-shape': 'triangle',
@@ -369,7 +369,7 @@ function transformDataToElements(
     const degree = degreeMap[node.id];
     const hasImage = node.image && node.image.trim() !== '';
     const size = hasImage
-      ? 250 + ((degree - minDegree) / (maxDegree - minDegree || 1)) * 250
+      ? 300 + ((degree - minDegree) / (maxDegree - minDegree || 1)) * 300
       : 1;
 
     const processedDescription = (node.description ?? '').replace(

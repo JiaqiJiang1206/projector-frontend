@@ -23,10 +23,12 @@ import { setCanvasData } from '../../store/slices/canvasDataSlice';
 
 // Helper functions
 import { getRandomEmojiPaths, useWebSocketHandler } from './chatHelper';
+import Toast from './Toast';
 
 const Chat = () => {
   const [input, setInput] = useState<any>('');
   const [loading, setLoading] = useState<any>(false);
+  const [showToast, setShowToast] = useState(false);
 
   const messagesEndRef = useRef<any>(null);
 
@@ -45,6 +47,7 @@ const Chat = () => {
     stopRecording,
   } = useWhisper();
   const { fetchAudio, playAudioQueue } = useFetchAndPlayAudio();
+  const status = useSelector((state: any) => state.status);
 
   useEffect(() => {
     if (transcription) {
@@ -56,7 +59,8 @@ const Chat = () => {
     'ws://localhost:8081',
     dispatch,
     startRecording,
-    stopRecording
+    stopRecording,
+    status
   );
 
   useEffect(() => {
@@ -121,11 +125,15 @@ const Chat = () => {
       });
 
       // 等待 relationshipResponse 完成
-      const relationshipResponse = await relationshipResponsePromise;
-      console.log('Relationship response:', relationshipResponse.data);
-      // 立即更新画布数据
-      dispatch(setCanvasData(relationshipResponse.data));
-      dispatch(setGraph());
+      try {
+        const relationshipResponse = await relationshipResponsePromise;
+        console.log('Relationship response:', relationshipResponse.data);
+        // 立即更新画布数据
+        dispatch(setCanvasData(relationshipResponse.data.generator_draw));
+        dispatch(setGraph());
+      } catch (error) {
+        console.error('Error fetching relationship response:', error);
+      }
     } catch (error) {
       console.error('Error sending message:', error);
     } finally {
@@ -140,6 +148,11 @@ const Chat = () => {
       dispatch(setProcessing());
       dispatch(setBook());
     } else {
+      if (status.status !== 'Idle') {
+        console.log('Cannot start recording while status is not idle');
+        setShowToast(true);
+        return;
+      }
       startRecording();
       dispatch(setRecording());
     }
@@ -213,6 +226,13 @@ const Chat = () => {
           </audio>
         )}
       </div>
+      {showToast && (
+        <Toast
+          message="现在还不能说话哦"
+          duration={1000}
+          onClose={() => setShowToast(false)} // 提示消失时更新状态
+        />
+      )}
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import useWebsocket from '../../hooks/useWebSocket';
 import { setRecording, setProcessing } from '../../store/slices/statusSlice';
 import { setBook } from '../../store/slices/projectorSlice';
+import { useSelector } from 'react-redux';
 
 export function getRandomEmojiPaths(emotion: string) {
   // 此处可改成自动检索文件夹
@@ -50,11 +51,16 @@ export function useWebSocketHandler(
   url,
   dispatch,
   startRecording,
-  stopRecording
+  stopRecording,
+  systemStatus
 ) {
   useWebsocket(url, (message) => {
     console.log('WebSocket message received:', message);
     if (message === 'PRESSED') {
+      if (systemStatus.status !== 'Idle') {
+        console.log('Cannot start recording while status is not idle');
+        return;
+      }
       console.log('Recording started');
       startRecording();
       dispatch(setRecording());

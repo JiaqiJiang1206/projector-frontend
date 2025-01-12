@@ -102,10 +102,10 @@ export const Cue: React.FC<CueProps> = ({
             key={index}
             className="absolute bg-white rounded-full opacity-90"
             style={{
-              top: `${pos.y + 6}px`,
-              left: `${pos.x - 0}px`,
-              width: `${pos.width}px`,
-              height: `${pos.height}px`,
+              top: `${pos.y - 2}px`,
+              left: `${pos.x + 6}px`,
+              width: `${pos.width + 3}px`,
+              height: `${pos.height + 2}px`,
               // animation: 'breathing 4.2s infinite',
             }}
           ></div>
@@ -122,21 +122,21 @@ export const Cue: React.FC<CueProps> = ({
             }}
           >
             <img
-              src="/img/icons/titleright.gif"
+              src="/img/icons/title.gif"
               alt="Left Top GIF"
-              className="absolute -top-3 -left-6 w-8 h-8"
+              className="absolute -top-10 -left-10 w-16 h-16"
               style={{
                 animation: 'infinite-loop 1s linear infinite',
-                transform: 'scaleX(-1) rotate(-45deg)',
+                transform: 'scaleX(-1) rotate(-20deg)',
               }}
             />
             <img
-              src="/img/icons/titleright.gif"
+              src="/img/icons/title.gif"
               alt="Right Top GIF"
-              className="absolute -top-3 w-8 h-8 -right-8"
+              className="absolute -top-10 w-16 h-16 -right-12"
               style={{
                 animation: 'infinite-loop 1s linear infinite',
-                transform: 'rotate(-45deg)',
+                transform: 'rotate(-20deg)',
               }}
             />
           </div>
@@ -155,7 +155,7 @@ export const Cue: React.FC<CueProps> = ({
             <img
               src="/img/icons/picleft.gif"
               alt="Left Top GIF"
-              className="absolute top-0 -left-10 w-16 h-auto"
+              className="absolute -top-10 -left-10 w-24 h-auto"
               style={{
                 animation: 'infinite-loop 1s linear infinite',
               }}
@@ -163,10 +163,10 @@ export const Cue: React.FC<CueProps> = ({
             <img
               src="/img/icons/picright.gif"
               alt="Right Top GIF"
-              className="absolute w-auto h-16 bottom-0 -right-20"
+              className="absolute w-auto h-16 bottom-4 -right-10"
               style={{
                 animation: 'infinite-loop 1s linear infinite',
-                transform: 'rotate(270deg) scaleX(-1)',
+                transform: 'rotate(235deg) scaleX(-1)',
               }}
             />
           </div>
@@ -180,7 +180,7 @@ export const Cue: React.FC<CueProps> = ({
   );
 };
 
-function groupCues(cues: cuePosition[], yThreshold = 3, xThreshold = 3) {
+function groupCues(cues: cuePosition[], yThreshold = 3, xThreshold = 5) {
   const grouped: cuePosition[] = [];
 
   // 按 y 值排序，确保从上到下处理
