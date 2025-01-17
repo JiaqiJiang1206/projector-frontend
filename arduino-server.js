@@ -19,7 +19,7 @@ let lastState = null; // 上一次状态
 let debounceTimeout = null; // 防抖定时器
 let stableCount = 0; // 稳定计数
 const stabilityThreshold = 2; // 稳定状态需要的连续次数
-const hysteresis = { pressed: 14, released: 16 }; // 滞后阈值
+const hysteresis = { pressed: 15, released: 16 }; // 滞后阈值
 
 wss.on('connection', (ws) => {
   console.log('WebSocket client connected');

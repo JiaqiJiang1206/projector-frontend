@@ -1,91 +1,109 @@
 condition,Metric,Value
-2,C1,1
-1,C1,2
-2,C1,2
-1,C1,5
-1,C1,2
-1,C1,1
-2,C1,2
-2,C1,3
-1,C1,2
-3,C1,2
-2,C1,1
-1,C1,3
-2,C1,4
-3,C1,3
-3,C1,2
-3,C1,3
-3,C1,2
-2,C1,2
-3,C1,1
-2,C1,1
-2,C1,2
-1,C1,2
-3,C1,2
-2,C1,2
-1,C1,1
-3,C1,3
-3,C1,2
-3,C1,2
-1,C1,2
-1,C1,3
-2,C2,1
-1,C2,2
-2,C2,2
-1,C2,1
-1,C2,2
-1,C2,1
-2,C2,1
-2,C2,2
-1,C2,2
-3,C2,1
-2,C2,1
-1,C2,3
-2,C2,3
-3,C2,3
-3,C2,2
-3,C2,2
-3,C2,2
-2,C2,1
-3,C2,1
-2,C2,1
-2,C2,2
-1,C2,2
-3,C2,1
-2,C2,1
-1,C2,1
-3,C2,2
-3,C2,1
-3,C2,1
-1,C2,1
-1,C2,1
-2,C3,4
-1,C3,5
-2,C3,4
-1,C3,2
-1,C3,4
-1,C3,4
-2,C3,5
-2,C3,4
-1,C3,4
-3,C3,5
-2,C3,5
-1,C3,3
-2,C3,3
-3,C3,3
-3,C3,5
-3,C3,6
-3,C3,4
-2,C3,5
-3,C3,4
-2,C3,4
-2,C3,2
-1,C3,4
-3,C3,3
-2,C3,5
-1,C3,5
-3,C3,5
-3,C3,5
-3,C3,5
-1,C3,3
-1,C3,5
+3,Intrinsic Load,2
+2,Intrinsic Load,1
+1,Intrinsic Load,2
+3,Intrinsic Load,3
+2,Intrinsic Load,2
+1,Intrinsic Load,5
+1,Intrinsic Load,2
+2,Intrinsic Load,2
+3,Intrinsic Load,2
+1,Intrinsic Load,1
+2,Intrinsic Load,2
+3,Intrinsic Load,2
+3,Intrinsic Load,3
+2,Intrinsic Load,2
+1,Intrinsic Load,3
+3,Intrinsic Load,2
+2,Intrinsic Load,3
+1,Intrinsic Load,2
+1,Intrinsic Load,2
+3,Intrinsic Load,2
+2,Intrinsic Load,1
+1,Intrinsic Load,3
+2,Intrinsic Load,4
+3,Intrinsic Load,3
+1,Intrinsic Load,2
+3,Intrinsic Load,2
+2,Intrinsic Load,2
+1,Intrinsic Load,1
+3,Intrinsic Load,1
+2,Intrinsic Load,1
+2,Intrinsic Load,2
+1,Intrinsic Load,2
+3,Intrinsic Load,2
+2,Intrinsic Load,2
+1,Intrinsic Load,1
+3,Intrinsic Load,3
+3,Extraneous Load,2
+2,Extraneous Load,1
+1,Extraneous Load,2
+3,Extraneous Load,2
+2,Extraneous Load,2
+1,Extraneous Load,1
+1,Extraneous Load,2
+2,Extraneous Load,2
+3,Extraneous Load,1
+1,Extraneous Load,1
+2,Extraneous Load,1
+3,Extraneous Load,1
+3,Extraneous Load,1
+2,Extraneous Load,1
+1,Extraneous Load,1
+3,Extraneous Load,1
+2,Extraneous Load,2
+1,Extraneous Load,1
+1,Extraneous Load,2
+3,Extraneous Load,1
+2,Extraneous Load,1
+1,Extraneous Load,3
+2,Extraneous Load,3
+3,Extraneous Load,3
+1,Extraneous Load,1
+3,Extraneous Load,2
+2,Extraneous Load,1
+1,Extraneous Load,1
+3,Extraneous Load,1
+2,Extraneous Load,1
+2,Extraneous Load,2
+1,Extraneous Load,2
+3,Extraneous Load,1
+2,Extraneous Load,1
+1,Extraneous Load,1
+3,Extraneous Load,2
+3,Germane Load,5
+2,Germane Load,4
+1,Germane Load,5
+3,Germane Load,6
+2,Germane Load,4
+1,Germane Load,2
+1,Germane Load,4
+2,Germane Load,4
+3,Germane Load,5
+1,Germane Load,4
+2,Germane Load,5
+3,Germane Load,5
+3,Germane Load,4
+2,Germane Load,5
+1,Germane Load,5
+3,Germane Load,4
+2,Germane Load,4
+1,Germane Load,3
+1,Germane Load,4
+3,Germane Load,5
+2,Germane Load,5
+1,Germane Load,3
+2,Germane Load,3
+3,Germane Load,3
+1,Germane Load,4
+3,Germane Load,4
+2,Germane Load,5
+1,Germane Load,3
+3,Germane Load,4
+2,Germane Load,4
+2,Germane Load,2
+1,Germane Load,4
+3,Germane Load,3
+2,Germane Load,5
+1,Germane Load,5
+3,Germane Load,5

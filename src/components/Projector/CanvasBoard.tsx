@@ -373,7 +373,7 @@ function transformDataToElements(
       : 1;
 
     const processedDescription = (node.description ?? '').replace(
-      /([\u4e00-\u9fa5]{12})/g,
+      /([\u4e00-\u9fa5]{5})/g,
       '$1\n'
     ); // 每12个汉字换行
 

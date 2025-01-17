@@ -1503,5 +1503,290 @@
     "role": "relationshipResponse",
     "timestamp": "2025-01-12T19:14:18.843261",
     "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '工艺复兴', 'image': '', 'description': '20世纪70年代的工艺复兴强调传统手工艺，强化了人们对设计品质的重视。'}, {'id': 2, 'keyword': '温德尔·卡斯特勒', 'image': '', 'description': '温德尔·卡斯特勒是一位倡导传统工艺和情感连接的设计师，创造了许多标志性家具作品。'}, {'id': 3, 'keyword': '可持续发展', 'image': '', 'description': '可持续设计通过减少资源消耗和环境影响，提升了现代设计的社会责任感。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '启发和推动'}, {'from': 1, 'to': 3, 'relationship': '实现与目标'}]}, 'generator_chat': '工艺复兴通过温德尔·卡斯特勒的推动，不仅影响了设计领域，还在可持续发展方面设立了新的标准和目标。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T09:34:58.676554",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '迈克尔·格雷夫斯', 'image': '', 'description': '迈克尔·格雷夫斯是一位具有代表性的后现代设计师，擅长将古典元素与现代建筑融合。'}, {'id': 2, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义强调折衷主义和对传统的戏谑，深刻影响了设计领域。'}, {'id': 3, 'keyword': '设计风格', 'image': '', 'description': '后现代设计风格创造了非功能性与情感表达的结合。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '推动后现代主义发展'}, {'from': 3, 'to': 2, 'relationship': '体现后现代设计特点'}]}, 'generator_chat': '迈克尔·格雷夫斯通过他的作品推动了后现代主义的发展，而这种设计风格则体现了当时设计的多样性和情感表达。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T09:36:35.915147",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '仓保史朗', 'image': '', 'description': '仓保史朗是著名的日本设计师，以其独特的设计风格和创新理念闻名。'}, {'id': 2, 'keyword': 'Miss Blanche椅子', 'image': '', 'description': 'Miss Blanche椅子是仓保史朗的经典作品，展现了极简与诗意的融合。'}, {'id': 3, 'keyword': '菲利普·斯塔克', 'image': '19004.png', 'description': '菲利普·斯塔克是国际知名的设计师，以其富有个性的作品和幽默的设计理念而闻名。'}, {'id': 4, 'keyword': '设计交流', 'image': '', 'description': '跨文化设计交流促进了全球设计的包容性与多样性。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '设计与理念'}, {'from': 3, 'to': 4, 'relationship': '促进与传播'}, {'from': 1, 'to': 4, 'relationship': '影响与交流'}]}, 'generator_chat': '仓保史朗与菲利普·斯塔克通过独特设计理念促进了设计的国际交流，增强了公众对设计的理解与欣赏。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T09:38:35.608582",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '秘泉桌', 'image': '', 'description': ''}, {'id': 2, 'keyword': '彼得·夏尔', 'image': '', 'description': ''}, {'id': 3, 'keyword': '瑞士现代主义', 'image': '', 'description': '瑞士现代主义形态严谨，重视结构与清晰性，但被后现代设计挑战。'}, {'id': 4, 'keyword': '新浪潮平面设计', 'image': '', 'description': '新浪潮设计通过层次与丰富的图像打破传统，突出互动与视觉效果。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '设计风格实施者'}, {'from': 2, 'to': 3, 'relationship': '反叛与回应'}, {'from': 3, 'to': 4, 'relationship': '影响与挑战'}]}, 'generator_chat': '新浪潮平面设计由彼得·夏尔开创，通过对瑞士现代主义的反叛，塑造了新兴的设计风格，为广告和平面设计带来了互动与活力。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T09:51:46.450636",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '创意回收运动', 'image': '', 'description': '创意回收运动是在80年代伦敦以废旧材料为基础的设计潮流。'}, {'id': 2, 'keyword': '罗恩·阿拉德', 'image': '20004.png', 'description': '罗恩·阿拉德是著名设计师，以创新设计使用回收材料而闻名。'}, {'id': 3, 'keyword': 'Rover椅', 'image': '', 'description': 'Rover椅是阿拉德于1981年设计，采用旧汽车座椅制作。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '引领与推动'}, {'from': 1, 'to': 3, 'relationship': '实践与体现'}]}, 'generator_chat': '罗恩·阿拉德在创意回收运动中发挥了引领作用，而Rover椅则完美实践了这一设计理念。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:05:19.259231",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '秘泉桌', 'image': '19005.png', 'description': '彼得·夏尔于1984年设计，几何形态与鲜艳色彩突出。'}, {'id': 2, 'keyword': '阿普里尔·格雷曼', 'image': '16024.png', 'description': '先锋设计师，以视觉诗意挑战传统设计。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '影响与启发'}]}, 'generator_chat': '秘泉桌展示了新浪潮设计的特色，同时阿普里尔·格雷曼的作品则进一步影响了这一风格的发展。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:06:28.650200",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '阿普里尔·格雷曼', 'image': '16024.png', 'description': '阿普里尔·格雷曼是新浪潮平面设计的先驱，她的作品充满了鲜艳的色彩和独特的视觉语言。'}, {'id': 2, 'keyword': 'Emigre杂志', 'image': '', 'description': '《Emigre》是1982年创办的杂志，为新浪潮设计提供了传播平台，推动了设计理念的发展。'}, {'id': 3, 'keyword': '瑞士现代主义', 'image': '', 'description': '瑞士现代主义以清晰的结构与理性为特点，成为后现代主义的主要挑战对象。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '推动与传播'}, {'from': 1, 'to': 3, 'relationship': '对抗与挑战'}]}, 'generator_chat': '阿普里尔·格雷曼通过她的作品推动了新浪潮设计，并借助《Emigre》杂志的影响力，与瑞士现代主义形成了鲜明对抗。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:07:33.443720",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯小组', 'image': '19003.png', 'description': '孟菲斯小组成立于1981年，以其后现代设计风格闻名。'}, {'id': 2, 'keyword': 'Tawaraya会话室', 'image': '', 'description': '梅田正得设计的Tawaraya会话室展示了独特的孟菲斯风格。'}, {'id': 3, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '孟菲斯小组的核心人物，推动后现代设计的发展。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '展示与影响'}, {'from': 1, 'to': 3, 'relationship': '领导与创新'}]}, 'generator_chat': '孟菲斯小组通过埃托雷·索特萨斯的领导，展示了Tawaraya会话室，推动了后现代设计风格的发展与文化多样性的接纳。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:09:01.791726",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis设计', 'image': '', 'description': 'Memphis是由埃托雷·索特萨斯创建的后现代设计集团，以其色彩丰富且形式独特的设计作品闻名。'}, {'id': 2, 'keyword': 'Creative Salvage运动', 'image': '', 'description': 'Creative Salvage是1980年代初在伦敦兴起的设计运动，强调使用废料和回收材料。'}, {'id': 3, 'keyword': '汤姆·迪克森', 'image': '', 'description': '汤姆·迪克森是Creative Salvage运动的关键人物，他通过手工艺品提升设计的个性和功能性。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '同时期内的风格代表'}, {'from': 2, 'to': 3, 'relationship': '运动影响下的设计师'}]}, 'generator_chat': 'Memphis设计与Creative Salvage运动共同推动了后现代主义的发展，汤姆·迪克森作为运动中的重要设计师，体现了这一风格的手工艺特征。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:09:23.323224",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '深圳后现代主义', 'image': '', 'description': '深圳的后现代主义体现在多样化的建筑与空间设计中。'}, {'id': 2, 'keyword': '公共建筑', 'image': '', 'description': '公共建筑中的后现代设计融合了多种风格元素。'}, {'id': 3, 'keyword': '折衷主义', 'image': '', 'description': '后现代设计通过折衷手法将多样元素结合在一起。'}, {'id': 4, 'keyword': '国际设计', 'image': '', 'description': '后现代主义设计在全球各大城市的多个领域产生影响。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '表现与应用'}, {'from': 2, 'to': 3, 'relationship': '实现与融合'}, {'from': 3, 'to': 4, 'relationship': '影响与扩展'}]}, 'generator_chat': '深圳的后现代主义设计通过公共建筑的多样化应用，体现了折衷主义手法，并在国际设计中扩展了影响力。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:10:31.782902",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '创意回收运动', 'image': '', 'description': '反映后现代主义的设计潮流，强调从废料中创造艺术和功能的物品。'}, {'id': 2, 'keyword': 'Memphis设计集团', 'image': '', 'description': '1981年在米兰亮相，标志着后现代设计的兴起，强调文化多样性。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '在设计中体现多元化和反叛精神，打破现代主义的规范。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '推动与反映'}, {'from': 2, 'to': 3, 'relationship': '体现与实践'}]}, 'generator_chat': '创意回收运动通过重用材料推动后现代主义，Memphis设计集团则将此反映于其多元化设计作品中，共同赋予设计更深的文化内涵。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:11:51.964876",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '埃托雷·索特萨斯', 'image': '19012.png', 'description': '埃托雷·索特萨斯是著名的意大利设计师，梅菲斯设计集团的创始人。'}, {'id': 2, 'keyword': '梅菲斯设计', 'image': '19013.png', 'description': '梅菲斯设计以大胆色彩和非传统形态著称，挑战现代主义设计的规范。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义强调设计的多样性与主观性，标志着对传统设计规则的反叛。'}, {'id': 4, 'keyword': '计算机辅助设计（CAD）', 'image': '', 'description': 'CAD技术使设计师能够快速实现设计理念和原型，推动了设计创新。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创立与推动'}, {'from': 3, 'to': 1, 'relationship': '影响与启发'}, {'from': 2, 'to': 4, 'relationship': '实现与工具'}]}, 'generator_chat': '埃托雷·索特萨斯通过梅菲斯设计推动了后现代主义，并借助计算机辅助设计实现了创新与多样性。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:12:13.997452",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯设计', 'image': '', 'description': '孟菲斯设计是艾托雷·索特萨斯于1981年创建的设计集体，标志着后现代设计的诞生。'}, {'id': 2, 'keyword': '艾托雷·索特萨斯', 'image': '', 'description': '艾托雷·索特萨斯是后现代设计的领军人物，以其丰富多样的设计风格闻名。'}, {'id': 3, 'keyword': 'Creative Salvage运会', 'image': '', 'description': 'Creative Salvage运动于1980年代在伦敦兴起，反映了对现代设计的反叛。'}, {'id': 4, 'keyword': 'Sarapis椅子', 'image': '', 'description': 'Sarapis椅子是菲利普·斯塔克的代表作品，体现了后现代幽默感和功能性。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创始与领导'}, {'from': 1, 'to': 3, 'relationship': '反叛与创造'}, {'from': 2, 'to': 4, 'relationship': '设计与创新'}]}, 'generator_chat': '后现代主义通过孟菲斯设计与艾托雷·索特萨斯的领导，反叛了现代设计规则，而Creative Salvage运动则展现了设计的多样性和新可能性。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:13:32.574947",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯运动', 'image': '', 'description': '孟菲斯运动是后现代设计的重要代表，强调形式和色彩的大胆用法。'}, {'id': 2, 'keyword': '新浪潮平面设计', 'image': '', 'description': '新浪潮平面设计在视觉语言上具有强烈的创新性，使用新技术颠覆传统。'}, {'id': 3, 'keyword': '创意回收运动', 'image': '', 'description': '创意回收运动倡导利用废弃材料，展现独特个人风格。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '激励与推动'}, {'from': 2, 'to': 3, 'relationship': '再创新与影响'}, {'from': 1, 'to': 3, 'relationship': '理念共鸣与表象'}]}, 'generator_chat': '后现代设计的孟菲斯运动和新浪潮平面设计相互激励，推动了创意回收运动，形成了独特的设计文化和全球影响力。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:15:14.063068",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯运动', 'image': '', 'description': '孟菲斯运动融合多元风格，强调色彩和形状的大胆运用。'}, {'id': 2, 'keyword': '新浪潮平面设计', 'image': '', 'description': '新浪潮平面设计反对严谨，采用新媒体艺术元素创造视觉冲击。'}, {'id': 3, 'keyword': '创意回收运动', 'image': '', 'description': '创意回收运动强调从废物中寻找设计灵感，倡导可持续性。'}, {'id': 4, 'keyword': '品牌崛起', 'image': '', 'description': '品牌崛起使设计具备文化符号价值，影响身份认同。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '风格互补与影响'}, {'from': 2, 'to': 3, 'relationship': '反叛与创新'}, {'from': 3, 'to': 4, 'relationship': '可持续性与身份'}]}, 'generator_chat': '后现代主义设计的多样性反映在孟菲斯运动与新浪潮平面设计之间的相互影响，同时创意回收运动将可持续性与品牌文化价值结合，增强了设计的社会意义。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:15:54.724028",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯运动', 'image': '', 'description': '以夸张设计和丰富色彩著称，影响了后现代设计。'}, {'id': 2, 'keyword': '新波平面设计', 'image': '', 'description': '打破现代主义限制，采用多元文化元素，创造视觉深度和动态效果。'}, {'id': 3, 'keyword': '创意回收运动', 'image': '', 'description': '通过废弃物的设计，强调环境意识，主张可持续发展。'}, {'id': 4, 'keyword': '品牌崛起', 'image': '', 'description': '品牌设计促进国际化，塑造了消费文化与身份。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '影响与反叛'}, {'from': 2, 'to': 3, 'relationship': '生态意识的激发'}, {'from': 4, 'to': 1, 'relationship': '塑造文化标识'}]}, 'generator_chat': '后现代设计中的孟菲斯运动与新波平面设计相互影响，共同推动了设计的变革，同时品牌崛起则重新塑造了文化身份。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:16:11.822795",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯设计', 'image': '', 'description': '由埃托雷·索特萨斯于1981年创建，融合多元文化与设计语言。'}, {'id': 2, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '后现代主义设计的先驱，强调个性与实验性。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '1980年代兴起，挑战现代主义的规则与限制。'}, {'id': 4, 'keyword': '色彩鲜艳的设计', 'image': '', 'description': '后现代主义作品特征之一，体现个性与趣味。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创始与领导'}, {'from': 1, 'to': 3, 'relationship': '体现与发展'}, {'from': 2, 'to': 3, 'relationship': '影响与传播'}]}, 'generator_chat': '后现代主义设计在埃托雷·索特萨斯的引领下，通过孟菲斯设计体现了对现代主义的挑战，推动了设计艺术的发展与文化交流。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:17:30.438107",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '伊托雷·索特萨斯', 'image': '', 'description': '伊托雷·索特萨斯是后现代主义和孟菲斯设计运动的重要人物。'}, {'id': 2, 'keyword': '孟菲斯设计', 'image': '', 'description': '孟菲斯设计以其丰富的颜色和独特形态反对现代主义。'}, {'id': 3, 'keyword': '阿普里尔·格雷曼', 'image': '', 'description': '阿普里尔·格雷曼是美国新图形设计潮流的先锋，推动视觉情感表达。'}, {'id': 4, 'keyword': '品牌设计', 'image': '', 'description': '后现代主义引发品牌意识的崛起，重塑个体认同。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '推动与代表'}, {'from': 2, 'to': 3, 'relationship': '影响与启发'}, {'from': 3, 'to': 4, 'relationship': '表达与重塑'}]}, 'generator_chat': '后现代主义通过伊托雷·索特萨斯的孟菲斯设计和阿普里尔·格雷曼的图形表达，推动了设计的多元化与品牌意识的崛起，对个体身份重塑产生了深远影响。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:17:47.253615",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis设计', 'image': '', 'description': 'Memphis设计是1980年代后现代主义的典型代表，以玩味和多样化著称。'}, {'id': 2, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '埃托雷·索特萨斯是Memphis设计的创始人，推动了后现代设计的流行。'}, {'id': 3, 'keyword': '创意回收运动', 'image': '', 'description': '创意回收运动在1980年代强调通过再利用废物创造独特设计。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创始与推动'}, {'from': 1, 'to': 3, 'relationship': '影响与挑战'}]}, 'generator_chat': '后现代主义通过Memphis设计和埃托雷·索特萨斯的创立，推动了设计的多元化，同时创意回收运动对传统设计发起了有效的挑战。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:18:59.181642",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis', 'image': '', 'description': 'Memphis是一个以后现代风格闻名的设计团体，以大胆的色彩和形状而著称。'}, {'id': 2, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '埃托雷·索特萨斯是Memphis设计团体的创始人之一，以其先锋理念影响深远。'}, {'id': 3, 'keyword': '克劳梅特', 'image': '', 'description': '克劳梅特通过其作品体现出后现代主义的优雅和丰富的情感。'}, {'id': 4, 'keyword': '阿勒西', 'image': '', 'description': '阿勒西致力于将传统工艺与现代设计结合，产生独特的艺术作品。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创立与先锋'}, {'from': 1, 'to': 3, 'relationship': '影响与互补'}, {'from': 1, 'to': 4, 'relationship': '合作与创新'}]}, 'generator_chat': '后现代主义通过Memphis的先锋设计和阿勒西的传统工艺结合，展现了设计的新面貌，影响深远。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:19:10.758278",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '优优独播剧场', 'image': '', 'description': '提供多元化的独家内容和高质量原创剧集的平台。'}, {'id': 2, 'keyword': '流媒体服务', 'image': '', 'description': '允许用户随时随地观看丰富的影视内容。'}, {'id': 3, 'keyword': '节目更新', 'image': '', 'description': '与知名导演合作，持续更新剧集以满足观众需求。'}], 'connections': []}, 'generator_chat': ''}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:20:43.239713",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis设计团体', 'image': '', 'description': 'Memphis设计团体是由Ettore Sottsass于1980年创立，以其色彩鲜艳和独特形式著称。'}, {'id': 2, 'keyword': 'Creative Salvage运动', 'image': '', 'description': 'Creative Salvage是1980年代初期起源于伦敦的设计运动，强调对废弃材料的创造性利用。'}, {'id': 3, 'keyword': 'Ettore Sottsass', 'image': '', 'description': 'Ettore Sottsass是意大利著名设计师，是后现代设计的关键人物。'}, {'id': 4, 'keyword': '设计艺术', 'image': '', 'description': '设计艺术融合了艺术与实用功能，推动了设计的新形式出现。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '影响与发展'}, {'from': 1, 'to': 3, 'relationship': '领导与创新'}, {'from': 4, 'to': 2, 'relationship': '概念与实践'}]}, 'generator_chat': 'Memphis设计团体与Creative Salvage运动相互影响，共同推动了后现代主义设计的发展，而Ettore Sottsass在其中发挥了领导与创新作用。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:21:30.514270",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis设计组', 'image': '', 'description': '由Ettore Sottsass创立，强调多元文化与色彩的设计团体。'}, {'id': 2, 'keyword': 'Kuramata Shiro', 'image': '', 'description': '著名日本设计师，以其超现实家具作品闻名，融合了诗意与情感。'}, {'id': 3, 'keyword': '创意复生运动', 'image': '', 'description': '1980年代的设计运动，强调回收与再利用的设计理念。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '影响与启发'}, {'from': 2, 'to': 3, 'relationship': '理念与方法的对比'}]}, 'generator_chat': '后现代主义通过Memphis设计组的多元影响，以及Kuramata Shiro的艺术表现，推动了创意复生运动的理念，形成了一个更广泛的设计文化环境。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:22:01.312054",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯设计', 'image': '16001.png', 'description': '孟菲斯设计于1981年成立，强调色彩与图形的多样性。'}, {'id': 2, 'keyword': '埃托雷·索达斯', 'image': '', 'description': '意大利设计师，后现代主义的奠基人之一。'}, {'id': 3, 'keyword': '阿莱西茶与咖啡项目', 'image': '', 'description': '由阿莱西公司实施的后现代设计项目，展现全球设计师的作品。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '倡导与创立'}, {'from': 1, 'to': 3, 'relationship': '展示与推广'}]}, 'generator_chat': '后现代主义通过埃托雷·索达斯的孟菲斯设计推动了设计语言的多样性，同时阿莱西茶与咖啡项目进一步展示了全球设计精英的创作。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:22:24.310958",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯', 'image': '', 'description': '孟菲斯是由埃托尔·索特萨斯于1980年代创立的后现代设计集团。'}, {'id': 2, 'keyword': '创意拯救运动', 'image': '', 'description': '创意拯救运动强调使用废弃材料构建独特的设计，是后现代主义的一部分。'}, {'id': 3, 'keyword': '黑田善太郎', 'image': '', 'description': '黑田善太郎是著名日本设计师，作品融合了东方传统与后现代设计。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '反叛与影响'}, {'from': 1, 'to': 3, 'relationship': '国际化趋势'}]}, 'generator_chat': '后现代主义通过孟菲斯和创意拯救运动的反叛精神与黑田善太郎的国际化趋势，共同推动了全球设计文化的转型。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:22:44.622179",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis设计团体', 'image': '', 'description': '1980年代的设计集体，以色彩艳丽和不对称形式著称。'}, {'id': 2, 'keyword': 'Ettore Sottsass', 'image': '', 'description': '意大利设计师，Memphis的创建者之一，推动了后现代设计的发展。'}, {'id': 3, 'keyword': 'Creative Salvage', 'image': '', 'description': '1980年代伦敦兴起的运动，利用废弃材料进行创作，反映反消费主义。'}, {'id': 4, 'keyword': '设计作为文化符号', 'image': '', 'description': '创新设计不再单一，成为个人表达和社会态度的反映。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '领导与创立'}, {'from': 3, 'to': 1, 'relationship': '反叛传统'}, {'from': 4, 'to': 1, 'relationship': '文化表达'}, {'from': 4, 'to': 3, 'relationship': '反映社会'}]}, 'generator_chat': 'Memphis设计团体在Ettore Sottsass的引领下，象征着后现代设计的创新，而Creative Salvage运动则通过废弃材料的重塑，反映了对现代消费文化的深刻反思。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:23:00.274659",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Royalton酒店', 'image': '19006.png', 'description': 'Royalton酒店由菲利普·斯塔克设计，1988年开业，是后现代设计的典范。'}, {'id': 2, 'keyword': 'Alessi', 'image': '19004.png', 'description': 'Alessi通过Tea & Coffee Piazza项目推动后现代设计，云集领先设计师。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义在1980年代强调情感与文化身份的表达，超越了功能主义。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '合作与推动'}, {'from': 1, 'to': 3, 'relationship': '表现形式'}]}, 'generator_chat': 'Royalton酒店的设计与Alessi的项目相互促进，共同标志着后现代主义在1980年代对设计表达的影响。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:23:23.062674",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis设计群体', 'image': '', 'description': 'Memphis是1980年代起源于意大利的后现代设计团体，以突破传统设计规范而闻名。'}, {'id': 2, 'keyword': 'Creative Salvage运动', 'image': '', 'description': 'Creative Salvage强调使用回收材料，创造功能美感作品，具有反主流的设计理念。'}, {'id': 3, 'keyword': 'Ron Arad', 'image': '', 'description': 'Ron Arad是知名设计师，其作品通过回收物资展现后现代美学。'}, {'id': 4, 'keyword': 'Tom Dixon', 'image': '', 'description': 'Tom Dixon以创新材料和手工艺著称，推动后现代设计的发展。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创新与启发'}, {'from': 2, 'to': 3, 'relationship': '风格与实践'}, {'from': 3, 'to': 4, 'relationship': '同伴设计师'}]}, 'generator_chat': '后现代主义设计的发展受到Memphis群体和Creative Salvage运动的启发，通过Ron Arad与Tom Dixon推动了新的设计风格和实践。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:24:33.296598",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '艾托雷·索托萨斯', 'image': '', 'description': '意大利设计师，Memphis设计风格的创始人之一，推动了后现代设计的发展。'}, {'id': 2, 'keyword': 'Memphis设计', 'image': '', 'description': '以独特的色彩和形式著称的设计风格，强调多样性和文化融合。'}, {'id': 3, 'keyword': '菲利普·斯塔克', 'image': '', 'description': '以创新和可持续性著称的法国设计师，将功能和美学结合。'}, {'id': 4, 'keyword': 'Creative Salvage运动', 'image': '', 'description': '强调使用再生材料的设计运动，推动环境友好的设计实践。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创始与推动'}, {'from': 3, 'to': 2, 'relationship': '代表与体现'}, {'from': 4, 'to': 2, 'relationship': '相辅与推动'}]}, 'generator_chat': '艾托雷·索托萨斯创立Memphis设计，菲利普·斯塔克的作品贯彻这一风格，Creative Salvage运动则通过环保实践支持了后现代设计的发展。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:25:12.770557",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '9093壶', 'image': '19008.png', 'description': '1985年设计的9093壶，采用了流线型设计。'}, {'id': 2, 'keyword': '菲利普·斯塔克', 'image': '19018.png', 'description': '设计师菲利普·斯塔克，创造了多款标志性产品。'}, {'id': 3, 'keyword': '数字创新', 'image': '', 'description': '数字技术推动设计革新，从产品外观到制作过程。'}, {'id': 4, 'keyword': '品牌文化', 'image': '', 'description': '1980年代品牌文化崛起，影响设计与消费。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '代表和推动'}, {'from': 1, 'to': 3, 'relationship': '体现与结合'}, {'from': 1, 'to': 4, 'relationship': '反映与创造'}]}, 'generator_chat': '1980年代的9093壶是菲利普·斯塔克设计的代表作，展示了数字创新和品牌文化对设计的深刻影响。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:25:31.804787",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯设计集团', 'image': '19003.png', 'description': '1981年成立，标志着后现代主义设计的兴起，突破传统设计界限。'}, {'id': 2, 'keyword': '埃托雷·索特萨斯', 'image': '19004.png', 'description': '孟菲斯设计集团的创始人，以新奇大胆的设计风格著称。'}, {'id': 3, 'keyword': '设计与品牌文化', 'image': '', 'description': '80年代设计大众化，品牌成为文化符号的新时代，功能变得尤为重要。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创始与领导'}, {'from': 1, 'to': 3, 'relationship': '品牌与设计联动'}]}, 'generator_chat': '孟菲斯设计集团在埃托雷·索特萨斯的引领下，推动了80年代设计与品牌文化的互动，为后现代设计奠定了基础。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:25:58.621780",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '菲利普·斯塔克', 'image': '', 'description': '菲利普·斯塔克是著名的设计师，以其创新和个性化设计著称。'}, {'id': 2, 'keyword': '阿普里尔·格雷曼', 'image': '19021.png', 'description': '阿普里尔·格雷曼是美国代表性新浪潮设计师，以其挑战传统的作品而闻名。'}, {'id': 3, 'keyword': '珍妮·范·图恩', 'image': '', 'description': '珍妮·范·图恩通过图像诗性表达设计，推动了后现代主义的转变。'}, {'id': 4, 'keyword': '摩根酒店', 'image': '20002.png', 'description': '摩根酒店由菲利普·斯塔克设计，开创了设计酒店的概念。'}], 'connections': [{'from': 1, 'to': 4, 'relationship': '创造与开创'}, {'from': 2, 'to': 3, 'relationship': '并肩推动'}, {'from': 2, 'to': 4, 'relationship': '影响与代表'}]}, 'generator_chat': '1980年代设计新潮流在菲利普·斯塔克的开创下蓬勃发展，阿普里尔·格雷曼与珍妮·范·图恩并肩推动设计向个人表达的转变。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:26:18.406382",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis设计群体', 'image': '', 'description': 'Memphis设计群体是后现代设计运动的先锋，以色彩鲜艳和幽默风格著称。'}, {'id': 2, 'keyword': '艾托尔·索特萨斯', 'image': '', 'description': '设计师艾托尔·索特萨斯创立了Memphis设计群体，推动了1980年代后现代设计的兴起。'}, {'id': 3, 'keyword': '计算机辅助设计', 'image': '', 'description': '计算机辅助设计(CAD)使设计行业发生巨大变革，提高了设计的精确性与创造性。'}, {'id': 4, 'keyword': '可持续设计', 'image': '', 'description': '可持续设计的理念在2002年被《无废理念》进一步推广，关注产品对环境的影响。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '推崇与传播'}, {'from': 1, 'to': 3, 'relationship': '创新与技术结合'}, {'from': 3, 'to': 4, 'relationship': '影响与发展'}]}, 'generator_chat': '1980年代Memphis设计群体在艾托尔·索特萨斯的引领下，通过后现代设计风格创新，数字技术进步则在设计精准性上产生深远影响，并促进了可持续设计的发展。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:26:50.300583",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '邁普斯小组', 'image': '19003.png', 'description': '1981年创建的多元化设计集体，代表了后现代主义设计的高峰。'}, {'id': 2, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '意大利设计师，邁普斯小组的创始人之一，以多彩大胆设计著称。'}, {'id': 3, 'keyword': 'iMac', 'image': '20007.png', 'description': '1998年由Jonathan Ive设计的个人电脑，以其独特的设计和用户体验闻名。'}, {'id': 4, 'keyword': '后现代主义', 'image': '', 'description': '1980年代兴起的设计风潮，以情感和个性化表达为特征。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '领导与创新'}, {'from': 3, 'to': 2, 'relationship': '设计与影响'}, {'from': 4, 'to': 1, 'relationship': '风潮与群体'}]}, 'generator_chat': '邁普斯小组在埃托雷·索特萨斯的领导下，产生了影响深远的设计风潮，而iMac则展示了如何通过设计增强用户互动，体现后现代主义的核心理念。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:27:09.136476",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '埃托尔·索特萨斯', 'image': '', 'description': '埃托尔·索特萨斯是意大利设计师，后现代主义的先锋，创办了梅菲斯设计团队。'}, {'id': 2, 'keyword': '梅菲斯设计团体', 'image': '', 'description': '梅菲斯设计团体以其夸张的设计和对传统形式的挑战而闻名，推动了后现代风潮。'}, {'id': 3, 'keyword': '创意回收运动', 'image': '', 'description': '创意回收运动提倡使用废弃材料，强调可持续设计和环保意识。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创办与推动'}, {'from': 2, 'to': 3, 'relationship': '理念与风格'}]}, 'generator_chat': '后现代主义通过埃托尔·索特萨斯的创办和梅菲斯设计团体的推动，促进了对传统设计的反叛，结合创意回收理念形成新的设计方向。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:27:21.772895",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'iPhone', 'image': '20026.png', 'description': 'iPhone是一款结合多功能的智能手机，设计突显用户体验和直观性能。'}, {'id': 2, 'keyword': '数字化设计', 'image': '', 'description': '数字化设计推动了设计知识的传播，使全球设计师更为紧密连接。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '驱动与促进'}]}, 'generator_chat': 'iPhone的设计以用户体验为核心，推动了数字化设计的变革，让全球设计师在更广阔的平台上交流。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:27:40.171891",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '艾托雷·索特萨斯', 'image': '', 'description': '艾托雷·索特萨斯是后现代主义设计的先锋，创办了孟菲斯设计集团，推动新波设计风格。'}, {'id': 2, 'keyword': '孟菲斯设计', 'image': '', 'description': '孟菲斯设计以色彩丰富和形式多样而闻名，体现了后现代主义设计的核心精神。'}, {'id': 3, 'keyword': '平面设计的后现代主义', 'image': '', 'description': '后现代平面设计打破了现代主义的严格规范，强调图像和内容的多样性与个性。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创始与倡导'}, {'from': 2, 'to': 3, 'relationship': '影响与转变'}]}, 'generator_chat': '艾托雷·索特萨斯创办了孟菲斯设计，极大地影响了后现代平面设计的演变，推动了设计领域的多样化与个性化。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:27:56.160144",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '秘泉桌', 'image': '19005.png', 'description': '彼得·夏尔设计的标志性家具，代表了80年代的新浪潮设计。'}, {'id': 2, 'keyword': 'Memphis设计集团', 'image': '', 'description': '1981年创立，倡导玩乐主义设计风格，打破现代主义的束缚。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '1980年代盛行，强调多元与个性，反对严谨的现代主义。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '象征与推动'}, {'from': 1, 'to': 3, 'relationship': '体现与创新'}]}, 'generator_chat': '1980年代，后现代主义通过秘泉桌代表着设计的变化，推动了Memphis设计集团的兴起，使设计成为文化表达的象征。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:28:19.914944",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '迪特·拉姆斯', 'image': '19019.png', 'description': '迪特·拉姆斯是后现代设计的先驱，他强调功能与简约的重要性。'}, {'id': 2, 'keyword': '阿普里尔·格雷曼', 'image': '19021.png', 'description': '阿普里尔·格雷曼通过结合传统与现代，推动了新的设计表达。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义挑战了传统设计概念，强调多样性和个性化。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '影响与启发'}, {'from': 2, 'to': 3, 'relationship': '推动与融合'}, {'from': 1, 'to': 3, 'relationship': '定义与革新'}]}, 'generator_chat': '1980年代的设计潮流中，迪特·拉姆斯和阿普里尔·格雷曼通过功能与美学的结合，共同推动后现代主义的发展，启发了多样性和个性化的设计理念。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:28:41.558584",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯集团', 'image': '19003.png', 'description': '后现代设计先锋，强调丰富的颜色与形式。'}, {'id': 2, 'keyword': '苹果公司', 'image': '19019.png', 'description': '以优雅的设计改变计算机和手机市场。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '对现代主义的反叛，强调多样性与情感。'}], 'connections': [{'from': 1, 'to': 3, 'relationship': '体现与推动'}, {'from': 2, 'to': 3, 'relationship': '商业化与表达'}]}, 'generator_chat': '1980年代的设计通过孟菲斯集团和苹果的产品，将后现代主义转变为一种重要的文化和商业力量，推动设计情感化和多样化的发展。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:28:59.273573",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯设计', 'image': '19003.png', 'description': '孟菲斯是1981年成立的设计团体，以其色彩丰富、形式独特的后现代设计著称。'}, {'id': 2, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义设计打破了现代主义的严格形式，强调个性和多样性。'}, {'id': 3, 'keyword': '品牌文化', 'image': '', 'description': '品牌文化在1980年代成为重要的社会符号，影响消费者的选择。'}, {'id': 4, 'keyword': '数字创新', 'image': '', 'description': '数字创新为设计提供了更多可能性，改变了设计和生产方式。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创新与影响'}, {'from': 1, 'to': 3, 'relationship': '符号与表达'}, {'from': 3, 'to': 4, 'relationship': '促进与支持'}]}, 'generator_chat': '孟菲斯设计作为后现代主义的代表，促进了品牌文化的发展，而数字创新则为设计提供了新的可能性和市场机会。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:29:19.628728",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis设计', 'image': '', 'description': 'Memphis设计于1981年首次亮相，标志着后现代设计的兴起，通过大胆的色彩和形式打破传统。'}, {'id': 2, 'keyword': 'Creative Salvage', 'image': '', 'description': 'Creative Salvage运动由设计师汤姆·迪克森等人发起，强调材料的再利用与反叛精神。'}, {'id': 3, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '埃托雷·索特萨斯是Memphis设计的创始人，推动了设计的多样性和文化引用。'}, {'id': 4, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义在1980年代盛行，强调主观感受和个人表达，改变了设计界的面貌。'}], 'connections': [{'from': 1, 'to': 3, 'relationship': '推动与创始'}, {'from': 2, 'to': 1, 'relationship': '反叛与创新'}, {'from': 4, 'to': 1, 'relationship': '文化交流与影响'}, {'from': 4, 'to': 3, 'relationship': '理念与实践连接'}]}, 'generator_chat': '1980年代后现代主义与Memphis设计的兴起密切相关，同时Creative Salvage运动展示了反叛精神，塑造了新的设计理念。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:29:37.679984",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义设计反映了对传统现代主义的反叛，强调个性和情感。'}, {'id': 2, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '设计师埃托雷·索特萨斯是后现代主义的代表，通过色彩和材料创新了家具设计。'}, {'id': 3, 'keyword': '品牌文化', 'image': '', 'description': '品牌成为身份象征，消费者通过品牌表达自我认同。'}, {'id': 4, 'keyword': 'CAD设计', 'image': '', 'description': 'CAD软件的应用提高了设计效率，使个性化设计成为可能。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '推动与代表'}, {'from': 3, 'to': 1, 'relationship': '反映与呈现'}, {'from': 4, 'to': 1, 'relationship': '促进与改变'}]}, 'generator_chat': '后现代主义设计在埃托雷·索特萨斯的影响下，推动了品牌文化的兴起，并通过CAD设计的应用，促进了设计创新与个性化。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:29:54.281618",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '秘泉桌', 'image': '19005.png', 'description': '彼得·夏尔的卓越设计，1984年。'}, {'id': 2, 'keyword': '阿普里尔·格雷曼', 'image': '16024.png', 'description': '美国新浪潮设计先锋。'}, {'id': 3, 'keyword': '珍妮·范·图恩', 'image': '', 'description': '将现代主义与后现代主义融合的设计师。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '反叛与创新'}, {'from': 1, 'to': 3, 'relationship': '表达与转接'}, {'from': 2, 'to': 3, 'relationship': '共同探索'}]}, 'generator_chat': '1980年代的设计以彼得·夏尔的秘泉桌为代表，反映出对传统的反叛，而阿普里尔·格雷曼与珍妮·范·图恩则共同倡导了情感和文化的表达。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:30:12.630538",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'iPhone', 'image': '20026.png', 'description': 'iPhone是由Jonathan Ive设计，结合多种功能，彻底改变智能手机设计。'}, {'id': 2, 'keyword': 'Cradle to Cradle', 'image': '20024.png', 'description': '《Cradle to Cradle》探讨产品生命周期，倡导可持续设计。'}, {'id': 3, 'keyword': '设计与环境', 'image': '', 'description': '环境设计关注减少材料浪费和生态足迹，提升可持续性。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '推动与教育'}, {'from': 1, 'to': 3, 'relationship': '设计与环境考量'}, {'from': 2, 'to': 3, 'relationship': '理论与实践结合'}]}, 'generator_chat': '设计师通过iPhone提升人机交互，同时《Cradle to Cradle》理论引导环保设计，强调设计应关注生态和可持续性。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:30:26.512356",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '梅菲斯特设计', 'image': '', 'description': '代表后现代设计的先锋团队，主张文化多元与情感表达。'}, {'id': 2, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '后现代设计大师，梅菲斯特设计小组创始人。'}, {'id': 3, 'keyword': '设计狗', 'image': '', 'description': '使用废料的设计团体，倡导个性化与反主流美学。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创始与推动'}, {'from': 1, 'to': 3, 'relationship': '共同探索'}]}, 'generator_chat': '梅菲斯特设计与埃托雷·索特萨斯共同推动设计理念的创新，设计狗则通过个性化表达延续这一进程，形成设计领域的重要趋势。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:30:52.098613",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis设计集团', 'image': '19003.png', 'description': 'Memphis设计集团于1981年成立，是后现代主义的先锋，创造出色彩鲜艳的家具，打破传统界限。'}, {'id': 2, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义在1980年代兴起，强调多元文化与个体表达，挑战传统美学。'}, {'id': 3, 'keyword': '数字化工具', 'image': '', 'description': '数字化工具的普及极大地改变了设计流程，使设计理念更快转化为现实。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '先锋与推动'}, {'from': 1, 'to': 3, 'relationship': '新工具与支持'}]}, 'generator_chat': 'Memphis设计集团通过后现代主义的视角推动了设计界的变革，同时数字化工具的普及加速了设计理念的实现。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:31:06.664415",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '后现代主义', 'image': '19003.png', 'description': '后现代主义是1980年代设计风格的核心，强调个性和非传统元素。'}, {'id': 2, 'keyword': '菲利普·斯塔克', 'image': '19017.png', 'description': '菲利普·斯塔克是后现代设计的标志性人物，以其戏剧化的室内设计而闻名。'}, {'id': 3, 'keyword': '生态设计', 'image': '', 'description': '生态设计关注产品的环境影响，强调可持续发展和产品的生命周期。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '引领与创新'}, {'from': 2, 'to': 3, 'relationship': '转变与反思'}]}, 'generator_chat': '后现代主义在菲利普·斯塔克的引领下，促使设计师们反思生态设计，以应对可持续发展的新挑战。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:31:23.362855",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis派', 'image': '', 'description': 'Memphis派是一个以实验性、色彩鲜艳闻名的后现代设计团队。'}, {'id': 2, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '埃托雷·索特萨斯是Memphis派的创始人之一，对后现代设计有重要影响。'}, {'id': 3, 'keyword': '数字设计', 'image': '', 'description': '数字设计革新了设计流程，提高了设计师的创作自由度。'}, {'id': 4, 'keyword': '设计与文化', 'image': '', 'description': '设计成为反映文化和社会变迁的重要工具，体现消费者需求与技术进步的结合。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '代表与引领'}, {'from': 2, 'to': 3, 'relationship': '推动与促进'}, {'from': 3, 'to': 4, 'relationship': '反映与连接'}]}, 'generator_chat': 'Memphis派与埃托雷·索特萨斯的实践推动了数字设计的崛起，此过程同时反映了设计与文化之间日益紧密的关系。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:31:39.119261",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '梅菲斯集团', 'image': '19003.png', 'description': '梅菲斯集团成立于1981年，以其玩味且富有表现力的设计在后现代设计中占据重要地位。'}, {'id': 2, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '埃托雷·索特萨斯是梅菲斯集团的创始成员之一，他的设计引领了80年代的后现代风潮。'}, {'id': 3, 'keyword': '茶具项目', 'image': '19006.png', 'description': '茶具项目是阿莱西于1984年发起的，集结多位设计师探讨后现代设计的表现。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '推动与合作'}, {'from': 1, 'to': 3, 'relationship': '项目联动'}]}, 'generator_chat': '梅菲斯集团通过埃托雷·索特萨斯的设计哲学促进了后现代设计的发展，而茶具项目则进一步展示了这一思想的贯彻与集合。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:36:13.740232",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis', 'image': '19003.png', 'description': 'Memphis团队通过创意鲜明的作品推动了后现代主义设计。'}, {'id': 2, 'keyword': '秘泉桌', 'image': '19005.png', 'description': '彼得·夏尔的秘泉桌代表了加州新潮流设计，展现出叛逆与多样性。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义挑战现代设计的严谨，鼓励个性与多样性。'}], 'connections': [{'from': 1, 'to': 3, 'relationship': '引领与推动'}, {'from': 2, 'to': 1, 'relationship': '体现与响应'}, {'from': 2, 'to': 3, 'relationship': '象征与反叛'}]}, 'generator_chat': '1980年代后现代主义由Memphis团队引领，彼得·夏尔的秘泉桌则体现了这一创新与叛逆的设计精神。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:36:26.759499",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '菲利普·斯塔克', 'image': '20014.png', 'description': '著名设计师，以其创新的酒店设计闻名。'}, {'id': 2, 'keyword': '乔纳森·艾夫', 'image': '20026.png', 'description': '苹果设计团队成员，设计了iMac等经典产品。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '强调个性与文化背景的设计风格，反对纯功能主义。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '影响与启发'}, {'from': 2, 'to': 3, 'relationship': '体现与传承'}]}, 'generator_chat': '菲利普·斯塔克通过他的设计影响乔纳森·艾夫，同时这两位设计师都体现了后现代主义设计的重要性及其在当代设计中的传承。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:38:30.878394",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '后现代主义设计', 'image': '', 'description': '后现代主义设计着重于文化与情感的表达，超越传统功能。'}, {'id': 2, 'keyword': '菲利普·斯塔克', 'image': '20018.png', 'description': '菲利普·斯塔克是后现代设计的先锋，因其创新家具闻名。'}, {'id': 3, 'keyword': '可持续设计', 'image': '', 'description': '可持续设计强调环保与功能的和谐结合。'}, {'id': 4, 'keyword': '摇篮到摇篮', 'image': '', 'description': '该书强调生态友好的设计理念，激发了设计界对可持续性的关注。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '代表与探索'}, {'from': 1, 'to': 3, 'relationship': '引发关注'}, {'from': 3, 'to': 4, 'relationship': '理念与实践'}]}, 'generator_chat': '后现代主义设计通过菲利普·斯塔克的创新引领了新的设计探索，同时可持续设计的理念在《摇篮到摇篮》中得以深化，促进了设计界的环保关注。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:40:28.378279",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '热熔胶枪', 'image': '', 'description': '热熔胶枪是一种常用于快速固定材料的工具，广泛应用于设计及家装中。'}, {'id': 2, 'keyword': '固粘剂', 'image': '', 'description': '固粘剂在工业设计中用于创造稳固持久的接合，强调材料的结合方式。'}, {'id': 3, 'keyword': '可持续设计', 'image': '', 'description': '可持续设计倡导使用环保材料和减少浪费，以促进生态友好的产品制作。'}, {'id': 4, 'keyword': '克雷杜克', 'image': '20024.png', 'description': '《克雷杜克》一书强调产品生命周期的环境影响，对设计实践影响深远。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '常用方法'}, {'from': 3, 'to': 4, 'relationship': '理念推动'}]}, 'generator_chat': '热熔胶枪和固粘剂是在设计中常用的固定方法，可持续设计和克雷杜克则揭示了设计对环境的深远影响。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:40:42.949851",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '热熔胶枪', 'image': '', 'description': '热熔胶枪用于快速固定各类材料。'}, {'id': 2, 'keyword': '固粘剂', 'image': '', 'description': '固粘剂用于提供更持久的粘合效果。'}, {'id': 3, 'keyword': 'Johan Huldt 和 Jan Dranger', 'image': '18006.png', 'description': '这两位瑞典设计师注重实用性和高性价比设计。'}, {'id': 4, 'keyword': 'Rodney Kinsman', 'image': '18007.png', 'description': '设计Omkstak椅子的设计师，体现了高科技风格。'}], 'connections': [{'from': 3, 'to': 1, 'relationship': '使用技术实现设计'}, {'from': 4, 'to': 2, 'relationship': '提供持久性解决方案'}]}, 'generator_chat': '热熔胶枪和固粘剂的使用反映了设计师通过先进技术与材料探索实现了更强实用性的设计方案。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:41:00.717417",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Memphis集团', 'image': '19003.png', 'description': 'Memphis集团在1981年引领后现代主义设计，其设计色彩大胆，形式新颖。'}, {'id': 2, 'keyword': 'Ettore Sottsass', 'image': '', 'description': 'Ettore Sottsass是Memphis集团的创始人，他是后现代设计的重要推动者。'}, {'id': 3, 'keyword': '数字创新', 'image': '', 'description': '1980年代，数字技术的快速发展改变了设计实践，引入了新方法和工具。'}, {'id': 4, 'keyword': '文化符号', 'image': '', 'description': '品牌作为文化符号，反映了时代特征和消费者价值观念。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创立和推动'}, {'from': 1, 'to': 3, 'relationship': '影响了设计方法'}, {'from': 1, 'to': 4, 'relationship': '塑造文化符号'}]}, 'generator_chat': 'Memphis集团的创立推动了后现代主义的发展，通过Ettore Sottsass的创新设计，结合数字技术，重新定义了品牌作为文化符号的角色。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:41:38.189598",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '迈克尔·格雷夫斯', 'image': '', 'description': '迈克尔·格雷夫斯是后现代主义设计的代表，以幽默和古典元素的融合 bekannt.'}, {'id': 2, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义通过对传统形式的挑战，强调主观性和文化多样性.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '体现与挑战'}]}, 'generator_chat': '迈克尔·格雷夫斯的设计体现了后现代主义对传统形式的挑战，使设计作品更加趣味化和多元化。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-16T11:42:42.647265",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '仓保史朗', 'image': '19010.png', 'description': '仓保史朗是日本著名的后现代设计师，以其超现实的设计而闻名。'}, {'id': 2, 'keyword': '菲利普·斯塔克', 'image': '19004.png', 'description': '菲利普·斯塔克是国际知名设计师，以其创新和戏剧化的设计风格著称。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义是一种设计和艺术运动，强调个性、混合与跨文化交流。'}], 'connections': [{'from': 1, 'to': 3, 'relationship': '贡献于'}, {'from': 2, 'to': 3, 'relationship': '促进跨文化交流'}]}, 'generator_chat': '后现代主义通过仓保史朗和菲利普·斯塔克的贡献，推动了全球设计师的文化对话与交流，形成了更为丰富的设计语境。'}"
   }
 ]
