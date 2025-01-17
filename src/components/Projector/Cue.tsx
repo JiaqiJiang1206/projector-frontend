@@ -102,9 +102,9 @@ export const Cue: React.FC<CueProps> = ({
             key={index}
             className="absolute bg-white rounded-full opacity-90"
             style={{
-              top: `${pos.y - 2}px`,
-              left: `${pos.x + 6}px`,
-              width: `${pos.width + 3}px`,
+              top: `${pos.y }px`,
+              left: `${pos.x }px`,
+              width: `${pos.width + 2 }px`,
               height: `${pos.height + 2}px`,
               // animation: 'breathing 4.2s infinite',
             }}
@@ -180,7 +180,7 @@ export const Cue: React.FC<CueProps> = ({
   );
 };
 
-function groupCues(cues: cuePosition[], yThreshold = 3, xThreshold = 5) {
+function groupCues(cues: cuePosition[], yThreshold = 3, xThreshold = 15) {
   const grouped: cuePosition[] = [];
 
   // 按 y 值排序，确保从上到下处理

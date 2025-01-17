@@ -1503,5 +1503,215 @@
     "role": "relationshipResponse",
     "timestamp": "2025-01-12T19:14:18.843261",
     "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '工艺复兴', 'image': '', 'description': '20世纪70年代的工艺复兴强调传统手工艺，强化了人们对设计品质的重视。'}, {'id': 2, 'keyword': '温德尔·卡斯特勒', 'image': '', 'description': '温德尔·卡斯特勒是一位倡导传统工艺和情感连接的设计师，创造了许多标志性家具作品。'}, {'id': 3, 'keyword': '可持续发展', 'image': '', 'description': '可持续设计通过减少资源消耗和环境影响，提升了现代设计的社会责任感。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '启发和推动'}, {'from': 1, 'to': 3, 'relationship': '实现与目标'}]}, 'generator_chat': '工艺复兴通过温德尔·卡斯特勒的推动，不仅影响了设计领域，还在可持续发展方面设立了新的标准和目标。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T02:03:56.886313",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '激进设计', 'image': '', 'description': '70年代意大利的设计运动，反对现代主义。'}, {'id': 2, 'keyword': '亚历山德罗·内迪尼', 'image': '18015.png', 'description': '著名设计师，以色彩丰富的再设计而知名。'}, {'id': 3, 'keyword': 'Wassily椅重构', 'image': '', 'description': '内迪尼以新形象重新设计的椅子，挑战传统设计。'}, {'id': 4, 'keyword': 'Proust臂椅', 'image': '', 'description': '具有多彩设计的经典作品，体现后现代设计风格。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '推动与影响'}, {'from': 2, 'to': 3, 'relationship': '设计与重构'}, {'from': 2, 'to': 4, 'relationship': '经典与象征'}]}, 'generator_chat': '激进设计之所以能重现，是因为亚历山德罗·内迪尼通过创新家具设计推动了新的美学，从而开辟了后现代风格的经典代表。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T16:44:55.499284",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Droog设计', 'image': '', 'description': 'Droog是荷兰设计的先锋，强调幽默与简约。'}, {'id': 2, 'keyword': 'Moooi', 'image': '', 'description': 'Moooi以奢华戏剧的方式重塑荷兰设计，成立于2001年。'}, {'id': 3, 'keyword': 'Smoke系列家具', 'image': '20015.png', 'description': 'Smoke系列由马滕·巴斯设计，具独特审美与创新材料。'}, {'id': 4, 'keyword': 'Knotted chair', 'image': '20011.png', 'description': 'Knotted chair是Marcel Wanders设计的标志性作品，体现了荷兰设计的创新精神。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '代表及促进'}, {'from': 3, 'to': 2, 'relationship': '代表风格'}, {'from': 4, 'to': 1, 'relationship': '共鸣与影响'}]}, 'generator_chat': 'Droog和Moooi代表了新荷兰设计的革命，结合幽默与奢华，促进了国际设计对话，并引领了材料与形式的创新探索。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T16:48:17.377298",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Algue屏风系统', 'image': '20016.png', 'description': 'Algue系统以模块化塑料支构成，形态灵动。'}, {'id': 2, 'keyword': 'Ronan与Erwan Bouroullec', 'image': '', 'description': '法国设计师，致力于现代家具设计，推崇有机与模块化设计。'}, {'id': 3, 'keyword': 'Vitra', 'image': '', 'description': '知名家具品牌，专注于现代家具与设计的生产与销售。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '设计与创作'}, {'from': 1, 'to': 3, 'relationship': '生产与推广'}]}, 'generator_chat': 'Algue屏风系统体现了Ronan与Erwan Bouroullec对现代设计的探索，同时通过Vitra的推广，使设计在功能与美观方面得以实现完美平衡。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T16:50:53.750459",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'iMac', 'image': '20007.png', 'description': '1998年发布的iMac，由乔纳森·艾夫团队设计，标志着计算机设计的创新。'}, {'id': 2, 'keyword': 'iPhone', 'image': '20026.png', 'description': 'iPhone由乔纳森·艾夫和苹果设计团队设计于2013年，融合了多项技术功能。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '从iMac到iPhone的演变'}]}, 'generator_chat': '乔纳森·艾夫的设计理念从iMac到iPhone，展示了苹果在设计领域所实现的创新和转变，强调了智能设计与高端技术的结合。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T16:59:21.573998",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Smoke系列', 'image': '20015.png', 'description': 'Smoke系列家具以独特幽默感与创新材料著称。'}, {'id': 2, 'keyword': '马滕巴斯', 'image': '', 'description': '荷兰设计师，Moooi品牌创始人之一。'}, {'id': 3, 'keyword': 'Moooi', 'image': '', 'description': '荷兰奢侈家具品牌，以其戏剧化设计闻名。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '设计与创作'}, {'from': 1, 'to': 3, 'relationship': '产品与品牌'}]}, 'generator_chat': '马滕巴斯设计的Smoke系列家具是Moooi品牌的一部分，展示了荷兰设计的创新与幽默，成为全球设计讨论的重要话题。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:00:54.761994",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Juicy Salif柠檬榨汁器', 'image': '19018.png', 'description': 'Philippe Starck于1990年为Alessi设计的Juicy Salif，因其独特外形而闻名。'}, {'id': 2, 'keyword': 'Royalton酒店', 'image': '19017.png', 'description': 'Philippe Starck于1988年设计的Royalton酒店，体现了晚现代主义设计与豪华感。'}, {'id': 3, 'keyword': 'Philippe Starck', 'image': '', 'description': '知名法国设计师，以其突破性的设计风格和情感连接而受到广泛认可。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '代表着'}, {'from': 1, 'to': 3, 'relationship': '设计师'}, {'from': 2, 'to': 3, 'relationship': '设计与文化'}]}, 'generator_chat': 'Philippe Starck通过Juicy Salif和Royalton酒店的设计，融合了跨文化元素，成功展示了设计与全球化的联系。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:03:20.550632",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '罗南·阿拉德', 'image': '20004.png', 'description': '罗南·阿拉德是一位享誉全球的设计师，作品富有创意及艺术性。'}, {'id': 2, 'keyword': '书虫架子', 'image': '20004.png', 'description': '书虫架子是阿拉德为Kartell设计的一款别致书架，体现了设计的多样性。'}, {'id': 3, 'keyword': '柏林墙', 'image': '', 'description': '柏林墙的倒塌象征着冷战结束，开启了新的国际设计和文化交流时代。'}, {'id': 4, 'keyword': '全球化设计', 'image': '', 'description': '全球化设计时代标志着设计的国际化和多样化，推动文化交流。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创造和设计'}, {'from': 1, 'to': 3, 'relationship': '影响文化'}, {'from': 1, 'to': 4, 'relationship': '体现全球化'}]}, 'generator_chat': '罗南·阿拉德通过其作品推动了全球化设计的发展，同时其设计与柏林墙的倒塌相呼应，象征了新的文化交流时代。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:06:42.867378",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '罗南阿拉德', 'image': '', 'description': '罗南阿拉德是全球化设计的重要先锋，特别以其创新家具设计闻名。'}, {'id': 2, 'keyword': 'Bookworm书架', 'image': '20004.png', 'description': 'Bookworm书架是阿拉德于1994年为Kartell设计，展示了动态和灵活的储物方式。'}, {'id': 3, 'keyword': '柏林墙倒塌', 'image': '', 'description': '1989年柏林墙的倒塌象征着全球化进程中的重要转折，开启了跨国设计的新时代。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '设计和创新'}, {'from': 1, 'to': 3, 'relationship': '灵感来源'}]}, 'generator_chat': '罗南阿拉德通过《Bookworm书架》展示了设计全球化的趋势，其创作灵感深受1989年柏林墙倒塌的影响，代表了文化交流的新阶段。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:10:39.872591",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'iMac', 'image': '20007.png', 'description': '1998年发布的iMac，代表了个人电脑设计的重大变革。'}, {'id': 2, 'keyword': 'iPhone', 'image': '20026.png', 'description': '2007年推出的iPhone，融合多种技术于一身，影响深远。'}, {'id': 3, 'keyword': '乔纳森·艾夫', 'image': '', 'description': '著名设计师，领导苹果设计团队，推动设计与技术的融合。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '技术整合与设计创新'}, {'from': 3, 'to': 1, 'relationship': '设计领导与创新'}, {'from': 3, 'to': 2, 'relationship': '设计理念与产品理念'}]}, 'generator_chat': '乔纳森·艾夫引领的设计创新在iMac和iPhone中体现了技术与设计的完美结合，推动了苹果的成功与影响力。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:11:34.650328",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '乔纳森·艾夫', 'image': '', 'description': '乔纳森·艾夫是苹果设计团队的负责人，他引领了iPhone的设计创新。'}, {'id': 2, 'keyword': 'iPhone', 'image': '20026.png', 'description': 'iPhone是苹果公司推出的具有革命性影响力的智能手机。'}, {'id': 3, 'keyword': '用户友好界面', 'image': '', 'description': 'iPhone的用户友好界面设计提升了用户体验，易于操作。'}], 'connections': [{'from': 2, 'to': 1, 'relationship': '负责设计'}, {'from': 2, 'to': 3, 'relationship': '具备特性'}]}, 'generator_chat': 'iPhone的成功设计由乔纳森·艾夫主导，并通过其用户友好界面特性，推动了整个智能手机行业的变革。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:12:25.357930",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'iPhone 5', 'image': '20026.png', 'description': 'iPhone 5由乔纳森·艾夫和Apple设计团队设计，2013年推出。'}, {'id': 2, 'keyword': '迪特·拉姆斯', 'image': '', 'description': '德国设计师，以其功能主义和简约设计理念闻名。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '借鉴与影响'}]}, 'generator_chat': 'iPhone 5的设计灵感受到了迪特·拉姆斯的影响，突出了简约和功能整合，推动了现代电子产品设计的发展。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:13:16.631543",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Philippe Starck', 'image': '19018.png', 'description': '著名设计师，以其创新性设计而著称，代表作包括Juicy Salif。'}, {'id': 2, 'keyword': 'Juicy Salif', 'image': '', 'description': '由Philippe Starck于1990年设计的榨汁器，以其独特造型和功能性著称。'}, {'id': 3, 'keyword': '跨文化设计', 'image': '', 'description': '将不同文化元素融合的设计理念，促进创意和市场多样性。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创作和影响'}, {'from': 2, 'to': 3, 'relationship': '体现和推广'}, {'from': 1, 'to': 3, 'relationship': '推动和探索'}]}, 'generator_chat': 'Philippe Starck通过设计Juicy Salif展现跨文化设计，促进了设计创新和市场多样性，推动了全球设计行业的新发展。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:14:01.400222",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Royalton 酒店', 'image': '19017.png', 'description': 'Royalton 酒店是由 Philippe Starck 于1988年设计，它成为了后的现代设计标志。'}, {'id': 2, 'keyword': 'Juicy Salif', 'image': '19018.png', 'description': 'Juicy Salif 是由 Philippe Starck 于1990年为 Alessi 设计的柑橘榨汁器，因其独特造型而闻名。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '体现文化融合'}]}, 'generator_chat': 'Philippe Starck 的设计通过 Royalton 酒店和 Juicy Salif 榨汁器展现了东方与西方设计理念的融合，丰富了消费者的体验。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:14:51.630724",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Royalton酒店', 'image': '19017.png', 'description': 'Royalton酒店由Philippe Starck于1988年设计，融合了奢华和现代设计。'}, {'id': 2, 'keyword': 'Juicy Salif', 'image': '19018.png', 'description': 'Juicy Salif是Philippe Starck于1990年为Alessi设计的著名柠檬榨汁器，体现简约与艺术。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '设计理念延续'}]}, 'generator_chat': 'Philippe Starck通过Royalton酒店与Juicy Salif的设计，展现了东西方设计哲学融合的魅力与影响力。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:15:40.262674",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Royalton酒店', 'image': '19017.png', 'description': 'Royalton酒店大堂由Philippe Starck设计，展现后现代设计的奢华和创新。'}, {'id': 2, 'keyword': 'Juicy Salif', 'image': '19018.png', 'description': 'Juicy Salif是Philippe Starck为Alessi设计的著名柠檬榨汁器，以其独特的造型著称。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '展现与表达'}]}, 'generator_chat': 'Philippe Starck通过Royalton酒店的大堂设计与Juicy Salif，展现了跨文化设计在创新与美学上的结合。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:16:39.210192",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Algue屏风系统', 'image': '20016.png', 'description': 'Algue屏风系统由佛朗索瓦与赫尔万·布拉基设计，模组化与有机形态结合的代表性作品。'}, {'id': 2, 'keyword': 'Ronan与Erwan·布拉基', 'image': '', 'description': '法国家具设计师，Algue屏风的创作者，以其富有艺术感的设计闻名。'}, {'id': 3, 'keyword': 'Vitra', 'image': '', 'description': '知名家具制造商，以生产设计师作品而著称，包括Algue屏风。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '设计与创作'}, {'from': 1, 'to': 3, 'relationship': '生产与销售'}]}, 'generator_chat': 'Algue屏风系统是Ronan与Erwan·布拉基的设计作品，由Vitra生产，体现了现代设计中艺术与功能的完美结合。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:17:47.001115",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Ettore Sottsass', 'image': '19002.png', 'description': 'Ettore Sottsass是Memphis设计运动的创始人，以其玩味的后现代设计闻名。'}, {'id': 2, 'keyword': '电子打字机', 'image': '', 'description': 'Ettore Sottsass设计的一种打字机，展现出大胆的颜色和几何形状。'}, {'id': 3, 'keyword': 'Algue屏风系统', 'image': '20016.png', 'description': 'Algue屏风由Bouroullec兄弟设计，使用塑料枝条创造出自然的视觉效果。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '设计师与作品'}, {'from': 1, 'to': 3, 'relationship': '设计理论影响'}, {'from': 2, 'to': 3, 'relationship': '功能与美学结合'}]}, 'generator_chat': 'Ettore Sottsass通过电子打字机将功能与艺术结合，影响了Algue屏风系统的设计理念，展现出设计的美学与实用并重。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:18:24.088833",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Casa da Musica音乐厅', 'image': '', 'description': 'MVRDV设计的音乐厅，流动的有机形态将艺术与功能结合。'}, {'id': 2, 'keyword': 'Liquid Glacial桌', 'image': '20019.png', 'description': '扎哈·哈迪德设计的桌子，具有流动和透明的视觉效果。'}, {'id': 3, 'keyword': '凹固屏风系统', 'image': '', 'description': '模块化和有机形态的屏风设计，艺术与功能性的结合。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '展示相似的设计理念'}, {'from': 1, 'to': 3, 'relationship': '共同探索艺术与功能的平衡'}, {'from': 2, 'to': 3, 'relationship': '展示创新的艺术与实用设计'}]}, 'generator_chat': 'Casa da Musica音乐厅与Liquid Glacial桌皆展示了现代设计中艺术与功能的平衡，而凹固屏风系统则强调了这一设计理念的模块化实践。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:19:13.561325",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Droog', 'image': '', 'description': 'Droog是由Gijs Bakker和Renny Ramakers于1993年创立，代表荷兰设计的新趋势。'}, {'id': 2, 'keyword': 'Moooi', 'image': '', 'description': 'Moooi由Marcel Wanders和Casper Vissers于2001年创立，以其创新的设计而闻名。'}, {'id': 3, 'keyword': 'Smoke系列', 'image': '20015.png', 'description': '马滕·巴斯设计的Smoke系列家具，以独特美学和幽默感著称。'}, {'id': 4, 'keyword': '积木柜', 'image': '20012.png', 'description': '积木柜是Droog的标志性设计，展示了创新与幽默的结合。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '发展与推动'}, {'from': 2, 'to': 3, 'relationship': '代表与创新'}, {'from': 1, 'to': 4, 'relationship': '展现与引领'}]}, 'generator_chat': 'Droog和Moooi在荷兰设计中的崭露头角，不仅推动了设计的发展，还通过作品展示了独特的创新与幽默，形成了各自的设计语言。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:20:12.421717",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Droog设计', 'image': '', 'description': '以幽默与简约风格著称的荷兰品牌，成立于1993年。'}, {'id': 2, 'keyword': 'Moooi', 'image': '', 'description': '由马塞尔·万德斯创立，注重戏剧性和美学的设计品牌。'}, {'id': 3, 'keyword': 'Smoke系列', 'image': '20015.png', 'description': '马滕·巴斯设计的家具系列，展示了独特的材质与幽默感。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '同属新荷兰设计运动'}, {'from': 2, 'to': 3, 'relationship': 'Smoke系列是Moooi的重要作品'}]}, 'generator_chat': 'Droog与Moooi同属于新荷兰设计运动，Moooi的Smoke系列是其代表作品，展示了荷兰设计的创新与幽默。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-13T17:21:09.728583",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Droog', 'image': '', 'description': 'Droog成立于1993年，专注于创意及幽默设计。'}, {'id': 2, 'keyword': 'Knotted Chair', 'image': '20011.png', 'description': '由Marcel Wanders为Droog设计的Knotted Chair，展示了材料与并重的设计哲学。'}, {'id': 3, 'keyword': 'Moooi', 'image': '', 'description': 'Moooi是Marcel Wanders和Casper Vissers于2001年创立的设计集团。'}, {'id': 4, 'keyword': '随机灯', 'image': '20015.png', 'description': 'Bertjan Pots为Moooi设计的随机灯，展现了设计的创造性与戏剧性。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '灵感与实践'}, {'from': 3, 'to': 4, 'relationship': '设计演变与创新'}]}, 'generator_chat': '新荷兰设计以Droog为基础，利用Knotted Chair展示创意，而Moooi则在此基础上不断演变，推动设计的戏剧性创新。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-15T11:30:22.570408",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'iMac', 'image': '20007.png', 'description': '1998年，乔纳森·艾夫设计的iMac因其独特的外观和功能而广受欢迎。'}, {'id': 2, 'keyword': '全球设计明星', 'image': '', 'description': '随着全球化进程，设计师如乔纳森·艾夫和其他人逐渐成为国际设计明星。'}, {'id': 3, 'keyword': '互联网', 'image': '', 'description': '互联网的普及促进了全球设计信息的交流与传播。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '代表与推动'}, {'from': 1, 'to': 3, 'relationship': '促进与资源'}]}, 'generator_chat': '全球设计明星的崛起和苹果公司的iMac设计一起，推动了互联网使设计更加全球化的进程，改变了用户的生活和设计文化。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-15T11:30:58.793287",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Droog', 'image': '', 'description': 'Droog成立于1993年，以节约幽默的设计理念出名。'}, {'id': 2, 'keyword': 'Moooi', 'image': '', 'description': 'Moooi成立于2001年，结合奢华与创新。'}, {'id': 3, 'keyword': 'Smoke系列家居', 'image': '20015.png', 'description': '由马滕巴斯为Moooi设计，展现戏剧性与创意。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创新设计的代表'}, {'from': 3, 'to': 2, 'relationship': '体现了荷兰设计的影响力'}]}, 'generator_chat': 'Droog和Moooi在创新设计领域相辅相成，马滕巴斯的Smoke系列则代表了荷兰设计对全球设计界的独特影响。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-15T20:18:45.274126",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯运动', 'image': '', 'description': '孟菲斯运动是后现代设计的重要流派，创建于1981年，强调色彩与材料的创新。'}, {'id': 2, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '埃托雷·索特萨斯是孟菲斯运动的创始人，推动后现代设计的发展。'}, {'id': 3, 'keyword': '1981米兰展', 'image': '', 'description': '1981年米兰展是孟菲斯运动首次亮相的场合，吸引全球关注。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创立与推动'}, {'from': 1, 'to': 3, 'relationship': '首次亮相'}]}, 'generator_chat': '孟菲斯运动由埃托雷·索特萨斯创立，并在1981年米兰展首次亮相，极大推动了后现代设计的发展和国际化。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-15T20:20:02.235554",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '秘泉桌', 'image': '19005.png', 'description': '秘泉桌是彼得·夏尔于1984年设计的作品。'}, {'id': 2, 'keyword': '苹果Mac', 'image': '19019.png', 'description': '苹果Mac在1984年推出，其界面革命性改变了设计领域。'}, {'id': 3, 'keyword': 'Snow White+ the Seven Pixels', 'image': '19021.png', 'description': '由阿普里尔·格雷曼设计的音乐海报，带有丰富的视觉表现。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '影响与推动'}, {'from': 1, 'to': 3, 'relationship': '样式与表现'}]}, 'generator_chat': \"通过彼得·夏尔的'秘泉桌'，新浪潮设计影响了苹果Mac的推出，进而对音乐海报的视觉表现产生深远影响。\"}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-15T20:26:51.257428",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯运动', 'image': '19002.png', 'description': '由埃托雷·索特萨斯于1981年创立，挑战传统设计规范。'}, {'id': 2, 'keyword': '卡尔顿书柜', 'image': '19002.png', 'description': '由埃托雷·索特萨斯设计，成为孟菲斯风格的代表作品。'}, {'id': 3, 'keyword': '穆斯塔法椅', 'image': '', 'description': '纳塔莉·杜·帕基尔设计，体现了孟菲斯运动的图案和形式美学。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '代表性作品'}, {'from': 1, 'to': 3, 'relationship': '风格体现'}]}, 'generator_chat': '孟菲斯运动通过卡尔顿书柜等代表作品，展示了对传统设计的挑战，并由穆斯塔法椅等作品充分体现了其独特的风格特征。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-15T20:29:21.161460",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '卡尔顿书柜', 'image': '19002.png', 'description': '卡尔顿书柜是索特萨斯为孟菲斯设计的标志性作品，体现了色彩与形式的创新。'}, {'id': 2, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '埃托雷·索特萨斯是孟菲斯运动的创始人和领军人物。'}, {'id': 3, 'keyword': '孟菲斯运动', 'image': '19003.png', 'description': '孟菲斯运动是一个强调后现代设计的设计团体，创立于1981年。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '创作和设计'}, {'from': 1, 'to': 3, 'relationship': '代表和体现'}]}, 'generator_chat': '卡尔顿书柜作为索特萨斯的创作，代表了孟菲斯运动的大胆创新与设计自由，展现了一个新的设计视野。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-15T20:57:09.246076",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '孟菲斯运动', 'image': '19003.png', 'description': '孟菲斯运动是1980年代由埃托雷·索特萨斯发起的设计运动，强调色彩与材质的实验。'}, {'id': 2, 'keyword': 'Tawaraya会话室', 'image': '', 'description': '梅田正得设计的Tawaraya会话室融入了孟菲斯风格的元素，强调互动性与色彩。'}, {'id': 3, 'keyword': '埃托雷·索特萨斯', 'image': '', 'description': '埃托雷·索特萨斯是孟菲斯运动的创始人，其设计风格影响深远。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '融合与表现'}, {'from': 1, 'to': 3, 'relationship': '创始与推动'}]}, 'generator_chat': '孟菲斯运动通过埃托雷·索特萨斯的创立，推动了Tawaraya会话室等作品的风格融合，展现了后现代主义的实验精神和多样性。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T14:57:19.521905",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Richard Rogers', 'image': '18003.png', 'description': 'Richard Rogers is a key figure in High-Tech architecture, known for integrating exposed structures in his designs.'}, {'id': 2, 'keyword': 'Norman Foster', 'image': '18004.png', 'description': 'Norman Foster is renowned for his High-Tech buildings utilizing industrial materials, enhancing functionality and aesthetic.'}, {'id': 3, 'keyword': 'Omkstak chair', 'image': '18007.png', 'description': 'The Omkstak chair, designed by Rodney Kinsman in 1971, became an icon of the High-Tech style in the 1970s.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Collaborators in High-Tech design'}, {'from': 1, 'to': 3, 'relationship': 'Works influence interior design'}, {'from': 2, 'to': 3, 'relationship': 'Embodiment of High-Tech principles'}]}, 'generator_chat': \"Richard Rogers and Norman Foster's architectural practices defined High-Tech design, while Kinsman's Omkstak chair captured its essence, influencing interior design significantly.\"}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T15:04:11.086409",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Design for the Real World', 'image': '', 'description': 'Published by Victor Papanek in 1970, it argued for socially responsible design.'}, {'id': 2, 'keyword': 'Humanscale 1/2/3 manual', 'image': '18010.png', 'description': 'Created by Niels Diffrient, it provided essential ergonomic data for designers.'}, {'id': 3, 'keyword': 'Occupational Safety and Health Administration', 'image': '', 'description': 'Established in 1970, it promoted safer workplace design and conditions.'}, {'id': 4, 'keyword': 'Ergonomic design', 'image': '', 'description': 'Focused on enhancing user comfort and safety in product design.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Influenced'}, {'from': 1, 'to': 3, 'relationship': 'Motivated Action'}, {'from': 2, 'to': 4, 'relationship': 'Improved Implementation'}]}, 'generator_chat': \"Papanek's advocacy for responsible design influenced ergonomic techniques and the establishment of OSHA, which motivated a shift towards practical, user-centered solutions.\"}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T15:06:56.899962",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Richard Rogers', 'image': '18003.png', 'description': 'Rogers was a leading figure in High-Tech architecture, known for innovative structures utilizing industrial aesthetics.'}, {'id': 2, 'keyword': 'Norman Foster', 'image': '', 'description': 'Foster is another prominent architect associated with High-Tech design, merging functionality and striking visuals.'}, {'id': 3, 'keyword': 'Omkstak chair', 'image': '18007.png', 'description': 'Designed by Rodney Kinsman, it became an icon in the High-Tech design movement for its functionality and aesthetic.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Collaborators and Influencers'}, {'from': 2, 'to': 3, 'relationship': 'Design Influence'}, {'from': 1, 'to': 3, 'relationship': 'Architectural Significance'}]}, 'generator_chat': 'Richard Rogers and Norman Foster led the High-Tech design movement, influencing iconic pieces like the Omkstak chair, showcasing the fusion of functionality and industrial aesthetics.'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T15:38:05.115778",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Omkstak chair', 'image': '18007.png', 'description': 'Omkstak chair designed by Rodney Kinsman, 1971.'}, {'id': 2, 'keyword': 'High-Tech style', 'image': '', 'description': 'High-Tech style integrates industrial aesthetics with functionality.'}, {'id': 3, 'keyword': 'Richard Rogers', 'image': '', 'description': 'Rogers incorporated industrial elements in architectural designs.'}, {'id': 4, 'keyword': 'Norman Foster', 'image': '', 'description': \"Foster's work emphasized unadorned structures in design.\"}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Exemplifies and Advances'}, {'from': 2, 'to': 3, 'relationship': 'Influences Design Philosophy'}, {'from': 2, 'to': 4, 'relationship': 'Influences Architectural Trends'}]}, 'generator_chat': \"Kinsman's Omkstak chair exemplifies the High-Tech style, influencing design practices and reflecting the broader architectural movements led by Richard Rogers and Norman Foster.\"}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T15:39:03.313217",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Vertebra task chair', 'image': '18011.png', 'description': 'Designed by Emilio Ambasz in 1975, this chair emphasizes ergonomics and sustainability.'}, {'id': 2, 'keyword': 'Supporto chair', 'image': '18012.png', 'description': \"Fred Scott's 1976 chair combines ergonomic comfort with a focus on environmental impact.\"}, {'id': 3, 'keyword': 'Craft Revival', 'image': '', 'description': 'A movement reviving traditional crafting techniques, promoting eco-awareness and emotional design.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Complement and Enhance'}, {'from': 1, 'to': 3, 'relationship': 'Embodiment of Craft Revival'}, {'from': 2, 'to': 3, 'relationship': 'Part of the Movement'}]}, 'generator_chat': 'The Vertebra chair and Supporto chair are pivotal examples of the Craft Revival, highlighting sustainability and emotional connections in design.'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T15:43:52.005036",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Sony Walkman', 'image': '', 'description': 'The Sony Walkman TPS-L2, released in 1979, revolutionized portable music consumption.'}, {'id': 2, 'keyword': 'Atari 2600', 'image': '', 'description': 'The Atari 2600 was the first console allowing users to play multiple game cartridges.'}, {'id': 3, 'keyword': 'Motorola DynaTAC', 'image': '', 'description': \"Motorola's DynaTAC was one of the first mobile phones, evolving communication.\"}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Transform and Innovate'}, {'from': 1, 'to': 3, 'relationship': 'Revolutionize and Personalize'}, {'from': 2, 'to': 3, 'relationship': 'Pioneer New Markets'}]}, 'generator_chat': 'The Sony Walkman, Atari 2600, and Motorola DynaTAC collectively revolutionized personal technology, reshaping how we experience music, gaming, and communication.'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T16:15:11.687402",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Proust Armchair', 'image': '18016.png', 'description': 'Proust Armchair designed by Alessandro Mendini for Studio Alchimia, 1978.'}, {'id': 2, 'keyword': 'Studio Alchimia', 'image': '', 'description': 'Studio Alchimia was a key player in Radical Design, focusing on individual creativity and innovative design.'}, {'id': 3, 'keyword': 'Alessandro Mendini', 'image': '', 'description': 'Alessandro Mendini was instrumental in Radical Design, known for his ironic and colorful reinterpretations of furniture.'}, {'id': 4, 'keyword': 'Radical Design', 'image': '', 'description': 'Radical Design challenged mainstream aesthetics, rejecting conventional forms and celebrating creativity.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Originated from'}, {'from': 1, 'to': 3, 'relationship': 'Created by'}, {'from': 2, 'to': 4, 'relationship': 'Embodied in'}]}, 'generator_chat': 'The Proust Armchair, designed by Mendini, reflects the spirit of Radical Design forged in Studio Alchimia, where creativity and challenge to mainstream norms were paramount.'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T16:16:20.727170",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Design for the Real World', 'image': '', 'description': \"Victor Papanek's book emphasizing socially conscious design.\"}, {'id': 2, 'keyword': 'Humanscale 1/2/3', 'image': '18010.png', 'description': 'Ergonomic manual co-authored by Niels Diffrient, 1974.'}, {'id': 3, 'keyword': 'Craft Revival', 'image': '', 'description': 'Movement emphasizing handcrafted designs and emotional connection.'}, {'id': 4, 'keyword': 'Global Tools', 'image': '18013.png', 'description': 'Workshops promoting creativity and design education in Italy.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Influenced and Promoted'}, {'from': 2, 'to': 3, 'relationship': 'Functionality and Inclusion'}, {'from': 3, 'to': 4, 'relationship': 'Encouraged Creativity'}]}, 'generator_chat': \"Papanek's advocacy for social-focused design inspired ergonomic practices, which fostered the Craft Revival and encouraged creativity through initiatives like Global Tools.\"}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T16:18:02.638429",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Alessandro Mendini', 'image': '18016.png', 'description': 'Renowned Italian designer known for his role in Radical Design.'}, {'id': 2, 'keyword': 'Proust Armchair', 'image': '18016.png', 'description': \"Mendini's 1978 design, showcasing pointillist patterns on traditional furniture.\"}, {'id': 3, 'keyword': 'Radical Design', 'image': '', 'description': 'A movement in the 1970s pushing back against modernist design conventions.'}, {'id': 4, 'keyword': 'Lassu chair', 'image': '18014.png', 'description': 'Chairs burned by Mendini, symbolizing the transformation in design.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Creator of'}, {'from': 1, 'to': 3, 'relationship': 'Key figure in'}, {'from': 4, 'to': 3, 'relationship': 'Symbol of'}]}, 'generator_chat': \"Alessandro Mendini was pivotal in Radical Design, known for the Proust Armchair, with the Lassu chair's burning symbolizing a shift in design philosophy.\"}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T16:35:27.148210",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Balans Variable chair', 'image': '18011.png', 'description': 'Designed by Pete Opsvik in 1979, it blends traditional craftsmanship with ergonomic principles.'}, {'id': 2, 'keyword': 'Craft Revival', 'image': '', 'description': 'A movement focused on quality and emotional connections, contrasting with mass-produced designs.'}, {'id': 3, 'keyword': 'Ergonomic design', 'image': '', 'description': 'Design emphasizing comfort and efficiency, significant in workplace safety and efficiency.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Embodies and Represents'}, {'from': 1, 'to': 3, 'relationship': 'Inspired and Aligned'}, {'from': 2, 'to': 3, 'relationship': 'Influences and Shapes'}]}, 'generator_chat': \"The Balans Variable chair exemplifies the Craft Revival's emphasis on emotional connection and ergonomic design, bridging traditional craftsmanship with modern utility.\"}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T16:37:18.727649",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Proust Armchair', 'image': '18016.png', 'description': \"Alessandro Mendini's Proust Armchair, designed with vibrant pointillist patterns.\"}, {'id': 2, 'keyword': 'Italian Radical Design', 'image': '', 'description': 'A movement using parody to challenge conventional design aesthetics.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Embodies and Exemplifies'}]}, 'generator_chat': \"Mendini's Proust Armchair illustrates how Italian Radical Design utilized humor and satire to critique traditional aesthetics, enriching design discourse with playful yet profound commentary.\"}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T16:38:22.765696",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Design for the Real World', 'image': '', 'description': \"Papanek's influential 1970 book on socially responsible design.\"}, {'id': 2, 'keyword': 'Ergonomics', 'image': '', 'description': 'The practice of designing products for safety and comfort.'}, {'id': 3, 'keyword': 'Vertebra chair', 'image': '18011.png', 'description': 'Designed by Emilio Ambasz, it adapts to user movement.'}, {'id': 4, 'keyword': 'Craft Revival', 'image': '', 'description': 'A movement emphasizing handcrafted emotional connections.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Promotes and Emphasizes'}, {'from': 1, 'to': 3, 'relationship': 'Inspires Design Innovation'}, {'from': 2, 'to': 4, 'relationship': 'Supports Handcrafted Movement'}, {'from': 3, 'to': 4, 'relationship': 'Combines Ergonomics with Craft'}]}, 'generator_chat': \"Papanek's work inspired ergonomic design focusing on user needs, while the Craft Revival fostered emotional connections, demonstrating design's potential to influence society positively.\"}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T16:50:38.581743",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Richard Rogers', 'image': '18003.png', 'description': \"Norman Foster's Willis Faber Headquarters showcases High-Tech's structural elements.\"}, {'id': 2, 'keyword': 'Norman Foster', 'image': '18003.png', 'description': 'Renowned architect known for High-Tech innovations and functional designs.'}, {'id': 3, 'keyword': 'Omkstak chair', 'image': '18007.png', 'description': 'The Omkstak chair designed by Rodney Kinsman is an icon of High-Tech design.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Collaborative Influence'}, {'from': 2, 'to': 3, 'relationship': 'Functional Design Example'}, {'from': 1, 'to': 3, 'relationship': 'Stylistic Representation'}]}, 'generator_chat': \"Richard Rogers and Norman Foster collaborated to shape High-Tech design principles, exemplified by Rodney Kinsman's Omkstak chair, blending function and form effectively.\"}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-17T18:22:25.514289",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'Omkstak chair', 'image': '18007.png', 'description': 'Omkstak chair designed by Rodney Kinsman, 1971.'}, {'id': 2, 'keyword': 'Vertebra task chair', 'image': '18011.png', 'description': 'Vertebra task chair designed by Emilio Ambasz, 1975.'}, {'id': 3, 'keyword': 'High-Tech style', 'image': '', 'description': 'High-Tech style characterized by industrial materials.'}], 'connections': [{'from': 1, 'to': 3, 'relationship': 'Representative of'}, {'from': 2, 'to': 3, 'relationship': 'Embodiment of ergonomic advancement'}]}, 'generator_chat': \"The Omkstak and Vertebra chairs represent the High-Tech movement's fusion of industrial aesthetics with user-focused design, reflecting cultural shifts during the economically strained 1970s.\"}"
   }
 ]

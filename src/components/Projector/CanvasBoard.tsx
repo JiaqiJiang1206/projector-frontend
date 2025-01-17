@@ -277,6 +277,7 @@ const cytoscapeStyles: Stylesheet[] = [
       color: '#fff',
       'font-size': '30px',
       'text-wrap': 'wrap',
+      'max-width': '50px',
     },
   },
   {
@@ -373,9 +374,10 @@ function transformDataToElements(
       : 1;
 
     const processedDescription = (node.description ?? '').replace(
-      /([\u4e00-\u9fa5]{12})/g,
+      /((?:\b\w+\b\s*){4})/g,
       '$1\n'
-    ); // 每12个汉字换行
+    ); // 每4个英文单词换行
+      
 
     elements.push({
       data: {
