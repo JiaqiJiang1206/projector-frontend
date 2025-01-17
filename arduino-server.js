@@ -1,7 +1,7 @@
 const { SerialPort } = require('serialport');
 const WebSocket = require('ws');
 
-const portName = '/dev/cu.usbmodem11101'; // 替换为你的串口名称
+const portName = '/dev/tty.usbmodem21101'; // 替换为你的串口名称
 
 // 初始化串口
 const port = new SerialPort({
