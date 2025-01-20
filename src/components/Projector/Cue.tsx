@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import mockData from '../../assets/mockData_short.json'; // 引入 mockData
 import { useSelector } from 'react-redux';
 import {
   ExperimentConditions,

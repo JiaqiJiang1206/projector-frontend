@@ -1788,5 +1788,25 @@
     "role": "relationshipResponse",
     "timestamp": "2025-01-16T11:42:42.647265",
     "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '仓保史朗', 'image': '19010.png', 'description': '仓保史朗是日本著名的后现代设计师，以其超现实的设计而闻名。'}, {'id': 2, 'keyword': '菲利普·斯塔克', 'image': '19004.png', 'description': '菲利普·斯塔克是国际知名设计师，以其创新和戏剧化的设计风格著称。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义是一种设计和艺术运动，强调个性、混合与跨文化交流。'}], 'connections': [{'from': 1, 'to': 3, 'relationship': '贡献于'}, {'from': 2, 'to': 3, 'relationship': '促进跨文化交流'}]}, 'generator_chat': '后现代主义通过仓保史朗和菲利普·斯塔克的贡献，推动了全球设计师的文化对话与交流，形成了更为丰富的设计语境。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-20T11:16:05.416880",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '秘密泉桌', 'image': '19005.png', 'description': '彼得·谢尔于1984年设计的秘密泉桌，象征着加州新波设计风格。'}, {'id': 2, 'keyword': '品牌设计', 'image': '', 'description': '后现代主义促使品牌如耐克、李维斯利用设计增强竞争力。'}, {'id': 3, 'keyword': '后现代主义', 'image': '', 'description': '后现代主义以多样性和图像为特征，转变设计理念。'}, {'id': 4, 'keyword': '数字创新', 'image': '', 'description': '数字化在1980年代重塑设计方式，推动图形设计的多元化。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '体现与强化'}, {'from': 1, 'to': 3, 'relationship': '变革与挑战'}, {'from': 1, 'to': 4, 'relationship': '创新与驱动'}]}, 'generator_chat': '在后现代主义的背景下，彼得·谢尔的设计彰显了品牌的增强与创新，促使设计走向情感和个体表达的新篇章。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-20T11:23:34.962207",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': '秘密春天餐桌', 'image': '19005.png', 'description': '由彼得·希尔利设计的餐桌，象征加州新波设计风格。'}, {'id': 2, 'keyword': '茶与咖啡广场', 'image': '19006.png', 'description': '阿莱西的这一项目汇集了众多顶尖设计师，探索后现代茶具设计。'}, {'id': 3, 'keyword': '品牌与身份', 'image': '', 'description': '品牌成为现代设计的重要组成部分，体现了消费者身份和文化。'}, {'id': 4, 'keyword': '菲利普·斯塔克', 'image': '', 'description': '业界著名设计师，推动设计与生活方式紧密结合。'}], 'connections': [{'from': 1, 'to': 2, 'relationship': '体现与推广'}, {'from': 2, 'to': 3, 'relationship': '连接与反映'}, {'from': 4, 'to': 1, 'relationship': '影响与创新'}]}, 'generator_chat': '后现代主义和品牌的崛起促使设计在1980年代经历变革，体现了设计与身份之间的深刻联系。'}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-20T11:28:36.834130",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'High-Tech style', 'image': '', 'description': 'A design movement incorporating industrial elements in architecture and furniture.'}, {'id': 2, 'keyword': 'Richard Rogers', 'image': '', 'description': 'An architect known for using industrial elements in his buildings.'}, {'id': 3, 'keyword': 'Norman Foster', 'image': '', 'description': 'An architect renowned for high-tech and sustainable architecture.'}, {'id': 4, 'keyword': 'Omkstak chair', 'image': '19002.png', 'description': 'Designed by Rodney Kinsman, an icon of High-Tech interior design.'}], 'connections': [{'from': 1, 'to': 2, 'relationship': 'Influence and Representation'}, {'from': 1, 'to': 3, 'relationship': 'Collaboration in High-Tech Design'}, {'from': 1, 'to': 4, 'relationship': 'Exemplification of High-Tech Principles'}]}, 'generator_chat': \"The High-Tech style, driven by architects like Richard Rogers and Norman Foster, manifested dramatically in designs like Rodney Kinsman's Omkstak chair, reflecting a shift towards industrial aesthetics.\"}"
+  },
+  {
+    "role": "relationshipResponse",
+    "timestamp": "2025-01-20T11:34:06.444208",
+    "content": "{'generator_draw': {'keyinfo': [{'id': 1, 'keyword': 'April Greiman', 'image': '16024.png', 'description': \"A pioneer of the New Wave design, Greiman's works featured layered typography and varied media.\"}, {'id': 2, 'keyword': 'Memphis Group', 'image': '19003.png', 'description': 'The Memphis Group was known for its bold use of colors and playful designs that contrasted with Modernism.'}, {'id': 3, 'keyword': 'Neville Brody', 'image': '', 'description': 'A prominent graphic designer whose work in New Wave challenged conventional typography and layout.'}], 'connections': [{'from': 1, 'to': 3, 'relationship': 'Influence and Inspiration'}, {'from': 2, 'to': 3, 'relationship': 'Shared Aesthetic'}]}, 'generator_chat': \"April Greiman's and Neville Brody's innovative approaches in New Wave design mirrored the playful, eclectic ethos of the Memphis Group, establishing a significant cultural shift in design.\"}"
   }
 ]

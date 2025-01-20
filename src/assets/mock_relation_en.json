@@ -1,0 +1,36 @@
+{
+  "expanding": "The New Wave in graphic design emerged in the early 1980s as a significant departure from the rigid constraints of Swiss Modernism. This period is characterized by playful experimentation with forms, layering of visuals, and a rich tapestry of eclectic influences from various cultural sources. Leading figures such as April Greiman and Neville Brody adopted techniques that favored emotional engagement over objectivity, melding art, photography, and typography into dynamic collages. Concurrently, the Memphis Group introduced design that echoed these principles, championing a blend of humor, color, and a non-linear, multifaceted aesthetic. Both movements reflected a vibrant reaction against the established norms of Modernism, advocating instead for a more expressive, free-form approach to design that embraced diversity and creativity.",
+  "keyinfo": [
+    {
+      "id": 1,
+      "keyword": "April Greiman",
+      "image": "16024.png",
+      "description": "A pioneer of the New Wave design, Greiman's works featured layered typography and varied media."
+    },
+    {
+      "id": 2,
+      "keyword": "Memphis Group",
+      "image": "19003.png",
+      "description": "The Memphis Group was known for its bold use of colors and playful designs that contrasted with Modernism."
+    },
+    {
+      "id": 3,
+      "keyword": "Neville Brody",
+      "image": "",
+      "description": "A prominent graphic designer whose work in New Wave challenged conventional typography and layout."
+    }
+  ],
+  "connections": [
+    {
+      "from": 1,
+      "to": 3,
+      "relationship": "Influence and Inspiration"
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "relationship": "Shared Aesthetic"
+    }
+  ],
+  "message": "April Greiman's and Neville Brody's innovative approaches in New Wave design mirrored the playful, eclectic ethos of the Memphis Group, establishing a significant cultural shift in design."
+}

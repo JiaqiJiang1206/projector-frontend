@@ -25,6 +25,40 @@ import { setCanvasData } from '../../store/slices/canvasDataSlice';
 import { getRandomEmojiPaths, useWebSocketHandler } from './chatHelper';
 import Toast from './Toast';
 
+import mock_relationship from '../../assets/mock_relation_en.json'; // 引入 mockData
+import mock_picker from '../../assets/mock_picker.json'; // 引入 mockData
+
+interface MockPicker {
+  id: number;
+  picker_chatmessage: string;
+  sender: string;
+  highlight_point: number[][][]; // 这里是一个三维数组
+  emotions: string;
+  emojiPath: string;
+  title: number[][][]; // 这里是一个二维数组
+  caption: any[]; // 如果你不确定 captionPosition 的类型，可以用 `any[]` 或者根据实际需求进一步定义
+}
+
+interface KeyInfo {
+  id: number;
+  keyword: string;
+  image: string;
+  description: string;
+}
+
+interface Connection {
+  from: number;
+  to: number;
+  relationship: string;
+}
+
+interface ExpandingData {
+  expanding: string;
+  keyinfo: KeyInfo[];
+  connections: Connection[];
+  message: string;
+}
+
 const Chat = () => {
   const [input, setInput] = useState<any>('');
   const [loading, setLoading] = useState<any>(false);
@@ -81,26 +115,27 @@ const Chat = () => {
     setLoading(true);
 
     try {
-      const pickerResponse = await getPickerMessage(
-        messageText,
-        experimentCondition,
-        posterType
+      // const pickerResponse = await getPickerMessage(
+      //   messageText,
+      //   experimentCondition,
+      //   posterType
+      // );
+      const pickerResponse: { data: MockPicker } = await new Promise(
+        (resolve) => {
+          setTimeout(() => {
+            resolve({ data: mock_picker });
+          }, 1000);
+        }
       );
-      const botReply = pickerResponse.data;
 
-      // 在生成最终消息对象前，将随机表情路径数组存入 emojiPath
-      const emojiPath = botReply.emotion_number
-        ? getRandomEmojiPaths(botReply.emotion_number)
-        : '';
+      const botReply = pickerResponse.data;
 
       // 构造消息对象
       const botReplyMessage = {
         id: Date.now(),
         text: botReply.picker_chatmessage,
         sender: 'bot',
-        positions: botReply.highlight_point.flat(), // 打平数组
-        emotions: botReply.emotion_number,
-        emojiPath, // 新增一个字段以存储最终选取的表情文件
+        positions: botReply.highlight_point, // 打平数组
         titlePosition: botReply.title,
         captionPosition: botReply.caption,
       };
@@ -115,8 +150,12 @@ const Chat = () => {
         '/sendaudio'
       );
 
-      const relationshipResponsePromise = getRelationshipMessage(
-        botReply.picker_chatmessage
+      const relationshipResponsePromise = new Promise<{ data: ExpandingData }>(
+        (resolve) => {
+          setTimeout(() => {
+            resolve({ data: mock_relationship });
+          }, 1000);
+        }
       );
 
       // 播放第一条语音并立即请求 relationshipResponse
@@ -129,7 +168,7 @@ const Chat = () => {
         const relationshipResponse = await relationshipResponsePromise;
         console.log('Relationship response:', relationshipResponse.data);
         // 立即更新画布数据
-        dispatch(setCanvasData(relationshipResponse.data.generator_draw));
+        dispatch(setCanvasData(relationshipResponse.data));
         dispatch(setGraph());
       } catch (error) {
         console.error('Error fetching relationship response:', error);
