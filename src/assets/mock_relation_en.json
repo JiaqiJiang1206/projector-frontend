@@ -4,8 +4,8 @@
     {
       "id": 1,
       "keyword": "April Greiman",
-      "image": "16024.png",
-      "description": "A pioneer of the New Wave design, Greiman's works featured layered typography and varied media."
+      "image": "19021.png",
+      "description": "Greiman's works featured layered typography and varied media"
     },
     {
       "id": 2,
@@ -16,15 +16,15 @@
     {
       "id": 3,
       "keyword": "Neville Brody",
-      "image": "",
-      "description": "A prominent graphic designer whose work in New Wave challenged conventional typography and layout."
+      "image": "NevilleBrody.png",
+      "description": "A prominent graphic designer whose work in New Wave"
     }
   ],
   "connections": [
     {
       "from": 1,
       "to": 3,
-      "relationship": "Influence and Inspiration"
+      "relationship": "Inspiration"
     },
     {
       "from": 2,
@@ -32,5 +32,5 @@
       "relationship": "Shared Aesthetic"
     }
   ],
-  "message": "April Greiman's and Neville Brody's innovative approaches in New Wave design mirrored the playful, eclectic ethos of the Memphis Group, establishing a significant cultural shift in design."
+  "message": "April Greiman's and Neville Brody's innovative approaches in New Wave design mirrored the playful, eclectic ethos of the Memphis Group, establishing a significant cultural shift in design"
 }

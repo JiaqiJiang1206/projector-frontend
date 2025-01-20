@@ -101,10 +101,10 @@ export const Cue: React.FC<CueProps> = ({
             key={index}
             className="absolute bg-white rounded-full opacity-90"
             style={{
-              top: `${pos.y}px`,
-              left: `${pos.x}px`,
-              width: `${pos.width + 2}px`,
-              height: `${pos.height + 2}px`,
+              top: `${pos.y + 12}px`,
+              left: `${pos.x + 11}px`,
+              width: `${pos.width + 8}px`,
+              height: `${pos.height + 0}px`,
               // animation: 'breathing 4.2s infinite',
             }}
           ></div>
@@ -154,7 +154,7 @@ export const Cue: React.FC<CueProps> = ({
             <img
               src="/img/icons/picleft.gif"
               alt="Left Top GIF"
-              className="absolute -top-10 -left-10 w-24 h-auto"
+              className="absolute -top-10 -left-8 w-24 h-auto"
               style={{
                 animation: 'infinite-loop 1s linear infinite',
               }}
@@ -162,7 +162,7 @@ export const Cue: React.FC<CueProps> = ({
             <img
               src="/img/icons/picright.gif"
               alt="Right Top GIF"
-              className="absolute w-auto h-16 bottom-4 -right-10"
+              className="absolute w-auto h-16 bottom-4 -right-20"
               style={{
                 animation: 'infinite-loop 1s linear infinite',
                 transform: 'rotate(235deg) scaleX(-1)',

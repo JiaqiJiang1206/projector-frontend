@@ -151,7 +151,7 @@ const Projector: React.FC<ProjectorProps> = ({ messages, canvasData }) => {
               graphData={canvasData}
               canvasSize={{
                 width: imgRef.current?.width,
-                height: 600,
+                height: 900,
               }}
             />
           ) : (

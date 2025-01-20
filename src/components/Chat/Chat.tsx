@@ -124,7 +124,7 @@ const Chat = () => {
         (resolve) => {
           setTimeout(() => {
             resolve({ data: mock_picker });
-          }, 1000);
+          }, 5000);
         }
       );
 

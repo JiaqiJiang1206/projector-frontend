@@ -15,16 +15,29 @@ const StatusIndicator = ({ status }) => {
     }
   };
 
+  // const getStatusText = () => {
+  //   switch (status) {
+  //     case 'Recording':
+  //       return '我在认真听你说话';
+  //     case 'Processing':
+  //       return '正在思考，请不要打断我哦';
+  //     case 'Speaking':
+  //       return '我终于想出来啦！请听我说，不要打断我哟';
+  //     default:
+  //       return '手置于上方开始对话';
+  //   }
+  // };
+
   const getStatusText = () => {
     switch (status) {
       case 'Recording':
-        return '我在认真听你说话';
+        return '';
       case 'Processing':
-        return '正在思考，请不要打断我哦';
+        return '';
       case 'Speaking':
-        return '我终于想出来啦！请听我说，不要打断我哟';
+        return '';
       default:
-        return '手置于上方开始对话';
+        return '';
     }
   };
 
