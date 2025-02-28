@@ -101,8 +101,8 @@ export const Cue: React.FC<CueProps> = ({
             key={index}
             className="absolute bg-white rounded-full opacity-90"
             style={{
-              top: `${pos.y + 12}px`,
-              left: `${pos.x + 11}px`,
+              top: `${pos.y + 8}px`,
+              left: `${pos.x + 8}px`,
               width: `${pos.width + 8}px`,
               height: `${pos.height + 0}px`,
               // animation: 'breathing 4.2s infinite',
